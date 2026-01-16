@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Learning – Daily Words</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+
+<!-- ================= INTRODUCTION ================= -->
+
+<div th:if="${phase.name() == 'INTRODUCTION'}">
+
+    <h4 th:text="'New words (' + (${introIndex} + 1) + ' / ' + ${totalCount} + ')'"></h4>
+
+    <div class="card p-4 mt-4 text-center">
+        <h2 th:text="${introWord.foreignText}"></h2>
+        <p class="fs-5 text-muted mt-2"
+           th:text="${introWord.nativeText}"></p>
+    </div>
+
+    <div class="mt-4 text-center">
+        <form method="post" action="/learning/intro/prev" th:if="${introIndex > 0}">
+            <button class="btn btn-outline-secondary me-3">Previous</button>
+        </form>
+
+        <form method="post"
+              th:action="${lastIntroWord} ? '/learning/intro/review' : '/learning/intro/next'">
+            <button class="btn btn-primary"
+                    th:text="${lastIntroWord} ? 'Review' : 'Next'">
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- ================= REVIEW ================= -->
+
+<div th:if="${phase.name() == 'REVIEW'}">
+
+    <h4 th:text="'Review (' + ${passedCount} + ' / ' + ${totalCount} + ')'"></h4>
+
+    <div class="card p-4 mt-4 text-center">
+        <h2 th:text="${currentWord.foreignText}"></h2>
+
+        <div th:if="${showAnswer}">
+            <p class="fs-5 text-muted mt-3"
+               th:text="${currentWord.nativeText}"></p>
+        </div>
+    </div>
+
+    <div class="mt-4 text-center">
+        <form th:if="${!showAnswer}" method="post" action="/learning/review/show-answer">
+            <button class="btn btn-secondary">Show answer</button>
+        </form>
+
+        <form th:if="${showAnswer}" method="post" action="/learning/review/grade">
+            <button name="rating" value="AGAIN"
+                    class="btn btn-outline-danger me-3">Again</button>
+            <button name="rating" value="GOOD"
+                    class="btn btn-success">Good</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

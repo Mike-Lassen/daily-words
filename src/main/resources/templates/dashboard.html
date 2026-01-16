@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Daily Words</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+
+<h2>Daily Words</h2>
+
+<hr/>
+
+<!-- ================= LEARNING ================= -->
+
+<div class="mb-4">
+    <h4>Learn new words</h4>
+
+    <form method="post" action="/learning/start">
+        <button class="btn btn-primary"
+                th:disabled="${!newWordsAvailable}">
+            Learn 5 new words
+        </button>
+    </form>
+</div>
+
+<!-- ================= REVIEWS ================= -->
+
+<div>
+    <h4>Reviews</h4>
+    <p th:text="${reviewsDue} + ' due today'"></p>
+
+    <button class="btn btn-secondary" disabled>
+        Review
+    </button>
+</div>
+
+</body>
+</html>
