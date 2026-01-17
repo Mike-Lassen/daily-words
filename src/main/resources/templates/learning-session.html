@@ -3,6 +3,35 @@
 <head>
     <title>Learning – Daily Words</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <style>
+        .word-card {
+            min-height: 220px;
+        }
+
+        .meaning {
+            min-height: 3rem;
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .button-slot {
+            width: 160px;
+            text-align: center;
+        }
+
+        .action-btn {
+            width: 100%;
+        }
+
+        .invisible {
+            visibility: hidden;
+        }
+    </style>
 </head>
 <body class="container mt-5">
 
@@ -12,23 +41,41 @@
 
     <h4 th:text="'New words (' + (${introIndex} + 1) + ' / ' + ${totalCount} + ')'"></h4>
 
-    <div class="card p-4 mt-4 text-center">
+    <div class="card word-card p-4 mt-4 text-center">
         <h2 th:text="${introWord.foreignText}"></h2>
-        <p class="fs-5 text-muted mt-2"
-           th:text="${introWord.nativeText}"></p>
+
+        <div class="meaning mt-3">
+            <p class="fs-5 text-muted"
+               th:text="${introWord.nativeText}">
+            </p>
+        </div>
     </div>
 
-    <div class="mt-4 text-center">
-        <form method="post" action="/learning/intro/prev" th:if="${introIndex > 0}">
-            <button class="btn btn-outline-secondary me-3">Previous</button>
-        </form>
+    <div class="button-row">
 
-        <form method="post"
-              th:action="${lastIntroWord} ? '/learning/intro/review' : '/learning/intro/next'">
-            <button class="btn btn-primary"
-                    th:text="${lastIntroWord} ? 'Review' : 'Next'">
-            </button>
-        </form>
+        <!-- PREVIOUS -->
+        <div class="button-slot">
+            <form method="post" action="/learning/intro/prev">
+                <button class="btn btn-outline-secondary action-btn"
+                        th:disabled="${introIndex == 0}">
+                    Previous
+                </button>
+            </form>
+        </div>
+
+        <!-- CENTER (empty, keeps symmetry) -->
+        <div class="button-slot"></div>
+
+        <!-- NEXT / REVIEW -->
+        <div class="button-slot">
+            <form method="post"
+                  th:action="${lastIntroWord} ? '/learning/intro/review' : '/learning/intro/next'">
+                <button class="btn btn-primary action-btn"
+                        th:text="${lastIntroWord} ? 'Review' : 'Next'">
+                </button>
+            </form>
+        </div>
+
     </div>
 </div>
 
@@ -38,26 +85,63 @@
 
     <h4 th:text="'Review (' + ${passedCount} + ' / ' + ${totalCount} + ')'"></h4>
 
-    <div class="card p-4 mt-4 text-center">
+    <div class="card word-card p-4 mt-4 text-center">
         <h2 th:text="${currentWord.foreignText}"></h2>
 
-        <div th:if="${showAnswer}">
-            <p class="fs-5 text-muted mt-3"
-               th:text="${currentWord.nativeText}"></p>
+        <div class="meaning mt-3">
+            <p class="fs-5 text-muted"
+               th:classappend="${!showAnswer} ? 'invisible'"
+               th:text="${currentWord.nativeText}">
+            </p>
         </div>
     </div>
 
-    <div class="mt-4 text-center">
-        <form th:if="${!showAnswer}" method="post" action="/learning/review/show-answer">
-            <button class="btn btn-secondary">Show answer</button>
-        </form>
+    <div class="button-row">
 
-        <form th:if="${showAnswer}" method="post" action="/learning/review/grade">
-            <button name="rating" value="AGAIN"
-                    class="btn btn-outline-danger me-3">Again</button>
-            <button name="rating" value="GOOD"
-                    class="btn btn-success">Good</button>
-        </form>
+        <!-- LEFT: AGAIN -->
+        <div class="button-slot">
+            <form th:if="${showAnswer}" method="post" action="/learning/review/grade">
+                <button name="rating" value="AGAIN"
+                        class="btn btn-outline-danger action-btn">
+                    Again
+                </button>
+            </form>
+
+            <button th:if="${!showAnswer}"
+                    class="btn btn-outline-danger action-btn invisible">
+                Again
+            </button>
+        </div>
+
+        <!-- CENTER: SHOW ANSWER -->
+        <div class="button-slot">
+            <form th:if="${!showAnswer}" method="post" action="/learning/review/show-answer">
+                <button class="btn btn-secondary action-btn">
+                    Show answer
+                </button>
+            </form>
+
+            <button th:if="${showAnswer}"
+                    class="btn btn-secondary action-btn invisible">
+                Show answer
+            </button>
+        </div>
+
+        <!-- RIGHT: GOOD -->
+        <div class="button-slot">
+            <form th:if="${showAnswer}" method="post" action="/learning/review/grade">
+                <button name="rating" value="GOOD"
+                        class="btn btn-success action-btn">
+                    Good
+                </button>
+            </form>
+
+            <button th:if="${!showAnswer}"
+                    class="btn btn-success action-btn invisible">
+                Good
+            </button>
+        </div>
+
     </div>
 </div>
 

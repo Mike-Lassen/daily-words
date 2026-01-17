@@ -21,15 +21,8 @@ public class LearningController {
     @PostMapping("/start")
     public String startLearning(Model model) {
 
-        List<Word> words = List.of(
-                Word.builder().id(1L).foreignText("今").nativeText("now").build(),
-                Word.builder().id(2L).foreignText("英語").nativeText("English").build(),
-                Word.builder().id(3L).foreignText("学生").nativeText("student").build(),
-                Word.builder().id(4L).foreignText("午後").nativeText("P.M.").build(),
-                Word.builder().id(5L).foreignText("午前").nativeText("A.M.").build()
-        );
 
-        LearningSession session = learningService.startSession(words);
+        LearningSession session = learningService.startSession();
         model.addAttribute("learningSession", session);
         return "redirect:/learning/session";
     }

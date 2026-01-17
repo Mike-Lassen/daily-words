@@ -1,6 +1,8 @@
 package io.grann.words.learning;
 
 import io.grann.words.domain.Word;
+import io.grann.words.domain.WordStatus;
+import io.grann.words.repository.WordRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,11 +12,18 @@ import java.util.Random;
 @Service
 @RequiredArgsConstructor
 public class LearningService {
+    private final WordRepository wordRepository;
 
-    // Later this will query the database
-    public LearningSession startSession(List<Word> newWords) {
+    public LearningSession startSession() {
+        List<Word> words = wordRepository
+                .findTop5ByStatusOrderByIdAsc(WordStatus.LEARNING);
+
+        if (words.isEmpty()) {
+            throw new IllegalStateException("No new words available to learn");
+        }
+
         LearningSession session = new LearningSession();
-        session.setWords(newWords);
+        session.setWords(words);
         return session;
     }
 
