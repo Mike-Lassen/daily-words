@@ -83,7 +83,7 @@
 
 <div th:if="${phase.name() == 'REVIEW'}">
 
-    <h4 th:text="'Review (' + ${passedCount} + ' / ' + ${totalCount} + ')'"></h4>
+    <h4 th:text="'Review (' + (${totalCount} - ${remainingCount}) + ' / ' + ${totalCount} + ')'"></h4>
 
     <div class="card word-card p-4 mt-4 text-center">
         <h2 th:text="${currentWord.foreignText}"></h2>

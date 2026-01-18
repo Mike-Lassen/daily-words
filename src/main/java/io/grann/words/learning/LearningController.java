@@ -45,7 +45,8 @@ public class LearningController {
             model.addAttribute("lastIntroWord", session.isLastIntroWord());
         } else {
             model.addAttribute("currentWord", session.getCurrentWord());
-            model.addAttribute("passedCount", session.getPassedCount());
+            model.addAttribute("remainingCount", session.getRemainingCount());
+            model.addAttribute("totalCount", session.getTotalCount());
             model.addAttribute("showAnswer", session.isShowAnswer());
         }
 
@@ -92,7 +93,7 @@ public class LearningController {
             status.setComplete(); // clears session
             return "redirect:/dashboard";
         }
-
+        learningService.advance(session);
         return "redirect:/learning/session";
     }
 }

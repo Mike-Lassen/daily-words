@@ -8,6 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 public class Word {
 
     @Id
@@ -21,6 +22,7 @@ public class Word {
     private String nativeText;
 
     @ManyToOne(optional = false)
+    @ToString.Exclude
     private Level level;
 
     @Enumerated(EnumType.STRING)
