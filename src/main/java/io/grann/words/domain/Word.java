@@ -3,6 +3,9 @@ package io.grann.words.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter @Setter
 @NoArgsConstructor
@@ -35,4 +38,13 @@ public class Word {
             orphanRemoval = true
     )
     private ReviewState reviewState;
+
+    @OneToMany(
+            mappedBy = "word",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @Builder.Default
+    private List<WordAnnotation> annotations = new ArrayList<>();
+
 }
