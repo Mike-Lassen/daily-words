@@ -47,4 +47,22 @@ public class Word {
     @Builder.Default
     private List<WordAnnotation> annotations = new ArrayList<>();
 
+    public String getAnnotationValue(WordAnnotationType type) {
+        for (WordAnnotation annotation : getAnnotations()) {
+            if (annotation.getType() == type) {
+                return annotation.getValue();
+            }
+        }
+        return null;
+    }
+
+    public String getKana() {
+        return getAnnotationValue(WordAnnotationType.KANA);
+    }
+    public String getFurigana() {
+        return getAnnotationValue(WordAnnotationType.FURIGANA);
+    }
+    public String getNote() {
+        return getAnnotationValue(WordAnnotationType.NOTE);
+    }
 }

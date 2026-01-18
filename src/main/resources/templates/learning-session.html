@@ -3,6 +3,7 @@
 <head>
     <title>Learning – Daily Words</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/jquery-4.0.0.min.js"></script>
     <style>
         .word-card {
             min-height: 220px;
@@ -31,6 +32,14 @@
         .invisible {
             visibility: hidden;
         }
+
+        .word-display {
+            font-size: 3rem;
+            text-align: center;
+            min-height: 4.5rem; /* prevents layout jump */
+            cursor: default;
+            user-select: none;
+        }
     </style>
 </head>
 <body class="container mt-5">
@@ -42,11 +51,16 @@
     <h4 th:text="'New words (' + (${introIndex} + 1) + ' / ' + ${totalCount} + ')'"></h4>
 
     <div class="card word-card p-4 mt-4 text-center">
-        <h2 th:text="${introWord.foreignText}"></h2>
+        <div id="word-display"
+             class="word-display"
+             th:data-kanji="${word.foreignText}"
+             th:data-kana="${word.kana}">
+            [[${word.foreignText}]]
+        </div>
 
         <div class="meaning mt-3">
             <p class="fs-5 text-muted"
-               th:text="${introWord.nativeText}">
+               th:text="${word.nativeText}">
             </p>
         </div>
     </div>
@@ -86,12 +100,17 @@
     <h4 th:text="'Review (' + (${totalCount} - ${remainingCount}) + ' / ' + ${totalCount} + ')'"></h4>
 
     <div class="card word-card p-4 mt-4 text-center">
-        <h2 th:text="${currentWord.foreignText}"></h2>
+        <div id="word-display"
+             class="word-display"
+             th:data-kanji="${word.foreignText}"
+             th:data-kana="${word.kana}">
+            [[${word.foreignText}]]
+        </div>
 
         <div class="meaning mt-3">
             <p class="fs-5 text-muted"
                th:classappend="${!showAnswer} ? 'invisible'"
-               th:text="${currentWord.nativeText}">
+               th:text="${word.nativeText}">
             </p>
         </div>
     </div>
@@ -144,6 +163,31 @@
 
     </div>
 </div>
+
+<script>
+    $(function () {
+        const $word = $("#word-display");
+
+        const kanji = $word.data("kanji");
+        const kana = $word.data("kana");
+
+        console.log(kana);
+
+        if (!kana) {
+            return; // no kana → no behavior
+        }
+
+        $word.hover(
+            function () {
+                $word.text(kana);
+            },
+            function () {
+                $word.text(kanji);
+            }
+        );
+    });
+</script>
+
 
 </body>
 </html>

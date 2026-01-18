@@ -24,6 +24,10 @@ public class LearningService {
             throw new IllegalStateException("Not enough new words to learn");
         }
 
+        for (Word word : words) {
+            String kana = word.getKana();
+        }
+
         LearningSession session = new LearningSession();
         session.setWords(words);
         return session;

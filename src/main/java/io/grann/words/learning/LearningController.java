@@ -20,8 +20,6 @@ public class LearningController {
     // TEMP: inject words manually or via repository later
     @PostMapping("/start")
     public String startLearning(Model model) {
-
-
         LearningSession session = learningService.startSession();
         model.addAttribute("learningSession", session);
         return "redirect:/learning/session";
@@ -41,10 +39,10 @@ public class LearningController {
 
         if (session.getPhase() == LearningPhase.INTRODUCTION) {
             model.addAttribute("introIndex", session.getIntroIndex());
-            model.addAttribute("introWord", session.getIntroWord());
+            model.addAttribute("word", session.getIntroWord());
             model.addAttribute("lastIntroWord", session.isLastIntroWord());
         } else {
-            model.addAttribute("currentWord", session.getCurrentWord());
+            model.addAttribute("word", session.getCurrentWord());
             model.addAttribute("remainingCount", session.getRemainingCount());
             model.addAttribute("totalCount", session.getTotalCount());
             model.addAttribute("showAnswer", session.isShowAnswer());
