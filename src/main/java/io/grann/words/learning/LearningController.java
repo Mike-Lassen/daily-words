@@ -1,6 +1,5 @@
 package io.grann.words.learning;
 
-import io.grann.words.domain.Word;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -88,6 +87,7 @@ public class LearningController {
         learningService.applyRating(session, rating);
 
         if (session.isFinished()) {
+            learningService.complete(session);
             status.setComplete(); // clears session
             return "redirect:/dashboard";
         }

@@ -5,7 +5,9 @@ import io.grann.words.repository.WordRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Clock;
 import java.util.ArrayDeque;
 import java.util.List;
 
@@ -15,6 +17,7 @@ import java.util.List;
 public class LearningService {
 
     private final WordRepository wordRepository;
+    private final Clock clock;
 
     public LearningSession startSession() {
         List<Word> words =
@@ -53,5 +56,13 @@ public class LearningService {
         if (!session.getReviewQueue().isEmpty()) {
             session.setCurrentWord(session.getReviewQueue().pollFirst());
         }
+    }
+
+    @Transactional
+    public void complete(LearningSession session) {
+        for (Word word : session.getWords()) {
+            word.enterReviewing(clock); // sets status + ensures reviewState exists
+        }
+        wordRepository.saveAll(session.getWords()); // merge + cascade
     }
 }
