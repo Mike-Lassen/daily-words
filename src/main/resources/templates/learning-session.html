@@ -51,8 +51,7 @@
     <h4 th:text="'New words (' + (${introIndex} + 1) + ' / ' + ${totalCount} + ')'"></h4>
 
     <div class="card word-card p-4 mt-4 text-center">
-        <div id="word-display"
-             class="word-display"
+        <div class="word-display"
              th:data-kanji="${word.foreignText}"
              th:data-kana="${word.kana}">
             [[${word.foreignText}]]
@@ -95,98 +94,41 @@
 
 <!-- ================= REVIEW ================= -->
 
-<div th:if="${phase.name() == 'REVIEW'}">
+<th:block th:if="${phase.name() == 'REVIEW'}">
+    <div th:replace="~{fragments/review :: review(
+        ${word},
+        ${showAnswer},
+        ${totalCount - remainingCount},
+        ${totalCount},
+        '/learning/review/show-answer',
+        '/learning/review/grade'
+    )}"></div>
+</th:block>
 
-    <h4 th:text="'Review (' + (${totalCount} - ${remainingCount}) + ' / ' + ${totalCount} + ')'"></h4>
 
-    <div class="card word-card p-4 mt-4 text-center">
-        <div id="word-display"
-             class="word-display"
-             th:data-kanji="${word.foreignText}"
-             th:data-kana="${word.kana}">
-            [[${word.foreignText}]]
-        </div>
-
-        <div class="meaning mt-3">
-            <p class="fs-5 text-muted"
-               th:classappend="${!showAnswer} ? 'invisible'"
-               th:text="${word.nativeText}">
-            </p>
-        </div>
-    </div>
-
-    <div class="button-row">
-
-        <!-- LEFT: AGAIN -->
-        <div class="button-slot">
-            <form th:if="${showAnswer}" method="post" action="/learning/review/grade">
-                <button name="rating" value="AGAIN"
-                        class="btn btn-outline-danger action-btn">
-                    Again
-                </button>
-            </form>
-
-            <button th:if="${!showAnswer}"
-                    class="btn btn-outline-danger action-btn invisible">
-                Again
-            </button>
-        </div>
-
-        <!-- CENTER: SHOW ANSWER -->
-        <div class="button-slot">
-            <form th:if="${!showAnswer}" method="post" action="/learning/review/show-answer">
-                <button class="btn btn-secondary action-btn">
-                    Show answer
-                </button>
-            </form>
-
-            <button th:if="${showAnswer}"
-                    class="btn btn-secondary action-btn invisible">
-                Show answer
-            </button>
-        </div>
-
-        <!-- RIGHT: GOOD -->
-        <div class="button-slot">
-            <form th:if="${showAnswer}" method="post" action="/learning/review/grade">
-                <button name="rating" value="GOOD"
-                        class="btn btn-success action-btn">
-                    Good
-                </button>
-            </form>
-
-            <button th:if="${!showAnswer}"
-                    class="btn btn-success action-btn invisible">
-                Good
-            </button>
-        </div>
-
-    </div>
-</div>
 
 <script>
     $(function () {
-        const $word = $("#word-display");
+        const $word = $(".word-display");
+
+        if ($word.length === 0) {
+            return;
+        }
 
         const kanji = $word.data("kanji");
         const kana = $word.data("kana");
-
-        console.log(kana);
 
         if (!kana) {
             return; // no kana → no behavior
         }
 
         $word.hover(
-            function () {
-                $word.text(kana);
-            },
-            function () {
-                $word.text(kanji);
-            }
+            function () { $word.text(kana); },
+            function () { $word.text(kanji); }
         );
     });
 </script>
+
 
 
 </body>

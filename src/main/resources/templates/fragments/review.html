@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="review(word, showAnswer, completedCount, totalCount, showAnswerAction, gradeAction)">
+
+    <h4 th:text="'Review (' + ${completedCount} + ' / ' + ${totalCount} + ')'"></h4>
+
+    <div class="card word-card p-4 mt-4 text-center">
+        <div class="word-display"
+             th:data-kanji="${word.foreignText}"
+             th:data-kana="${word.kana}">
+            [[${word.foreignText}]]
+        </div>
+
+        <div class="meaning mt-3">
+            <p class="fs-5 text-muted"
+               th:classappend="${!showAnswer} ? 'invisible'"
+               th:text="${word.nativeText}">
+            </p>
+        </div>
+    </div>
+
+    <div class="button-row">
+
+        <!-- LEFT: AGAIN -->
+        <div class="button-slot">
+            <form th:if="${showAnswer}" method="post" th:action="${gradeAction}">
+                <button name="rating" value="AGAIN"
+                        class="btn btn-outline-danger action-btn">
+                    Again
+                </button>
+            </form>
+
+            <button th:if="${!showAnswer}"
+                    class="btn btn-outline-danger action-btn invisible">
+                Again
+            </button>
+        </div>
+
+        <!-- CENTER: SHOW ANSWER -->
+        <div class="button-slot">
+            <form th:if="${!showAnswer}" method="post" th:action="${showAnswerAction}">
+                <button class="btn btn-secondary action-btn">
+                    Show answer
+                </button>
+            </form>
+
+            <button th:if="${showAnswer}"
+                    class="btn btn-secondary action-btn invisible">
+                Show answer
+            </button>
+        </div>
+
+        <!-- RIGHT: GOOD -->
+        <div class="button-slot">
+            <form th:if="${showAnswer}" method="post" th:action="${gradeAction}">
+                <button name="rating" value="GOOD"
+                        class="btn btn-success action-btn">
+                    Good
+                </button>
+            </form>
+
+            <button th:if="${!showAnswer}"
+                    class="btn btn-success action-btn invisible">
+                Good
+            </button>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

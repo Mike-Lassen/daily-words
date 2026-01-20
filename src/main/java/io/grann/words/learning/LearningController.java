@@ -37,6 +37,7 @@ public class LearningController {
         model.addAttribute("totalCount", session.getTotalCount());
 
         if (session.getPhase() == LearningPhase.INTRODUCTION) {
+
             model.addAttribute("introIndex", session.getIntroIndex());
             model.addAttribute("word", session.getIntroWord());
             model.addAttribute("lastIntroWord", session.isLastIntroWord());
