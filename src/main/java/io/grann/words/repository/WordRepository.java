@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 public interface WordRepository extends JpaRepository<Word, Long> {
     List<Word> findTop5ByStatusOrderByIdAsc(WordStatus status);
@@ -30,4 +31,13 @@ public interface WordRepository extends JpaRepository<Word, Long> {
               and rs.nextReviewAt <= :now
             """)
     long countWordsDueForReview(@Param("now") LocalDateTime now);
+
+    @Query("""
+                select w
+                from Word w
+                left join fetch w.annotations
+                where w.id = :id
+            """)
+    Optional<Word> findByIdWithAnnotations(@Param("id") Long id);
+
 }
