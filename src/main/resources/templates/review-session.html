@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reviews – Daily Words</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/jquery-4.0.0.min.js"></script>
+</head>
+<body class="container mt-5">
+
+<div th:replace="~{fragments/review :: review(
+        ${word},
+        ${showAnswer},
+        ${completedCount},
+        ${totalCount},
+        '/reviews/show-answer',
+        '/reviews/grade'
+    )}"></div>
+
+</body>
+</html>

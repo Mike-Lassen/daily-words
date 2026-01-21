@@ -29,9 +29,12 @@
     <h4>Reviews</h4>
     <p th:text="${reviewsDue} + ' due today'"></p>
 
-    <button class="btn btn-secondary" disabled>
-        Start Reviews
-    </button>
+    <form method="post" action="/reviews/start">
+        <button class="btn btn-secondary"
+                th:disabled="${reviewsDue == 0}">
+            Start Reviews
+        </button>
+    </form>
 </div>
 
 </body>
