@@ -3,6 +3,34 @@
 <body>
 
 <div th:fragment="review(word, showAnswer, completedCount, totalCount, showAnswerAction, gradeAction)">
+    <style>
+        .word-card { min-height: 220px; }
+        .meaning { min-height: 3rem; }
+
+        .button-row {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .button-slot {
+            width: 160px;
+            text-align: center;
+        }
+
+        .action-btn { width: 100%; }
+        .invisible { visibility: hidden; }
+
+        .word-display {
+            font-size: 3rem;
+            text-align: center;
+            min-height: 4.5rem; /* prevents layout jump */
+            cursor: default;
+            user-select: none;
+        }
+    </style>
+
 
     <h4 th:text="'Review (' + ${completedCount} + ' / ' + ${totalCount} + ')'"></h4>
 
@@ -68,6 +96,24 @@
         </div>
 
     </div>
+
+    <script>
+        $(function () {
+            $(".word-display").each(function () {
+                const $el = $(this);
+                const kanji = $el.data("kanji");
+                const kana = $el.data("kana");
+
+                if (!kana) return;
+
+                $el.hover(
+                    function () { $el.text(kana); },
+                    function () { $el.text(kanji); }
+                );
+            });
+        });
+    </script>
+
 </div>
 
 </body>
