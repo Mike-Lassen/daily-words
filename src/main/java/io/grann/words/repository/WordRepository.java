@@ -40,4 +40,5 @@ public interface WordRepository extends JpaRepository<Word, Long> {
             """)
     Optional<Word> findByIdWithAnnotations(@Param("id") Long id);
 
+    long countByStatus(WordStatus status);
 }

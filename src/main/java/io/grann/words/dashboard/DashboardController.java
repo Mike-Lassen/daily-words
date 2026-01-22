@@ -1,5 +1,6 @@
 package io.grann.words.dashboard;
 
+import io.grann.words.domain.WordStatus;
 import io.grann.words.repository.WordRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,11 +25,12 @@ public class DashboardController {
 
         var now = LocalDateTime.now(clock);
         long reviewsDue = wordRepository.countWordsDueForReview(now);
+        long learnableWordsCount = wordRepository.countByStatus(WordStatus.LEARNING);
+        boolean newWordsAvailable = learnableWordsCount >= 5;
 
-        // TEMP placeholder (keep until you implement the “new words available” logic)
-        model.addAttribute("newWordsAvailable", true);
-
+        model.addAttribute("newWordsAvailable", newWordsAvailable);
         model.addAttribute("reviewsDue", reviewsDue);
+        model.addAttribute("learnableWordsCount", learnableWordsCount);
 
         return "dashboard";
     }

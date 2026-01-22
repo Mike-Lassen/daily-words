@@ -15,6 +15,16 @@
 <div class="mb-4">
     <h4>Learn new words</h4>
 
+    <p class="text-muted mb-2"
+       th:if="${learnableWordsCount != null}"
+       th:text="${learnableWordsCount} + ' words available to learn'">
+    </p>
+
+    <p class="text-muted mb-2"
+       th:if="${learnableWordsCount != null and learnableWordsCount < 5}">
+        Need <span th:text="${5 - learnableWordsCount}"></span> more to start a learning session.
+    </p>
+
     <form method="post" action="/learning/start">
         <button class="btn btn-primary"
                 th:disabled="${!newWordsAvailable}">
@@ -27,6 +37,7 @@
 
 <div>
     <h4>Reviews</h4>
+
     <p th:text="${reviewsDue} + ' due today'"></p>
 
     <form method="post" action="/reviews/start">
