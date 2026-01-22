@@ -1,9 +1,14 @@
 package io.grann.words.review;
 
+import io.grann.words.domain.ReviewState;
+import io.grann.words.domain.SrsLevel;
 import io.grann.words.domain.Word;
+import io.grann.words.domain.WordStatus;
 import io.grann.words.repository.WordRepository;
+import io.grann.words.srs.Srs;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Clock;
 import java.time.LocalDateTime;
@@ -29,14 +34,36 @@ public class ReviewService {
         return session;
     }
 
-    public void applyRating(ReviewSession session, ReviewRating rating) {
-        Long currentId = session.getQueue().pollFirst(); // remove current
-        if (currentId == null) return;
-
-        if (rating == ReviewRating.AGAIN) {
-            session.getQueue().addLast(currentId); // reinsert at end
+    @Transactional
+    public void applyRating(ReviewSession reviewSession, ReviewRating rating) {
+        Long wordIdentifier = reviewSession.getQueue().pollFirst();
+        if (wordIdentifier == null) {
+            return;
         }
 
-        session.setShowAnswer(false);
+        Word word = wordRepository.findById(wordIdentifier).orElseThrow();
+        ReviewState reviewState = word.getReviewState();
+
+        SrsLevel currentLevel = reviewState.getLevel();
+        SrsLevel nextLevel =
+                (rating == ReviewRating.GOOD)
+                        ? Srs.onGood(currentLevel)
+                        : Srs.onAgain(currentLevel);
+
+        if (rating == ReviewRating.GOOD && nextLevel.isLastLevel()) {
+            word.setStatus(WordStatus.GRADUATED);
+        } else {
+            reviewState.setLevel(nextLevel);
+
+            LocalDateTime nextReviewAt = LocalDateTime.now(clock).plus(Srs.intervalForLevel(nextLevel));
+            reviewState.setNextReviewAt(nextReviewAt);
+        }
+
+        // in-session behavior
+        if (rating == ReviewRating.AGAIN) {
+            reviewSession.getQueue().addLast(wordIdentifier);
+        }
+
+        reviewSession.setShowAnswer(false);
     }
 }
