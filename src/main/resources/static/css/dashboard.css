@@ -1,0 +1,90 @@
+.dashboard-container {
+    padding: 2rem;
+}
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+}
+
+.dashboard-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.04),
+        0 8px 24px rgba(0, 0, 0, 0.06);
+    display: flex;
+    align-items: stretch;
+}
+
+.card-content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.card-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.metric-number {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #111827; /* neutral almost-black */
+    line-height: 1;
+}
+
+.metric-label {
+    font-size: 0.95rem;
+    color: #6b7280; /* muted gray */
+}
+
+/* Buttons */
+
+.primary-button,
+.secondary-button {
+    margin-top: 2rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.primary-button {
+    background-color: #111827;
+    color: #ffffff;
+}
+
+.primary-button:hover:not(:disabled) {
+    background-color: #1f2937;
+}
+
+.secondary-button {
+    background-color: #f3f4f6;
+    color: #111827;
+}
+
+.secondary-button:hover:not(:disabled) {
+    background-color: #e5e7eb;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.dashboard-card form {
+    margin: 0;
+    width: 100%;
+}
+
+.dashboard-card form button {
+    width: 100%;
+}
+

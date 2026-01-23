@@ -3,50 +3,48 @@
 <head>
     <title>Daily Words</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
 </head>
 <body class="container mt-5">
 
-<h2>Daily Words</h2>
+<div class="dashboard-container">
+    <div class="dashboard-cards">
 
-<hr/>
+        <div class="dashboard-card">
+            <div class="card-content">
+                <span class="metric-number" th:text="${newWordsAvailable}">0</span>
+                <span class="metric-label">New words available</span>
 
-<!-- ================= LEARNING ================= -->
+                <form method="post" th:action="@{/learning/start}">
+                    <button
+                            type="submit"
+                            class="primary-button"
+                            th:disabled="${newWordsAvailable < 5}">
+                        Learn 5 Words
+                    </button>
+                </form>
+            </div>
+        </div>
 
-<div class="mb-4">
-    <h4>Learn new words</h4>
+        <div class="dashboard-card">
+            <div class="card-content">
+                <span class="metric-number" th:text="${reviewsDue}">0</span>
+                <span class="metric-label">Reviews due</span>
 
-    <p class="text-muted mb-2"
-       th:if="${learnableWordsCount != null}"
-       th:text="${learnableWordsCount} + ' words available to learn'">
-    </p>
+                <form method="post" th:action="@{/reviews/start}">
+                    <button
+                            type="submit"
+                            class="secondary-button"
+                            th:disabled="${reviewsDue == 0}">
+                        Start Reviews
+                    </button>
+                </form>
+            </div>
+        </div>
 
-    <p class="text-muted mb-2"
-       th:if="${learnableWordsCount != null and learnableWordsCount < 5}">
-        Need <span th:text="${5 - learnableWordsCount}"></span> more to start a learning session.
-    </p>
-
-    <form method="post" action="/learning/start">
-        <button class="btn btn-primary"
-                th:disabled="${!newWordsAvailable}">
-            Learn 5 new words
-        </button>
-    </form>
+    </div>
 </div>
 
-<!-- ================= REVIEWS ================= -->
-
-<div>
-    <h4>Reviews</h4>
-
-    <p th:text="${reviewsDue} + ' due today'"></p>
-
-    <form method="post" action="/reviews/start">
-        <button class="btn btn-secondary"
-                th:disabled="${reviewsDue == 0}">
-            Start Reviews
-        </button>
-    </form>
-</div>
 
 </body>
 </html>

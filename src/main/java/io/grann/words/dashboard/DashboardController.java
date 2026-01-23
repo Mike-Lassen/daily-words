@@ -23,14 +23,13 @@ public class DashboardController {
     @GetMapping({"/", "/dashboard"})
     public String dashboard(Model model) {
 
-        var now = LocalDateTime.now(clock);
+        LocalDateTime now = LocalDateTime.now(clock);
+
+        long newWordsAvailable = wordRepository.countByStatus(WordStatus.LEARNING);
         long reviewsDue = wordRepository.countWordsDueForReview(now);
-        long learnableWordsCount = wordRepository.countByStatus(WordStatus.LEARNING);
-        boolean newWordsAvailable = learnableWordsCount >= 5;
 
         model.addAttribute("newWordsAvailable", newWordsAvailable);
         model.addAttribute("reviewsDue", reviewsDue);
-        model.addAttribute("learnableWordsCount", learnableWordsCount);
 
         return "dashboard";
     }
