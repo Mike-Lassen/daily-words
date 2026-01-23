@@ -17,6 +17,21 @@ public interface WordRepository extends JpaRepository<Word, Long> {
     @Query("""
             select w
             from Word w
+            where w.status = io.grann.words.domain.WordStatus.LEARNING
+              and w.level.deck.id = :deckId
+              and w.level.orderIndex <= :maxOrderIndex
+            order by w.level.orderIndex asc, w.id asc
+            """)
+    List<Word> findTop5LearningAvailableInDeckUpToOrderIndex(
+            @Param("deckId") Long deckId,
+            @Param("maxOrderIndex") int maxOrderIndex
+    );
+
+    long countByLevelAndStatus(Level level, WordStatus status);
+
+    @Query("""
+            select w
+            from Word w
             join w.reviewState rs
             where w.status = io.grann.words.domain.WordStatus.REVIEWING
               and rs.nextReviewAt <= :now

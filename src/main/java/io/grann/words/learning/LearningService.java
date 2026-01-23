@@ -1,6 +1,13 @@
 package io.grann.words.learning;
 
+import io.grann.words.domain.Deck;
+import io.grann.words.domain.DeckProgress;
+import io.grann.words.domain.Level;
 import io.grann.words.domain.Word;
+import io.grann.words.domain.WordStatus;
+import io.grann.words.repository.DeckProgressRepository;
+import io.grann.words.repository.DeckRepository;
+import io.grann.words.repository.LevelRepository;
 import io.grann.words.repository.WordRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,18 +24,27 @@ import java.util.List;
 public class LearningService {
 
     private final WordRepository wordRepository;
+    private final DeckRepository deckRepository;
+    private final LevelRepository levelRepository;
+    private final DeckProgressRepository deckProgressRepository;
     private final Clock clock;
 
     public LearningSession startSession() {
-        List<Word> words =
-                wordRepository.findTop5ByStatusOrderByIdAsc(io.grann.words.domain.WordStatus.LEARNING);
+        // MVP: pick the first deck (single-user, single-deck UX for now)
+        Deck deck = deckRepository.findAll().stream()
+                .findFirst()
+                .orElseThrow(() -> new IllegalStateException("No decks exist yet"));
+
+        DeckProgress progress = deckProgressRepository.findByDeck(deck)
+                .orElseGet(() -> initializeProgress(deck));
+
+        List<Word> words = wordRepository.findTop5LearningAvailableInDeckUpToOrderIndex(
+                deck.getId(),
+                progress.getCurrentOrderIndex()
+        );
 
         if (words.size() < 5) {
             throw new IllegalStateException("Not enough new words to learn");
-        }
-
-        for (Word word : words) {
-            String kana = word.getKana();
         }
 
         LearningSession session = new LearningSession();
@@ -60,9 +76,50 @@ public class LearningService {
 
     @Transactional
     public void complete(LearningSession session) {
+        // 1) Transition learned words to REVIEWING
         for (Word word : session.getWords()) {
             word.enterReviewing(clock); // sets status + ensures reviewState exists
         }
         wordRepository.saveAll(session.getWords()); // merge + cascade
+
+        // 2) If that exhausted the current level, unlock the next level (per deck)
+        Deck deck = session.getWords().getFirst().getLevel().getDeck();
+        DeckProgress progress = deckProgressRepository.findByDeck(deck)
+                .orElseGet(() -> initializeProgress(deck));
+
+        Level currentLevel = levelRepository.findFirstByDeckAndOrderIndexGreaterThanOrderByOrderIndexAsc(
+                        deck,
+                        progress.getCurrentOrderIndex() - 1
+                )
+                .orElse(null);
+
+        // If we can't resolve a current level entity, skip advancing.
+        if (currentLevel == null) {
+            return;
+        }
+
+        long remainingLearningInCurrentLevel = wordRepository.countByLevelAndStatus(currentLevel, WordStatus.LEARNING);
+        if (remainingLearningInCurrentLevel > 0) {
+            return;
+        }
+
+        levelRepository.findFirstByDeckAndOrderIndexGreaterThanOrderByOrderIndexAsc(deck, progress.getCurrentOrderIndex())
+                .ifPresent(nextLevel -> {
+                    progress.setCurrentOrderIndex(nextLevel.getOrderIndex());
+                    deckProgressRepository.save(progress);
+                });
+    }
+
+    @Transactional
+    protected DeckProgress initializeProgress(Deck deck) {
+        Level firstLevel = levelRepository.findFirstByDeckOrderByOrderIndexAsc(deck)
+                .orElseThrow(() -> new IllegalStateException("Deck has no levels: " + deck.getName()));
+
+        DeckProgress progress = DeckProgress.builder()
+                .deck(deck)
+                .currentOrderIndex(firstLevel.getOrderIndex())
+                .build();
+
+        return deckProgressRepository.save(progress);
     }
 }
