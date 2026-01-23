@@ -11,11 +11,13 @@ import io.grann.words.repository.LevelRepository;
 import io.grann.words.repository.WordRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Clock;
 import java.util.ArrayDeque;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -38,14 +40,24 @@ public class LearningService {
         DeckProgress progress = deckProgressRepository.findByDeck(deck)
                 .orElseGet(() -> initializeProgress(deck));
 
-        List<Word> words = wordRepository.findTop5LearningAvailableInDeckUpToOrderIndex(
+        List<Long> ids = wordRepository.findLearningIdsAvailableInDeckUpToOrderIndex(
                 deck.getId(),
-                progress.getCurrentOrderIndex()
+                progress.getCurrentOrderIndex(),
+                PageRequest.of(0, 5)
         );
 
-        if (words.size() < 5) {
+        if (ids.size() < 5) {
             throw new IllegalStateException("Not enough new words to learn");
         }
+
+        List<Word> words = wordRepository.findByIdInWithAnnotations(ids);
+
+        // Preserve the deterministic ordering from the ID query (without O(n^2) indexOf)
+        var positionById = new HashMap<Long, Integer>(ids.size());
+        for (int i = 0; i < ids.size(); i++) {
+            positionById.put(ids.get(i), i);
+        }
+        words.sort(java.util.Comparator.comparingInt(w -> positionById.getOrDefault(w.getId(), Integer.MAX_VALUE)));
 
         LearningSession session = new LearningSession();
         session.setWords(words);
