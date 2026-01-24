@@ -1,6 +1,7 @@
 package io.grann.words.repository;
 
 import io.grann.words.domain.Level;
+import io.grann.words.domain.SrsLevel;
 import io.grann.words.domain.Word;
 import io.grann.words.domain.WordStatus;
 import org.springframework.data.domain.Pageable;
@@ -9,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,6 +53,8 @@ public interface WordRepository extends JpaRepository<Word, Long> {
     List<Word> findByIdInWithAnnotations(@Param("ids") List<Long> ids);
 
     long countByLevelAndStatus(Level level, WordStatus status);
+    long countByLevel(Level level);
+    long countByLevelAndReviewStateLevelIn(Level level, Collection<SrsLevel> levels);
 
     @Query("""
             select w

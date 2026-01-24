@@ -10,4 +10,6 @@ public interface LevelRepository extends JpaRepository<Level, Long> {
     Optional<Level> findFirstByDeckOrderByOrderIndexAsc(Deck deck);
 
     Optional<Level> findFirstByDeckAndOrderIndexGreaterThanOrderByOrderIndexAsc(Deck deck, int orderIndex);
+
+    Optional<Level> findByDeckAndOrderIndex(Deck deck, int orderIndex);
 }

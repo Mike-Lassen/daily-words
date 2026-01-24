@@ -1,3 +1,7 @@
+body {
+    background-color: #f5f9ff; /* pale blue */
+}
+
 .dashboard-container {
     padding: 2rem;
     max-width: 1000px;
@@ -89,3 +93,81 @@ button:disabled {
 .dashboard-card form button {
     width: 100%;
 }
+
+.dashboard-card--full {
+    grid-column: 1 / -1;
+    margin-top: 1.5rem; /* matches .dashboard-cards gap */
+}
+
+
+.level-progress-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.level-progress-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+.level-progress-subtitle {
+    font-size: 0.95rem;
+    color: #6b7280;
+}
+
+.level-progress-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.25rem;
+}
+
+.level-progress-metric .metric-number {
+    font-size: 2rem;
+}
+
+.level-progress-bar {
+    margin-top: 1.25rem;
+    height: 12px;
+    background-color: #f3f4f6;
+    border-radius: 999px;
+    overflow: hidden;
+    display: flex;
+}
+
+.level-progress-segment {
+    height: 100%;
+}
+
+.level-progress-segment--not-in-review { background-color: #9ca3af; } /* gray */
+.level-progress-segment--trainee { background-color: #f59e0b; }       /* orange */
+.level-progress-segment--expert { background-color: #22c55e; }        /* green */
+
+
+.level-progress-legend {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.legend-swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.legend-swatch--not-in-review { background-color: #9ca3af; }
+.legend-swatch--trainee { background-color: #f59e0b; }
+.legend-swatch--expert { background-color: #22c55e; }
