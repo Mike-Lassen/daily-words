@@ -3,7 +3,7 @@
 <head>
     <title>Daily Words</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/dashboard.css?version=2">
 </head>
 <body class="container mt-5">
 
@@ -41,8 +41,63 @@
                 </form>
             </div>
         </div>
-
     </div>
+    <div class="dashboard-card dashboard-card--full">
+        <div class="card-content">
+            <div class="level-progress-header">
+                <div class="level-progress-title">Level progress</div>
+                <div class="level-progress-subtitle" th:text="${currentLevelName}">Lesson 1</div>
+            </div>
+
+            <div class="level-progress-metrics">
+                <div class="level-progress-metric">
+                    <div class="metric-number" th:text="${currentLevelTotalWords}">0</div>
+                    <div class="metric-label">Words in level</div>
+                </div>
+
+                <div class="level-progress-metric">
+                    <div class="metric-number" th:text="${currentLevelNotInReviewCount}">0</div>
+                    <div class="metric-label">Not in review yet</div>
+                </div>
+
+                <div class="level-progress-metric">
+                    <div class="metric-number" th:text="${currentLevelTraineeCount}">0</div>
+                    <div class="metric-label">Trainee</div>
+                </div>
+
+                <div class="level-progress-metric">
+                    <div class="metric-number" th:text="${currentLevelExpertCount}">0</div>
+                    <div class="metric-label">Expert</div>
+                </div>
+            </div>
+
+            <div class="level-progress-bar" aria-label="Current level progress">
+                <div class="level-progress-segment level-progress-segment--expert"
+                     th:style="'width:' + ${currentLevelExpertPercent} + '%'"></div>
+                <div class="level-progress-segment level-progress-segment--trainee"
+                     th:style="'width:' + ${currentLevelTraineePercent} + '%'"></div>
+                <div class="level-progress-segment level-progress-segment--not-in-review"
+                     th:style="'width:' + ${currentLevelNotInReviewPercent} + '%'"></div>
+            </div>
+
+
+            <div class="level-progress-legend">
+                <div class="legend-item">
+                    <span class="legend-swatch legend-swatch--not-in-review"></span>
+                    <span>Not in review</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-swatch legend-swatch--trainee"></span>
+                    <span>Trainee</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-swatch legend-swatch--expert"></span>
+                    <span>Expert</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 

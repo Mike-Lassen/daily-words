@@ -1,7 +1,9 @@
 package io.grann.words.bootstrap;
 
 import io.grann.words.domain.*;
+import io.grann.words.repository.DeckProgressRepository;
 import io.grann.words.repository.DeckRepository;
+import io.grann.words.repository.LevelRepository;
 import io.grann.words.repository.WordAnnotationRepository;
 import io.grann.words.repository.WordRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +25,8 @@ public class GenkiCsvImporter {
     private static final String RESOURCE_NAME = "genki-deck.csv";
 
     private final DeckRepository deckRepository;
+    private final LevelRepository levelRepository;
+    private final DeckProgressRepository deckProgressRepository;
     private final WordRepository wordRepository;
     private final WordAnnotationRepository wordAnnotationRepository;
 
@@ -118,6 +122,29 @@ public class GenkiCsvImporter {
         if (!wordsToInsert.isEmpty()) {
             wordRepository.saveAll(wordsToInsert);
         }
+
+        ensureDeckProgressInitialized(deck);
+    }
+
+    private void ensureDeckProgressInitialized(Deck deck) {
+        if (deckProgressRepository.findByDeck(deck).isPresent()) {
+            return;
+        }
+
+        Level firstLevel = levelRepository.findFirstByDeckOrderByOrderIndexAsc(deck)
+                .orElse(null);
+
+        if (firstLevel == null) {
+            // No levels means no progress can be tracked yet.
+            return;
+        }
+
+        DeckProgress progress = DeckProgress.builder()
+                .deck(deck)
+                .currentOrderIndex(firstLevel.getOrderIndex())
+                .build();
+
+        deckProgressRepository.save(progress);
     }
 
     private Deck getOrCreateDeck(DeckHeader deckHeader) {

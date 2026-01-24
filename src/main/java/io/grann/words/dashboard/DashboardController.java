@@ -1,35 +1,33 @@
 package io.grann.words.dashboard;
 
-import io.grann.words.domain.WordStatus;
-import io.grann.words.repository.WordRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.time.Clock;
-import java.time.LocalDateTime;
-
+@RequiredArgsConstructor
 @Controller
 public class DashboardController {
 
-    private final WordRepository wordRepository;
-    private final Clock clock;
-
-    public DashboardController(WordRepository wordRepository, Clock clock) {
-        this.wordRepository = wordRepository;
-        this.clock = clock;
-    }
+    private final DashboardService dashboardService;
 
     @GetMapping({"/", "/dashboard"})
     public String dashboard(Model model) {
+        DashboardService.DashboardSummary summary = dashboardService.getDashboardSummary();
 
-        LocalDateTime now = LocalDateTime.now(clock);
+        model.addAttribute("newWordsAvailable", summary.newWordsAvailable());
+        model.addAttribute("reviewsDue", summary.reviewsDue());
 
-        long newWordsAvailable = wordRepository.countByStatus(WordStatus.LEARNING);
-        long reviewsDue = wordRepository.countWordsDueForReview(now);
+        model.addAttribute("currentLevelName", summary.levelName());
+        model.addAttribute("currentLevelTotalWords", summary.total());
+        model.addAttribute("currentLevelNotInReviewCount", summary.notInReview());
+        model.addAttribute("currentLevelTraineeCount", summary.trainee());
+        model.addAttribute("currentLevelExpertCount", summary.expert());
 
-        model.addAttribute("newWordsAvailable", newWordsAvailable);
-        model.addAttribute("reviewsDue", reviewsDue);
+        long safeTotal = Math.max(summary.total(), 1L);
+        model.addAttribute("currentLevelNotInReviewPercent", (summary.notInReview() * 100) / safeTotal);
+        model.addAttribute("currentLevelTraineePercent", (summary.trainee() * 100) / safeTotal);
+        model.addAttribute("currentLevelExpertPercent", (summary.expert() * 100) / safeTotal);
 
         return "dashboard";
     }
