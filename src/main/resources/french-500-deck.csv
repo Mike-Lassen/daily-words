@@ -1,0 +1,502 @@
+French: 500 most frequently used words
+Foreign Text;Native Text;Level
+je;I;Level 1
+tu;you;Level 1
+vous;"you (singular, formal); you (plural, formal or informal)";Level 1
+il;it, he;Level 1
+elle;it, she, her;Level 1
+nous;we, us;Level 1
+on;"we; you, they, someone";Level 1
+la personne;person nobody, none;Level 1
+les gens (m);people, folks;Level 1
+l'ami (m);friend;Level 1
+l'homme (m);man;Level 1
+la femme;woman;Level 1
+le père;father, dad;Level 1
+la mère;mother;Level 1
+la maman;mom, mama;Level 1
+le papa;papa, dad, daddy;Level 1
+la fille;"daughter; girl";Level 1
+le fils;son;Level 1
+la famille;family;Level 1
+le monsieur;sir, monsieur;Level 1
+le gars;guy, dude;Level 1
+être;to be;Level 1
+avoir;to have;Level 1
+faire;to do, to make;Level 1
+aller;to go;Level 1
+venir;to come;Level 1
+dire;to say, to tell, to speak;Level 1
+voir;to see, to view;Level 1
+parler;to speak, to talk;Level 1
+savoir;to know;Level 1
+prendre;to take, to catch;Level 1
+mettre;to put, to place;Level 1
+trouver;to find;Level 1
+aider;to help, to assist;Level 1
+partir;to go away, to leave, to depart;Level 1
+rester;to stay, to remain, to keep;Level 1
+sortir;to exit;Level 1
+passer;to pass, to spend, to go;Level 1
+laisser;to leave, to let, to allow;Level 1
+chercher;to search for, to look for;Level 1
+la maison;house, home;Level 1
+le travail;work, job;Level 1
+la voiture;car, vehicle;Level 1
+l'argent (m);money, cash;Level 1
+le temps;"time; weather";Level 1
+le jour;day;Level 1
+le soir;evening;Level 1
+la nuit;night;Level 1
+le moment;moment, point in time;Level 1
+la fois;time (instance or occurrence of something);Level 1
+la vie;life;Level 1
+le monde;"world; people";Level 1
+l'air (m);air;Level 1
+la tête;head;Level 1
+le nom;name;Level 1
+le problème;problem, issue;Level 1
+la raison;reason;Level 1
+l'idée (f);idea;Level 1
+la chance;"luck; chance, opportunity";Level 1
+bon;good, right, well;Level 1
+le mal;bad, wrong evil (opposite of good);Level 1
+bien;well, good;Level 1
+vrai;true, real;Level 1
+sûr;sure, safe, secure;Level 1
+petit;small, little, short;Level 1
+grand;large, great, big;Level 1
+seul;only, single, alone;Level 1
+juste;just, fair;Level 1
+désolé;sorry;Level 1
+le peu;little bit few;Level 1
+quelque;some;Level 1
+même;same even;Level 1
+autre;other, another;Level 1
+le truc;thing;Level 1
+la part;share, part, portion;Level 1
+le sens;"sense; meaning; direction";Level 1
+le reste;rest, remainder;Level 1
+de;of, to, from;Level 1
+le;the it;Level 1
+la;the;Level 1
+les;the (plural) them;Level 1
+un;a, an one;Level 1
+ce;this, that;Level 1
+ça;it, this, that;Level 1
+quel;what, which;Level 1
+qui;"which, that, who;";Level 1
+que;"than; that what";Level 1
+pour;for, to;Level 1
+dans;in, into, within;Level 1
+à;to, in, at;Level 1
+et;and;Level 1
+mais;but;Level 1
+en;in, into, to;Level 1
+pas;not;Level 1
+ne;not;Level 1
+la chose;thing;Level 1
+le besoin;need, want;Level 1
+falloir;to need, to have to (used with 'il' to indicate necessity);Level 1
+le dieu;God;Level 1
+le passé;gone past (opposite of future);Level 1
+me;me, myself;Level 2
+si;if, whether so, such (intensifier);Level 2
+y;there (at a place), to there;Level 2
+non;not, no;Level 2
+avec;with;Level 2
+tout;all;Level 2
+plus;more, most;Level 2
+mon;my;Level 2
+te;you, thee, yourself;Level 2
+moi;me, I;Level 2
+oui;yes, yeah;Level 2
+ils;they (masculine);Level 2
+sur;on, upon;Level 2
+quoi;what, which;Level 2
+se;to themselves, to himself, to herself, to oneself;Level 2
+comme;"as, like; how";Level 2
+ici;here;Level 2
+lui;"he; him, her";Level 2
+votre;your;Level 2
+pourquoi;why;Level 2
+où;where;Level 2
+rien;nothing;Level 2
+là;there;Level 2
+quand;when;Level 2
+son;its, his, her;Level 2
+ton;your;Level 2
+la porte;door, gate;Level 2
+super;great, fantastic;Level 2
+l'heure (f);hour, time of the clock;Level 2
+le coup;"bit of something (small quantity); blow, hit, strike";Level 2
+nouveau;new;Level 2
+l'amour (m);love;Level 2
+le cas;"case, situation; case (of law or medicine)";Level 2
+la question;question, issue, matter;Level 2
+l'histoire (f);history, story;Level 2
+l'aide (f);aid, assistance, help;Level 2
+le genre;kind, type;Level 2
+le mois;month;Level 2
+le frère;brother;Level 2
+aucun;no, none, not any;Level 2
+la ville;city, town;Level 2
+chaque;each, every;Level 2
+le bébé;baby;Level 2
+la place;place, spot;Level 2
+l'attention (f);"attention; (with 'faire') take care";Level 2
+donner;to give;Level 2
+le type;"sort, kind, type; guy, dude";Level 2
+le corps;body;Level 2
+l'endroit (m);place, spot;Level 2
+la façon;way, manner;Level 2
+premier;first;Level 2
+la main;hand;Level 2
+le côté;side, edge;Level 2
+pouvoir;"to be able to do something; can";Level 2
+vieux;old;Level 2
+le matin;morning;Level 2
+l'enfant (mf);child, kid;Level 2
+le point;point;Level 2
+la suite;result, sequel, next step;Level 2
+la chambre;room, bedroom, hotel room;Level 2
+le droit;right;Level 2
+le mari;husband;Level 2
+la cause;cause, reason that something happens;Level 2
+l'eau (f);water;Level 2
+la nouvelle;(piece of) news;Level 2
+le boulot;job, work;Level 2
+arrêter;"to stop, to halt; to arrest (a criminal)";Level 2
+la terre;earth, land;Level 2
+la fin;end fine, thin;Level 2
+croire;to believe (in something), to think (that something is the case), to suppose (that something is true);Level 2
+gros;large, big, fat;Level 2
+jouer;to play;Level 2
+le bureau;office, desk, bureau;Level 2
+prêt;ready;Level 2
+demander;"to request something; to ask something";Level 2
+possible;possible;Level 2
+le jeune, la jeune;young young person, youth;Level 2
+l'école (f);school;Level 2
+beau;beautiful;Level 2
+appeler;to call;Level 2
+la semaine;week;Level 2
+le propos;aim, intention, intent;Level 2
+la vérité;truth;Level 2
+le chef;chief, head, leader;Level 2
+la confiance;confidence, trust;Level 2
+le feu;fire, light;Level 2
+vivre;to live, to experience;Level 2
+le meilleur;best better;Level 2
+dur;hard, tough;Level 2
+manger;to eat;Level 2
+arriver;"to arrive; to (come to) happen";Level 2
+plein;full;Level 2
+tomber;to fall, to drop;Level 2
+attendre;"to wait for, to await; to expect";Level 2
+penser;to think, to imagine;Level 2
+essayer;to try, to attempt;Level 2
+rentrer;to return, to go back;Level 2
+travailler;to work;Level 2
+regarder;to look, to watch;Level 2
+entendre;to hear;Level 2
+alors;then, so;Level 3
+comment;how;Level 3
+par;by, through;Level 3
+ou;or;Level 3
+merci;thanks!;Level 3
+très;very, highly, much;Level 3
+jamais;never, ever;Level 3
+vraiment;really, truly, actually;Level 3
+aussi;also, too;Level 3
+oh;oh;Level 3
+maintenant;now;Level 3
+deux;two;Level 3
+toujours;always, still, ever;Level 3
+encore;still, again;Level 3
+notre;our;Level 3
+sans;without;Level 3
+donc;therefore, thus;Level 3
+avant;before;Level 3
+trop;too much;Level 3
+après;after;Level 3
+ouais;yeah, yep;Level 3
+ok;okay;Level 3
+leur;"their; them";Level 3
+chez;in, among, to;Level 3
+depuis;since, from;Level 3
+déjà;already, previously;Level 3
+beaucoup;much, many, a lot;Level 3
+mieux;better;Level 3
+voilà;there it is, here it is;Level 3
+le docteur;doctor;Level 3
+la journée;day;Level 3
+la madame;madame, madam;Level 3
+le téléphone;phone, telephone;Level 3
+le garçon;boy;Level 3
+le mariage;marriage, wedding;Level 3
+l'équipe (f);team;Level 3
+la guerre;war;Level 3
+important;important, significant;Level 3
+fort;strong, hard;Level 3
+le dernier;last;Level 3
+le fou;crazy, mad madman;Level 3
+la fête;party, festival;Level 3
+la sécurité;security, safety;Level 3
+le jeu;game;Level 3
+génial;great, brilliant, fantastic;Level 3
+l'envie (f);"desire, wish; envy";Level 3
+le capitaine;captain, leader;Level 3
+le pays;country;Level 3
+le cours;"course (of events); course, lesson, class";Level 3
+le numéro;number;Level 3
+parfait;perfect;Level 3
+la minute;minute;Level 3
+le retour;return;Level 3
+la peine;pain, effort, trouble (of doing something);Level 3
+l'instant (m);moment, instant;Level 3
+mauvais;bad, wrong, incorrect;Level 3
+le mot;word;Level 3
+le film;film, movie;Level 3
+le plan;"plan, project; map; plane, surface";Level 3
+la faute;fault, error, mistake;Level 3
+le choix;choice, option;Level 3
+le bas;low bottom;Level 3
+heureux;happy;Level 3
+facile;easy, simple;Level 3
+changer;to change;Level 3
+le lit;bed;Level 3
+entrer;to enter, to go in;Level 3
+le plaisir;pleasure, joy;Level 3
+propre;"own; clean";Level 3
+la route;road, route, way;Level 3
+le tour;"tower; walk, stroll; turn (a chance to use something shared in sequence); circumference";Level 3
+garder;to keep, to maintain, to hold;Level 3
+l'année (f);year;Level 3
+drôle;funny;Level 3
+le service;service;Level 3
+rendre;"to render, to make (turn into something); to give back, to return";Level 3
+le lieu;place;Level 3
+le sujet;subject, topic, matter;Level 3
+difficile;difficult, hard, tough;Level 3
+le pire;worst worse;Level 3
+la sorte;kind, sort, type;Level 3
+l'état (m);"state (condition of something); state, nation";Level 3
+bizarre;bizarre;Level 3
+le chien;dog;Level 3
+perdre;to lose, to waste;Level 3
+impossible;impossible;Level 3
+payer;to pay;Level 3
+le café;coffee;Level 3
+le verre;"glass (transparent substance); glass (vessel for drinking)";Level 3
+la photo;photo, picture;Level 3
+montrer;to show;Level 3
+le cœur;heart;Level 3
+comprendre;to understand;Level 3
+sauver;to save, to rescue;Level 3
+boire;to drink;Level 3
+rencontrer;to meet;Level 3
+devenir;to become;Level 3
+revenir;to return, to come back;Level 3
+dormir;to sleep;Level 3
+commencer;to start, to begin;Level 3
+cela;it, that;Level 4
+bonjour;hello, hi, good morning;Level 4
+moins;less;Level 4
+entre;between, among;Level 4
+eh;eh...;Level 4
+trois;three;Level 4
+assez;enough, quite;Level 4
+ah;ah!;Level 4
+vite;quickly, fast, soon;Level 4
+hé;eh...;Level 4
+pendant;during, for the duration of, for, while;Level 4
+demain;tomorrow;Level 4
+tard;late;Level 4
+tant;so much, so many;Level 4
+puis;"then, after, next; indicates a succession";Level 4
+contre;against;Level 4
+ensemble;together;Level 4
+sous;under, below;Level 4
+seulement;just, only;Level 4
+car;because, as, since;Level 4
+longtemps;for a long time, since long ago;Level 4
+ni;nor neither;Level 4
+voici;here is, here it is;Level 4
+dont;whose, of which, from which;Level 4
+tellement;so, such, so much;Level 4
+pardon;sorry!, excuse me!;Level 4
+devant;before, in front of;Level 4
+devoir;aux must;Level 4
+vers;to, towards;Level 4
+Mme;Madame;Level 4
+enfin;finally, in the end;Level 4
+attendez;wait!;Level 4
+loin;far, distant;Level 4
+plutôt;rather, instead;Level 4
+calme;quiet, calm;Level 4
+la ferme;farm firm;Level 4
+l'hôpital (m);hospital;Level 4
+la musique;music;Level 4
+l'avis (m);"opinion, view (on a subject); advice; notice, warning";Level 4
+sauf;except, unless safe;Level 4
+le doute;doubt, question;Level 4
+la seconde;second;Level 4
+sérieux;serious;Level 4
+gentil;nice, kind, friendly;Level 4
+le haut;high top;Level 4
+le malade, la malade;sick, ill patient;Level 4
+le dîner;dinner;Level 4
+l'esprit (m);mind, spirit;Level 4
+le moyen;means, way, method, mean of doing something;Level 4
+la salle;room, hall;Level 4
+simple;simple, easy;Level 4
+le bras;arm;Level 4
+le chéri;darling, beloved, dear honey;Level 4
+le visage;face;Level 4
+le chemin;path, way, road;Level 4
+la soirée;evening;Level 4
+le livre;book;Level 4
+la face;"face, front; side (of an object)";Level 4
+le bois;wood;Level 4
+le rapport;report;Level 4
+le message;message;Level 4
+pauvre;poor;Level 4
+l'erreur (f);error, mistake;Level 4
+l'honneur (m);honor;Level 4
+l'an (m);year;Level 4
+la pièce;"room (of a house, etc); piece, bit (of something)";Level 4
+grave;serious, severe;Level 4
+le roi;king;Level 4
+le groupe;group;Level 4
+la carte;"map; card (of birthday, invitation, christmas, etc); credit card";Level 4
+paraître;"to appear (become visible); to appear to be something, to seem";Level 4
+l'intérieur (m);inside, interior;Level 4
+le rêve;dream;Level 4
+faux;fake, false;Level 4
+la peur;fear, scare;Level 4
+le sac;bag, sack;Level 4
+content;content, happy, glad;Level 4
+cher;"(after a noun) expensive; (before a noun) dear, beloved";Level 4
+le président;president, chairman;Level 4
+acheter;to buy, to purchase;Level 4
+le début;beginning, start;Level 4
+le maître;"master, leader; teacher";Level 4
+le patron;boss, employer;Level 4
+le noël;christmas;Level 4
+la rue;street, road;Level 4
+occuper;to occupy;Level 4
+l'âge (m);age;Level 4
+le prix;"price, cost; prize";Level 4
+gagner;to win, to earn, to gain;Level 4
+l'effet (m);effect;Level 4
+tirer;to draw, to pull;Level 4
+l'avocat (m);lawyer;Level 4
+la voix;voice;Level 4
+apprendre;to learn;Level 4
+l'accident (m);accident;Level 4
+le bout;end, tip, extremity (of a physical object);Level 4
+retrouver;"to be reunited with, to meet up with someone again; to remember, to recall";Level 4
+protéger;to protect;Level 4
+utiliser;to use;Level 4
+battre;to beat;Level 4
+hier;yesterday;Level 5
+celui;this one;Level 5
+le dehors;outside;Level 5
+regardez;look!;Level 5
+près;near, close, by;Level 5
+dessus;over, above, on top;Level 5
+le derrière;behind;Level 5
+exactement;exactly;Level 5
+presque;almost, nearly, most;Level 5
+bientôt;soon, shortly, in the near future;Level 5
+cinq;five;Level 5
+ainsi;thus, so, as;Level 5
+autant;"so much; as much as, as far as";Level 5
+quatre;four;Level 5
+parfois;sometimes;Level 5
+ensuite;after, afterwards, in turn, next;Level 5
+ceci;this;Level 5
+tôt;early;Level 5
+dès;from, since;Level 5
+d'accord (m);okay, fine;Level 5
+sûrement;surely, certainly;Level 5
+six;six;Level 5
+partout;everywhere;Level 5
+surtout;mostly, above all;Level 5
+sinon;"otherwise; if not; except, other than";Level 5
+souvent;often;Level 5
+bonsoir;good evening;Level 5
+le secret;secret;Level 5
+le général;general;Level 5
+noir;black;Level 5
+long;long;Level 5
+dix;ten;Level 5
+probablement;probably, likely;Level 5
+l'ordre (m);order, command;Level 5
+okay;okay!;Level 5
+incroyable;incredible, amazing, unbelievable;Level 5
+le voyage;travel, trip, journey;Level 5
+bienvenue;welcome!;Level 5
+la force;force, strength;Level 5
+ailleurs;elsewhere;Level 5
+la situation;situation;Level 5
+l'hôtel (m);hotel;Level 5
+la sœur;sister;Level 5
+complètement;completely, fully, totally;Level 5
+le crime;crime;Level 5
+le dos;(anatomy) back of a person;Level 5
+l'idiot (m);idiot;Level 5
+sale;dirty, nasty, unclean;Level 5
+la liste;list;Level 5
+l'anniversaire (m);birthday, anniversary;Level 5
+l'oncle (m);uncle;Level 5
+la victime;victim;Level 5
+la paix;peace;Level 5
+absolument;absolutely, completely, definitely;Level 5
+finir;to end, to finish;Level 5
+libre;"free, unrestricted; open, vacant";Level 5
+l'avion (m);aircraft, airplane;Level 5
+rouge;red;Level 5
+retourner;"to return; to revert";Level 5
+le bateau;boat, ship;Level 5
+sympa;"nice; friendly";Level 5
+stupide;stupid;Level 5
+le médecin;doctor, physician;Level 5
+la balle;ball, bullet;Level 5
+la faim;hunger;Level 5
+le contrôle;control;Level 5
+la table;table (item of furniture);Level 5
+le fond;"background; bottom";Level 5
+l'habitude (f);habit;Level 5
+l'impression (f);impression;Level 5
+la surprise;surprise;Level 5
+porter;to wear, to carry, to bear;Level 5
+autour;around, about;Level 5
+la colère;anger, rage;Level 5
+l'or (m);gold;Level 5
+la ligne;line;Level 5
+magnifique;magnificent, wonderful, splendid;Level 5
+la gauche;left;Level 5
+clair;clear, light, bright;Level 5
+neuf;nine new;Level 5
+le cadeau;gift, present;Level 5
+le risque;risk;Level 5
+le système;system;Level 5
+la police;police;Level 5
+hors;outside, out of;Level 5
+dedans;in, within;Level 5
+le pote, la pote;buddy, mate, pal;Level 5
+expliquer;to explain;Level 5
+l'espèce (f);kind, sort, type;Level 5
+la montre;watch, wristwatch;Level 5
+le pied;foot;Level 5
+le présent;present;Level 5
+plusieurs;several, many, a lot;Level 5
+marcher;to walk;Level 5
+la lumière;light;Level 5
+la réponse;response, answer;Level 5
+le coin;corner (of the street, etc.);Level 5
+suivre;"to follow (literal sense); to follow, to get (figurative sense: to understand what someone is saying)";Level 5
+la moitié;half;Level 5
+le club;club, team;Level 5

@@ -1,0 +1,501 @@
+Level;Rank;Word;Alternate;Translation;Note;WordClass;AllWordClasses
+1;0;de;de;of, to, from;;preposition;preposition
+1;1;je;je;I;;pronoun;pronoun
+1;2;pas;pas;not;;adverb;adverb
+1;3;le;le;the it;;article;article pronoun
+1;4;que;que;"than; that what";;conjunction;conjunction pronoun
+1;5;la;la;the;;article;article
+1;6;tu;tu;you;;pronoun;pronoun
+1;7;vous;vous;"you (singular, formal); you (plural, formal or informal)";;pronoun;pronoun
+1;8;un;un;a, an one;;article;article numeral pronoun
+1;9;et;et;and;;conjunction;conjunction
+1;10;à;à;to, in, at;;preposition;preposition
+1;11;il;il;it, he;;pronoun;pronoun
+1;12;ne;ne;not;;particle;particle
+1;13;les;les;the (plural) them;;article;article pronoun
+1;14;en;en;in, into, to;;preposition;preposition
+1;15;on;on;"we; you, they, someone";;pronoun;pronoun
+1;16;ça;ça;it, this, that;;pronoun;pronoun
+1;17;ce;ce;this, that;Est-ce vous ?  /  C'est un acteur.  /  C'est une actrice.;determiner;determiner pronoun
+1;18;pour;pour;for, to;;preposition;preposition
+1;19;qui;qui;"which, that, who;";À qui est-ce ?;conjunction;conjunction pronoun
+1;20;mais;mais;but;;conjunction;conjunction
+1;21;dans;dans;in, into, within;;preposition;preposition
+1;22;nous;nous;we, us;;pronoun;pronoun
+1;23;elle;elle;it, she, her;;pronoun;pronoun
+1;24;bien;bien;well, good;;adverb;adverb
+1;36;faire;faire;to do, to make;;verb;verb
+1;42;être;être;to be;;verb;verb
+1;51;dire;dire;to say, to tell, to speak;;verb;verb
+1;58;chose;la chose;thing;;noun;noun
+1;59;bon;bon;good, right, well;;adjective;adjective
+1;61;juste;juste;just, fair;Ça va être juste.  /  Ils sont juste pour toi.;adjective;adjective adverb
+1;64;avoir;avoir;to have;Je sais ce que vous avez fait.;verb;verb
+1;67;voir;voir;to see, to view;Je peux te voir à 2:30.  /  Je vais voir ce que je peux faire.;verb;verb
+1;69;même;même;same even;;adjective;adjective adverb
+1;72;autre;autre;other, another;;adjective;adjective
+1;73;peu;le peu;little bit few;;adjective;adjective adverb noun
+1;74;quelque;quelque;some;;adjective;adjective
+1;75;temps;le temps;"time; weather";Il fait ça tout le temps.  /  Il y a un temps pour tout.  /  Je le fais tout le temps !;noun;noun
+1;79;besoin;le besoin;need, want;Je vais avoir besoin de toi.;noun;noun
+1;80;faut;falloir;to need, to have to (used with 'il' to indicate necessity);;verb;verb
+1;81;vie;la vie;life;La vie est comme ça.  /  Je vous dois la vie.;noun;noun
+1;82;aller;aller;to go;Tu dois y aller même si tu ne le veux pas.;verb;verb
+1;83;fois;la fois;time (instance or occurrence of something);;noun;noun
+1;86;monde;le monde;"world; people";Je le veux plus que tout au monde.;noun;noun
+1;88;sûr;sûr;sure, safe, secure;Êtes-vous sûr que tout va bien ?  /  Je suis sûr que je peux le faire.;adjective;adjective
+1;90;parler;parler;to speak, to talk;Je dois te parler de quelque chose.;verb;verb
+1;91;père;le père;father, dad;Tu es mon père.  /  Qui est votre père ?;noun;noun
+1;92;personne;la personne;person nobody, none;Je dois y aller en personne.  /  Il n'y a personne.;noun;noun pronoun
+1;95;dieu;le dieu;God;Je crois en Dieu.  /  Oh mon Dieu !;noun;noun
+1;96;homme;l'homme (m);man;Tu es un homme bon.  /  Je suis juste un autre homme.  /  Je vais faire de toi un homme.;noun;noun
+1;97;femme;la femme;woman;Tu es une femme.  /  Je pense que Dieu est une femme.;noun;noun
+1;100;vrai;vrai;true, real;Et ça a longtemps été vrai.;adjective;adjective adverb
+1;101;mal;le mal;bad, wrong evil (opposite of good);;adjective;adjective noun
+1;107;mère;la mère;mother;Je veux voir ta mère.  /  Qui est votre mère ?;noun;noun
+1;108;fille;la fille;"daughter; girl";;noun;noun
+1;109;gens;les gens (m);people, folks;Qui sont ces gens ?;noun;noun
+1;110;quel;quel;what, which;;adjective;adjective pronoun
+1;111;désolé;désolé;sorry;Désolé pour ça.;adjective;adjective
+1;113;petit;petit;small, little, short;Le monde est petit.  /  Tu es un peu plus petit que moi.;adjective;adjective
+1;114;maison;la maison;house, home;Je suis dans la maison.  /  Cette maison est très bonne.  /  Mon père est à la maison.  /  Je veux faire ça à la maison.  /  Tout va bien à la maison ?;noun;noun
+1;115;soir;le soir;evening;Elle sera là ce soir.  /  Je vais les voir ce soir.;noun;noun
+1;117;passé;le passé;gone past (opposite of future);Nous avons fait quelque chose comme cela dans le passé.;adjective;adjective noun
+1;118;jour;le jour;day;Je vais vous en parler un jour.  /  Elle va mieux de jour en jour.;noun;noun
+1;119;prendre;prendre;to take, to catch;Tu peux prendre ce que tu veux.;verb;verb
+1;120;monsieur;le monsieur;sir, monsieur;;noun;noun
+1;121;savoir;savoir;to know;Je veux savoir ce que je peux faire.;verb;verb
+1;122;argent;l'argent (m);money, cash;Est-ce ton argent ?  /  Où est votre argent ?;noun;noun
+1;123;nom;le nom;name;Quel est votre nom ?  /  Je suis sûr de son nom.  /  Je sais quel est votre nom.;noun;noun
+1;124;nuit;la nuit;night;Je peux le faire toute la nuit.;noun;noun
+1;126;raison;la raison;reason;;noun;noun
+1;128;maman;la maman;mom, mama;Maman a toujours raison.  /  Où est ta maman ?;noun;noun
+1;129;reste;le reste;rest, remainder;;noun;noun
+1;130;air;l'air (m);air;;noun;noun
+1;131;seul;seul;only, single, alone;;adjective;adjective
+1;132;moment;le moment;moment, point in time;Il me faut juste un moment.  /  Ce sera tout pour le moment.;noun;noun
+1;133;aider;aider;to help, to assist;Je suis là pour vous aider.;verb;verb
+1;134;papa;le papa;papa, dad, daddy;Papa est à la maison.  /  Comment va ton papa ?;noun;noun
+1;136;problème;le problème;problem, issue;Je lui ai dit quel était le problème.;noun;noun
+1;137;gars;le gars;guy, dude;;noun;noun
+1;138;fils;le fils;son;Tu es toujours mon fils.  /  Je vous aime comme un fils.  /  De qui êtes-vous le fils ?;noun;noun
+1;142;famille;la famille;family;Je veux une famille.  /  Pense à ta famille !  /  Je le fais pour ma famille.;noun;noun
+1;143;trouver;trouver;to find;;verb;verb
+1;144;travail;le travail;work, job;Je lui ai trouvé un travail.  /  Le travail est tout pour moi.  /  Il était là pour le travail.  /  Vous avez fait un très bon travail.  /  Il y a beaucoup de travail à faire.;noun;noun
+1;145;tête;la tête;head;Tout ça est dans ta tête.;noun;noun
+1;147;voiture;la voiture;car, vehicle;Je suis dans la voiture.  /  Ma voiture est juste là.  /  Tu peux prendre ma voiture.  /  Avez-vous vu cette voiture ?;noun;noun
+1;149;partir;partir;to go away, to leave, to depart;Il est temps de partir.  /  Tu peux partir comme tu veux.;verb;verb
+1;151;chance;la chance;"luck; chance, opportunity";;noun;noun
+1;153;idée;l'idée (f);idea;Quelle idée !  /  Mon idée est mieux.  /  Il a eu une bonne idée.;noun;noun
+1;154;part;la part;share, part, portion;Vous avez fait votre part.;noun;noun
+1;156;grand;grand;large, great, big;;adjective;adjective
+1;157;ami;l'ami (m);friend;Je suis ici avec un ami.;noun;noun
+1;158;venir;venir;to come;Je lui ai dit de venir nous voir.;verb;verb
+1;160;passer;passer;to pass, to spend, to go;Je vais passer la nuit ici.  /  Il veut passer du temps avec son fils.  /  Je veux passer le reste de ma vie avec toi.;verb;verb
+1;161;truc;le truc;thing;Où est le truc ?;noun;noun
+1;163;sens;le sens;"sense; meaning; direction";;noun;noun
+1;167;sortir;sortir;to exit;;verb;verb
+1;176;rester;rester;to stay, to remain, to keep;;verb;verb
+1;179;chercher;chercher;to search for, to look for;;verb;verb
+1;185;laisser;laisser;to leave, to let, to allow;;verb;verb
+1;187;mettre;mettre;to put, to place;;verb;verb
+2;25;me;me;me, myself;;pronoun;pronoun
+2;26;si;si;if, whether so, such (intensifier);;adverb;adverb conjunction
+2;27;y;y;there (at a place), to there;;pronoun;pronoun
+2;28;non;non;not, no;Est-ce un non ?;adverb;adverb
+2;29;avec;avec;with;Je suis avec vous.;preposition;preposition
+2;30;tout;tout;all;Il est tout à vous.;adverb;adverb pronoun
+2;31;plus;plus;more, most;;adverb;adverb
+2;32;mon;mon;my;;determiner;determiner pronoun
+2;33;te;te;you, thee, yourself;;pronoun;pronoun
+2;34;moi;moi;me, I;Est-ce pour moi ?;pronoun;pronoun
+2;35;oui;oui;yes, yeah;;particle;particle
+2;37;ils;ils;they (masculine);;pronoun;pronoun
+2;38;sur;sur;on, upon;;preposition;preposition
+2;39;quoi;quoi;what, which;Ça fait quoi ?;pronoun;pronoun
+2;40;se;se;to themselves, to himself, to herself, to oneself;;pronoun;pronoun
+2;41;comme;comme;"as, like; how";;conjunction;conjunction
+2;43;ici;ici;here;Tout est ici.  /  Elle est ici.  /  Qui était ici ?  /  Il est ici pour moi.  /  Qui est ici avec vous ?;adverb;adverb
+2;44;lui;lui;"he; him, her";Elle est tout pour lui.  /  Je lui ai dit quoi faire.  /  Elle le lui a fait faire.;pronoun;pronoun
+2;45;votre;votre;your;;determiner;determiner pronoun
+2;46;pourquoi;pourquoi;why;Sais-tu pourquoi ?;adverb;adverb
+2;47;où;où;where;Où est-ce ?  /  Où suis-je ?  /  Je sais où elle est.;adverb;adverb
+2;48;rien;rien;nothing;;pronoun;pronoun
+2;49;là;là;there;Qui va là ?  /  Je sais que tu es là.  /  Je veux être là avec toi.;adverb;adverb
+2;50;quand;quand;when;;adverb;adverb conjunction
+2;52;son;son;its, his, her;;determiner;determiner pronoun
+2;53;ton;ton;your;;determiner;determiner pronoun
+2;165;porte;la porte;door, gate;Il a passé la porte.  /  Mon nom est sur la porte.  /  Il y a un homme à la porte.;noun;noun
+2;166;super;super;great, fantastic;Tout est super.  /  Il a été super.;adjective;adjective
+2;168;heure;l'heure (f);hour, time of the clock;Tu as une heure.  /  Je suis là depuis une heure.  /  Nous sommes ici depuis une heure.  /  Que fais-tu ici à cette heure de la nuit ?;noun;noun
+2;170;coup;le coup;"bit of something (small quantity); blow, hit, strike";;noun;noun
+2;172;nouveau;nouveau;new;Tout est nouveau.  /  Quoi de nouveau ?  /  Je dois trouver un nouveau travail.  /  Je me sens comme un homme nouveau.;adjective;adjective
+2;173;amour;l'amour (m);love;Je veux ton amour.  /  Tu es un amour !  /  Je ne veux que ton amour.;noun;noun
+2;175;cas;le cas;"case, situation; case (of law or medicine)";Est-ce le cas ?  /  Je ne pense pas que ce soit le cas.;noun;noun
+2;177;question;la question;question, issue, matter;Quelle était ta question ?  /  La question est quand, pas si.;noun;noun
+2;178;histoire;l'histoire (f);history, story;Quelle histoire !  /  Je connais cette histoire.  /  Je crois à cette histoire.  /  Quelle est leur histoire ?  /  Avez-vous déjà entendu cette histoire ?;noun;noun
+2;181;aide;l'aide (f);aid, assistance, help;Voulez-vous que je vous aide ?  /  Après tout nous allons avoir besoin de ton aide.;noun;noun
+2;182;genre;le genre;kind, type;Elle est mon genre.  /  Je connais ton genre.  /  Quel genre de voiture as-tu ?  /  Qui pourrait faire ce genre de chose ?;noun;noun
+2;183;mois;le mois;month;Il vient ici une fois par mois.;noun;noun
+2;184;frère;le frère;brother;Je vous ai pris pour votre frère.  /  Il est plus grand que son frère.  /  Il est aussi grand que mon frère.;noun;noun
+2;188;aucun;aucun;no, none, not any;;adjective;adjective
+2;189;ville;la ville;city, town;Nous sommes en ville.  /  Je veux aller en ville.  /  Je connais bien cette partie de la ville.  /  Si jamais tu viens en ville, passe me voir.;noun;noun
+2;190;chaque;chaque;each, every;Je viens ici chaque jour.  /  Je vous aime de plus en plus chaque jour.;adjective;adjective
+2;191;bébé;le bébé;baby;Mon petit-fils est encore un bébé.  /  Il est le bébé de la famille.;noun;noun
+2;193;place;la place;place, spot;Tout était en place.  /  Tu peux rester à ma place.  /  Chaque chose était à sa place.;noun;noun
+2;195;attention;l'attention (f);"attention; (with 'faire') take care";Tu ne peux pas faire attention?  /  Je vais y faire attention pour toi.;noun;noun
+2;197;donner;donner;to give;Je vais te donner une chance de plus.;verb;verb
+2;198;type;le type;"sort, kind, type; guy, dude";;noun;noun
+2;199;corps;le corps;body;;noun;noun
+2;200;endroit;l'endroit (m);place, spot;Je suis dans un endroit.;noun;noun
+2;201;façon;la façon;way, manner;Laisse-moi le faire à ma façon.;noun;noun
+2;203;premier;premier;first;Tu es en premier.  /  Elle est mon premier amour.  /  Demain est mon premier jour de travail.  /  Je veux savoir qui a donné le premier coup.;adjective;adjective
+2;204;main;la main;hand;Viens me donner un coup de main.  /  Je peux le faire avec une main.  /  Elle a quelque chose dans la main.;noun;noun
+2;205;côté;le côté;side, edge;;noun;noun
+2;206;pouvoir;pouvoir;"to be able to do something; can";;verb;verb
+2;207;vieux;vieux;old;;adjective;adjective
+2;208;matin;le matin;morning;Elle était là ce matin.  /  Je dois partir demain matin.  /  Je me sens bien ce matin.  /  Il est deux heures du matin.  /  Nous avons beaucoup à faire ce matin.;noun;noun
+2;210;enfant;l'enfant (mf);child, kid;Vous êtes une enfant.  /  Est-ce votre enfant ?  /  Même un enfant peut faire ça.  /  Mon enfant était dans la voiture.;noun;noun
+2;211;point;le point;point;Sur ce point, tu as raison.;noun;noun
+2;212;suite;la suite;result, sequel, next step;;noun;noun
+2;217;chambre;la chambre;room, bedroom, hotel room;Mon père est dans sa chambre.  /  Voici la chambre de mon père.  /  Tu devrais être dans ta chambre.  /  Ne va pas dans ma chambre !;noun;noun
+2;218;droit;le droit;right;Tu as le droit de savoir.;adjective;adjective noun
+2;220;mari;le mari;husband;Mon mari est au travail.  /  Il sera un très bon mari pour elle.;noun;noun
+2;221;cause;la cause;cause, reason that something happens;;noun;noun
+2;223;eau;l'eau (f);water;;noun;noun
+2;225;nouvelle;la nouvelle;(piece of) news;Nous avons une bonne nouvelle.;noun;noun
+2;226;boulot;le boulot;job, work;Fais juste le boulot.  /  Il vous faut un boulot.  /  Ils ont fait du bon boulot.  /  Je pense que vous avez fait du bon boulot.;noun;noun
+2;227;arrêter;arrêter;"to stop, to halt; to arrest (a criminal)";;verb;verb
+2;228;terre;la terre;earth, land;;noun;noun
+2;230;fin;la fin;end fine, thin;À la fin, elle a eu une bonne idée.;adjective;adjective noun
+2;231;croire;croire;to believe (in something), to think (that something is the case), to suppose (that something is true);Je sais que tu me crois.  /  Je ne crois pas avoir dit ça.;verb;verb
+2;232;gros;gros;large, big, fat;;adjective;adjective
+2;234;jouer;jouer;to play;;verb;verb
+2;235;bureau;le bureau;office, desk, bureau;Viens à mon bureau.  /  Il est au bureau.  /  Es-tu encore au bureau ?  /  Le père est dans son bureau.  /  Mon frère est à son bureau.  /  Puis-je te voir dans mon bureau ?;noun;noun
+2;237;prêt;prêt;ready;Il vous faut être prêt à tout.;adjective;adjective
+2;239;demander;demander;"to request something; to ask something";;verb;verb
+2;240;possible;possible;possible;Cela devrait être possible.;adjective;adjective
+2;241;jeune;le jeune, la jeune;young young person, youth;Ta mère est très jeune.;adjective;adjective noun
+2;243;école;l'école (f);school;;noun;noun
+2;244;beau;beau;beautiful;Tout était si beau.  /  Tu as un nom si beau.;adjective;adjective
+2;245;appeler;appeler;to call;;verb;verb
+2;246;semaine;la semaine;week;Je fais ça une fois par semaine.  /  Tu as eu une semaine pour faire ça.  /  Il y a beaucoup de choses que je dois faire cette semaine.;noun;noun
+2;247;propos;le propos;aim, intention, intent;;noun;noun
+2;248;vérité;la vérité;truth;En vérité, vous avez raison.  /  Je sais que tu dis la vérité.  /  Il est temps pour moi de te dire la vérité.;noun;noun
+2;249;chef;le chef;chief, head, leader;Vous êtes le chef.  /  Je vais appeler le chef.;noun;noun
+2;250;confiance;la confiance;confidence, trust;On peut me faire confiance.;noun;noun
+2;252;feu;le feu;fire, light;Votre voiture est en feu.  /  La maison a pris feu.;noun;noun
+2;253;vivre;vivre;to live, to experience;;verb;verb
+2;258;meilleur;le meilleur;best better;Tu es le meilleur pour ce travail.  /  Je veux faire ce qui est meilleur pour nous deux.;adjective;adjective noun
+2;261;dur;dur;hard, tough;Ça doit être dur à faire.;adjective;adjective
+2;262;manger;manger;to eat;Allons prendre quelque chose à manger !  /  Je pense que je vais aller chercher quelque chose à manger.;verb;verb
+2;266;arriver;arriver;"to arrive; to (come to) happen";;verb;verb
+2;269;plein;plein;full;;adjective;adjective
+2;277;tomber;tomber;to fall, to drop;;verb;verb
+2;278;attendre;attendre;"to wait for, to await; to expect";;verb;verb
+2;297;penser;penser;to think, to imagine;Il vous faut penser à votre famille.  /  Essaie de ne pas y penser !  /  Je vais te dire ce que je pense.;verb;verb
+2;301;essayer;essayer;to try, to attempt;Essaie de te mettre à la place de ta mère.;verb;verb
+2;302;rentrer;rentrer;to return, to go back;;verb;verb
+2;304;travailler;travailler;to work;;verb;verb
+2;305;regarder;regarder;to look, to watch;Je voulais juste te regarder.  /  Regarde-moi et fais ce que je fais.;verb;verb
+2;312;entendre;entendre;to hear;Je veux vous entendre le dire.  /  Je pensais ne jamais entendre ça.;verb;verb
+3;54;alors;alors;then, so;;adverb;adverb
+3;55;comment;comment;how;Comment était-elle ?  /  Comment est-il ?  /  Comment il va ?  /  Je sais comment le faire.;adverb;adverb
+3;56;par;par;by, through;;preposition;preposition
+3;57;ou;ou;or;As-tu dit oui ou non ?;conjunction;conjunction
+3;60;merci;merci;thanks!;;interjection;interjection
+3;62;très;très;very, highly, much;Très bien.  /  Tout était très bon.  /  Tu es très bon à ça.  /  Tu sais très bien ce que je veux.;adverb;adverb
+3;63;jamais;jamais;never, ever;;adverb;adverb
+3;65;vraiment;vraiment;really, truly, actually;Tu es vraiment bon.  /  Est-ce vraiment toi ?;adverb;adverb
+3;66;aussi;aussi;also, too;;adverb;adverb conjunction
+3;68;oh;oh;oh;;interjection;interjection
+3;70;maintenant;maintenant;now;;adverb;adverb
+3;71;deux;deux;two;;numeral;numeral
+3;76;toujours;toujours;always, still, ever;Je le fais toujours.  /  Il est toujours avec moi.  /  Ça a toujours été comme ça.  /  Tu peux toujours le faire si tu veux.;adverb;adverb
+3;77;encore;encore;still, again;Il est encore ici.  /  Je fais encore ça de temps en temps.;adverb;adverb
+3;78;notre;notre;our;;determiner;determiner pronoun
+3;84;sans;sans;without;;preposition;preposition
+3;85;donc;donc;therefore, thus;;conjunction;conjunction
+3;87;avant;avant;before;;adverb;adverb preposition
+3;89;trop;trop;too much;;adverb;adverb
+3;93;après;après;after;Après vous.  /  Et après ?;adverb;adverb preposition
+3;94;ouais;ouais;yeah, yep;Mais ouais !;particle;particle
+3;98;ok;ok;okay;;interjection;interjection
+3;99;leur;leur;"their; them";Je ne leur ai pas dit.  /  Je veux leur parler à tous.;determiner;determiner pronoun
+3;102;chez;chez;in, among, to;;preposition;preposition
+3;103;depuis;depuis;since, from;;adverb;adverb preposition
+3;104;déjà;déjà;already, previously;Tu as déjà fait ça.  /  Je sais déjà comment faire ça.;adverb;adverb
+3;105;beaucoup;beaucoup;much, many, a lot;;adverb;adverb
+3;106;mieux;mieux;better;Tu peux faire mieux que ça.;adverb;adverb
+3;112;voilà;voilà;there it is, here it is;;interjection;interjection
+3;254;docteur;le docteur;doctor;;noun;noun
+3;255;journée;la journée;day;Je peux le faire toute la journée.;noun;noun
+3;257;madame;la madame;madame, madam;;noun;noun
+3;260;téléphone;le téléphone;phone, telephone;Passe-moi ce téléphone.  /  Je suis au téléphone.  /  Où est mon téléphone ?  /  Je dois passer un coup de téléphone.  /  Je crois que nous avons parlé au téléphone.;noun;noun
+3;263;garçon;le garçon;boy;Tu es un bon garçon.  /  Ce garçon est mon fils.;noun;noun
+3;264;mariage;le mariage;marriage, wedding;Tout le monde est arrivé au mariage.;noun;noun
+3;265;équipe;l'équipe (f);team;Voilà mon équipe.  /  Quelle équipe !  /  Nous avons une bonne équipe.  /  Je sais que nous sommes une assez bonne équipe.;noun;noun
+3;267;guerre;la guerre;war;Je suis contre la guerre.  /  Personne au monde ne veut la guerre.;noun;noun
+3;270;important;important;important, significant;Faire cela est très important.  /  Nous avons un travail important à faire ici.  /  Passer du temps ensemble est important pour moi.;adjective;adjective
+3;271;fort;fort;strong, hard;Vous êtes très fort.  /  Cet homme est fort.  /  Comme il est fort !;adjective;adjective
+3;274;dernier;le dernier;last;Le dernier est le meilleur.  /  Puis-je le dire une dernière fois ?  /  Je veux te parler de la nuit dernière.;adjective;adjective noun
+3;275;fou;le fou;crazy, mad madman;Il est fou.  /  Ne sois pas fou !  /  Ce serait fou de ne pas faire cela.;adjective;adjective noun
+3;276;fête;la fête;party, festival;Tu dois aller à la fête.;noun;noun
+3;279;sécurité;la sécurité;security, safety;;noun;noun
+3;280;jeu;le jeu;game;;noun;noun
+3;281;génial;génial;great, brilliant, fantastic;Il est génial.  /  Tu es vraiment génial.  /  Ce serait vraiment génial.;adjective;adjective
+3;282;envie;l'envie (f);"desire, wish; envy";;noun;noun
+3;283;capitaine;le capitaine;captain, leader;Je suis le capitaine.;noun;noun
+3;284;pays;le pays;country;Quel pays !  /  Je veux en savoir plus sur votre pays.  /  Depuis combien de temps êtes-vous dans ce pays ?;noun;noun
+3;285;cours;le cours;"course (of events); course, lesson, class";Je dois faire ça avant les cours.  /  Je veux vous parler après le cours.;noun;noun
+3;286;numéro;le numéro;number;Prends un numéro !  /  Quel est ton numéro ?  /  Laisse-moi te donner mon numéro de téléphone.  /  Tu as toujours mon numéro de téléphone ?;noun;noun
+3;289;parfait;parfait;perfect;Cet endroit est parfait.;adjective;adjective
+3;290;minute;la minute;minute;Je suis à vous dans une minute.  /  Je peux te parler une minute ?;noun;noun
+3;293;retour;le retour;return;Est-ce la raison de ton retour ?;noun;noun
+3;294;peine;la peine;pain, effort, trouble (of doing something);;noun;noun
+3;295;instant;l'instant (m);moment, instant;Un instant...  /  Juste un instant.  /  Il va venir dans un instant.  /  Je suis à vous dans un instant.;noun;noun
+3;296;mauvais;mauvais;bad, wrong, incorrect;Ne sois pas un mauvais garçon.;adjective;adjective
+3;298;mot;le mot;word;Il veut toujours avoir le dernier mot.  /  Il me faut avoir un mot avec vous dans mon bureau.;noun;noun
+3;299;film;le film;film, movie;Comment était le film ?  /  Tu aurais dû voir le film.  /  Je veux voir le film à nouveau.  /  Je crois que nous avons déjà vu ce film.;noun;noun
+3;303;plan;le plan;"plan, project; map; plane, surface";Quel est ton plan ?;noun;noun
+3;307;faute;la faute;fault, error, mistake;;noun;noun
+3;308;choix;le choix;choice, option;Faites un autre choix.  /  Vous avez un choix à faire.  /  Je pense que vous avez fait le bon choix.;noun;noun
+3;309;bas;le bas;low bottom;;adjective;adjective noun
+3;310;heureux;heureux;happy;Je suis très heureux de te revoir.;adjective;adjective
+3;311;facile;facile;easy, simple;Ça va être facile.  /  Sa maison est facile à trouver.  /  Ce serait facile de faire ça.;adjective;adjective
+3;313;changer;changer;to change;Je vais me changer.;verb;verb
+3;314;lit;le lit;bed;Il doit rester au lit.  /  Elle a mis les enfants au lit.;noun;noun
+3;315;entrer;entrer;to enter, to go in;;verb;verb
+3;316;plaisir;le plaisir;pleasure, joy;Quel plaisir !  /  Ça a toujours été un plaisir de travailler avec toi.;noun;noun
+3;318;propre;propre;"own; clean";;adjective;adjective
+3;319;route;la route;road, route, way;Il est en route.  /  Tu te tiens sur ma route.  /  Es-tu en route pour chez toi ?;noun;noun
+3;320;tour;le tour;"tower; walk, stroll; turn (a chance to use something shared in sequence); circumference";;noun;noun
+3;321;garder;garder;to keep, to maintain, to hold;Je vais le garder avec moi.;verb;verb
+3;322;année;l'année (f);year;;noun;noun
+3;323;drôle;drôle;funny;Tu es très drôle.  /  Ce serait très drôle.  /  Vous êtes un drôle de type.  /  Vous êtes une drôle de jeune femme.;adjective;adjective
+3;324;service;le service;service;Je suis à votre service.;noun;noun
+3;325;rendre;rendre;"to render, to make (turn into something); to give back, to return";;verb;verb
+3;326;lieu;le lieu;place;Vous êtes en lieu sûr.;noun;noun
+3;327;sujet;le sujet;subject, topic, matter;Je connais bien le sujet.;noun;noun
+3;328;difficile;difficile;difficult, hard, tough;Cela doit être si difficile pour vous.;adjective;adjective
+3;329;pire;le pire;worst worse;;adjective;adjective noun
+3;330;sorte;la sorte;kind, sort, type;;noun;noun
+3;332;état;l'état (m);"state (condition of something); state, nation";;noun;noun
+3;333;bizarre;bizarre;bizarre;;adjective;adjective
+3;334;chien;le chien;dog;Ce chien est à moi.  /  Reste loin de ce chien.  /  Votre chien est très gros.  /  Il a peur de ce chien.;noun;noun
+3;335;perdre;perdre;to lose, to waste;;verb;verb
+3;336;impossible;impossible;impossible;Tu es impossible.;adjective;adjective
+3;339;payer;payer;to pay;Tu vas payer pour ça.  /  Qui va payer pour tout ceci ?;verb;verb
+3;341;café;le café;coffee;Merci pour le café.  /  Je vous ai fait du café.  /  Je vais faire un peu de café.  /  Veux-tu du café ou autre chose ?;noun;noun
+3;342;verre;le verre;"glass (transparent substance); glass (vessel for drinking)";;noun;noun
+3;345;photo;la photo;photo, picture;Ceci est une photo de ma voiture.  /  Je veux une photo de ce chien.;noun;noun
+3;347;montrer;montrer;to show;Je vais te montrer la ville.  /  Pouvez-vous me montrer comment le faire ?  /  Je savais que tu voulais me montrer quelque chose.  /  Je veux te montrer quelque chose dans mon bureau.;verb;verb
+3;348;cœur;le cœur;heart;Suis juste ton cœur.  /  Elle a bon cœur.  /  Je le connais par cœur.  /  Il sera toujours dans mon cœur.;noun;noun
+3;364;comprendre;comprendre;to understand;;verb;verb
+3;365;sauver;sauver;to save, to rescue;Je suis venu ici pour te sauver.;verb;verb
+3;375;boire;boire;to drink;Je veux quelque chose à boire.  /  Est-ce que tu veux boire ?;verb;verb
+3;384;rencontrer;rencontrer;to meet;Il a voulu te rencontrer.  /  Ça a été un plaisir de vous rencontrer.  /  Il me dit de le rencontrer chez lui.;verb;verb
+3;386;devenir;devenir;to become;;verb;verb
+3;388;revenir;revenir;to return, to come back;;verb;verb
+3;390;dormir;dormir;to sleep;;verb;verb
+3;392;commencer;commencer;to start, to begin;Ne commence pas à faire ça.  /  En fait, ce serait une bonne idée de commencer tout de suite.;verb;verb
+4;116;cela;cela;it, that;;pronoun;pronoun
+4;125;bonjour;bonjour;hello, hi, good morning;Bonjour !  /  Dis bonjour.  /  Je suis passé pour dire bonjour.;interjection;interjection
+4;127;moins;moins;less;;adverb;adverb
+4;135;entre;entre;between, among;Que cela reste entre nous!;preposition;preposition
+4;139;eh;eh;eh...;;interjection;interjection
+4;140;trois;trois;three;Où sont les trois autres ?  /  Il a trois ans de plus que moi.;numeral;numeral
+4;141;assez;assez;enough, quite;Vous en avez eu assez.  /  Tu en as fait assez.  /  Je sais que je suis assez bon.;adverb;adverb
+4;146;ah;ah;ah!;;interjection;interjection
+4;148;vite;vite;quickly, fast, soon;;adverb;adverb
+4;150;hé;hé;eh...;;interjection;interjection
+4;152;pendant;pendant;during, for the duration of, for, while;;preposition;preposition
+4;155;demain;demain;tomorrow;Je vais le voir demain.  /  Demain est un autre jour.  /  Tu peux faire ça demain.  /  Tu fais quelque chose demain soir?;adverb;adverb
+4;159;tard;tard;late;Il se fait tard.  /  Désolé de venir si tard.;adverb;adverb
+4;162;tant;tant;so much, so many;;adverb;adverb
+4;164;puis;puis;"then, after, next; indicates a succession";;adverb;adverb
+4;169;contre;contre;against;Êtes-vous pour ou contre son idée ?;preposition;preposition
+4;171;ensemble;ensemble;together;Ils sont toujours ensemble.  /  Nous y sommes tous ensemble.;adverb;adverb
+4;174;sous;sous;under, below;;preposition;preposition
+4;180;seulement;seulement;just, only;Je veux seulement vous aider.  /  Si seulement il avait été là.;adverb;adverb
+4;186;car;car;because, as, since;;conjunction;conjunction
+4;192;longtemps;longtemps;for a long time, since long ago;;adverb;adverb
+4;194;ni;ni;nor neither;;adverb;adverb conjunction
+4;196;voici;voici;here is, here it is;;preposition;preposition
+4;202;dont;dont;whose, of which, from which;;pronoun;pronoun
+4;209;tellement;tellement;so, such, so much;Il y a tellement de choses que je veux te dire.;adverb;adverb
+4;213;pardon;pardon;sorry!, excuse me!;;interjection;interjection
+4;214;devant;devant;before, in front of;Regarde devant toi !;preposition;preposition
+4;215;devoir;devoir;aux must;;auxiliary;auxiliary verb
+4;216;vers;vers;to, towards;;preposition;preposition
+4;219;mme;Mme;Madame;;abbreviation;abbreviation
+4;222;enfin;enfin;finally, in the end;;adverb;adverb
+4;224;attendez;attendez;wait!;;interjection;interjection
+4;229;loin;loin;far, distant;Reste loin de ça.  /  La maison est plus loin.  /  Il est parti très loin.  /  Il est loin de chez lui.  /  Je suis loin de chez moi.;adverb;adverb
+4;233;plutôt;plutôt;rather, instead;;adverb;adverb
+4;340;calme;calme;quiet, calm;Reste calme.  /  On se calme.  /  Je suis calme.  /  Sois calme !  /  Essaie de rester calme.  /  Il nous dit de rester calme.;adjective;adjective
+4;343;ferme;la ferme;farm firm;Je travaille dans une ferme.  /  Il travaille à la ferme du matin au soir.  /  Il était assez fort pour aider son père à la ferme.;adjective;adjective noun
+4;349;hôpital;l'hôpital (m);hospital;Elle travaille pour un hôpital.  /  Je veux travailler dans un hôpital.;noun;noun
+4;350;musique;la musique;music;Il adore la musique.  /  Il aime beaucoup ce genre de musique.;noun;noun
+4;351;avis;l'avis (m);"opinion, view (on a subject); advice; notice, warning";À mon avis, il a raison.;noun;noun
+4;352;sauf;sauf;except, unless safe;Personne ne peut le faire sauf toi.;adjective;adjective preposition
+4;353;doute;le doute;doubt, question;Ils sont heureux, sans aucun doute.;noun;noun
+4;354;seconde;la seconde;second;Donne-moi une seconde !  /  Puis-je vous voir une seconde ?  /  Je suis à vous dans une seconde.  /  Il sera de retour dans une seconde.;noun;noun
+4;355;sérieux;sérieux;serious;Maintenant je suis sérieux.  /  Je commence à penser que tu es sérieux.;adjective;adjective
+4;356;gentil;gentil;nice, kind, friendly;Mon père est très gentil.  /  Tu as été très gentil avec moi.;adjective;adjective
+4;357;haut;le haut;high top;Ma maison est en haut de la route.;adjective;adjective noun
+4;358;malade;le malade, la malade;sick, ill patient;;adjective;adjective noun
+4;359;dîner;le dîner;dinner;Le dîner est pour moi.  /  Ma mère fait le dîner.  /  Dis-moi quand le dîner est prêt.  /  Je connais un bon endroit pour dîner.;noun;noun
+4;360;esprit;l'esprit (m);mind, spirit;Es-tu un esprit ?;noun;noun
+4;361;moyen;le moyen;means, way, method, mean of doing something;Donne-moi un autre moyen.  /  Il doit y avoir un moyen.;noun;noun
+4;363;salle;la salle;room, hall;;noun;noun
+4;366;simple;simple;simple, easy;Tout est assez simple.  /  La vérité est très simple.;adjective;adjective
+4;367;bras;le bras;arm;Regarde mon bras.  /  Je lui pris le bras.;noun;noun
+4;368;chéri;le chéri;darling, beloved, dear honey;;adjective;adjective noun
+4;370;visage;le visage;face;Je connais ton visage.;noun;noun
+4;371;chemin;le chemin;path, way, road;Allons par ce chemin.  /  Je prends le chemin de la maison.  /  Je suis en chemin pour mon travail.;noun;noun
+4;372;soirée;la soirée;evening;;noun;noun
+4;373;livre;le livre;book;Je lui ai donné un livre.  /  À qui est ce livre ?  /  Je vois un livre sur le bureau.;noun;noun
+4;374;face;la face;"face, front; side (of an object)";;noun;noun
+4;377;bois;le bois;wood;Ma maison est en bois.;noun;noun
+4;378;rapport;le rapport;report;Je veux vous parler à propos de ce rapport.;noun;noun
+4;379;message;le message;message;Tu as un message.  /  Je peux prendre un message.  /  Nous avons eu votre message.  /  Je vous ai laissé un message.  /  Il y a un message pour toi.;noun;noun
+4;380;pauvre;pauvre;poor;;adjective;adjective
+4;381;erreur;l'erreur (f);error, mistake;;noun;noun
+4;383;honneur;l'honneur (m);honor;;noun;noun
+4;385;an;l'an (m);year;Je suis là depuis un an.  /  Je le fais une fois par an.;noun;noun
+4;389;pièce;la pièce;"room (of a house, etc); piece, bit (of something)";Ils sont tous deux dans la pièce.;noun;noun
+4;391;grave;grave;serious, severe;;adjective;adjective
+4;393;roi;le roi;king;À bas le roi !;noun;noun
+4;394;groupe;le groupe;group;Je joue dans un groupe.  /  Ce groupe est vraiment bon.;noun;noun
+4;395;carte;la carte;"map; card (of birthday, invitation, christmas, etc); credit card";;noun;noun
+4;396;paraître;paraître;"to appear (become visible); to appear to be something, to seem";;verb;verb
+4;397;intérieur;l'intérieur (m);inside, interior;;adjective;adjective noun
+4;398;rêve;le rêve;dream;Ça doit être un rêve.  /  Je me sens comme en rêve.  /  Ça a été mon rêve depuis que je suis petite fille.;noun;noun
+4;400;faux;faux;fake, false;;adjective;adjective
+4;401;peur;la peur;fear, scare;;noun;noun
+4;402;sac;le sac;bag, sack;Il me faut un sac.  /  Où est le sac ?  /  Il y a un sac sur le bureau.;noun;noun
+4;403;content;content;content, happy, glad;Je sais que tu es content.  /  Je suis content de te voir ici.;adjective;adjective
+4;404;cher;cher;"(after a noun) expensive; (before a noun) dear, beloved";;adjective;adjective
+4;405;président;le président;president, chairman;Elle a parlé avec le président.;noun;noun
+4;406;acheter;acheter;to buy, to purchase;Je veux en acheter un autre.  /  Nous avons beaucoup de choses à acheter.;verb;verb
+4;407;début;le début;beginning, start;Ça serait un bon début.;noun;noun
+4;409;maître;le maître;"master, leader; teacher";Vous êtes le maître.  /  Le maître peut vous voir.  /  Il a trouvé son maître.;noun;noun
+4;410;patron;le patron;boss, employer;Tu es mon patron.  /  Je veux voir ton patron.  /  Où est le patron ?  /  Je sais que tu es le patron.  /  Qui veut que tu sois le patron ?;noun;noun
+4;411;noël;le noël;christmas;Noël arrive bientôt.;noun;noun
+4;412;rue;la rue;street, road;Ne joue pas dans la rue.;noun;noun
+4;413;occuper;occuper;to occupy;;verb;verb
+4;414;âge;l'âge (m);age;Tu ne fais pas ton âge.  /  Tu devrais le savoir à ton âge.  /  Mon fils est petit pour son âge.;noun;noun
+4;415;prix;le prix;"price, cost; prize";Ne pense pas au prix.  /  Quel est ton meilleur prix ?  /  Je pense que ça en vaut le prix.;noun;noun
+4;416;gagner;gagner;to win, to earn, to gain;Pensez-vous que nous avons une chance de gagner?;verb;verb
+4;417;effet;l'effet (m);effect;;noun;noun
+4;418;tirer;tirer;to draw, to pull;;verb;verb
+4;419;avocat;l'avocat (m);lawyer;Je vais être ton avocat.  /  Je veux parler à un avocat.  /  Je sais que vous avez pris un avocat.;noun;noun
+4;420;voix;la voix;voice;Sa voix est très belle.  /  Tu as vraiment une belle voix.  /  Je pensais avoir entendu ta voix.;noun;noun
+4;424;apprendre;apprendre;to learn;Je suis venu ici pour apprendre.  /  Il y a encore beaucoup à apprendre.  /  Nous devons apprendre à nous faire confiance.  /  Tu as encore beaucoup à apprendre sur les femmes.;verb;verb
+4;426;accident;l'accident (m);accident;Ils ont dû avoir un accident.  /  As-tu jamais vu un accident de voiture ?;noun;noun
+4;428;bout;le bout;end, tip, extremity (of a physical object);;noun;noun
+4;433;retrouver;retrouver;"to be reunited with, to meet up with someone again; to remember, to recall";;verb;verb
+4;438;protéger;protéger;to protect;On va te protéger.  /  Il nous faut nous protéger.  /  Je suis là pour te protéger.  /  Nous sommes là pour te protéger.;verb;verb
+4;440;utiliser;utiliser;to use;Je sais comment utiliser ça.  /  Puis-je utiliser votre voiture pour un petit moment?;verb;verb
+4;452;battre;battre;to beat;;verb;verb
+5;236;hier;hier;yesterday;Nous avons fait ça hier.;adverb;adverb
+5;238;celui;celui;this one;;pronoun;pronoun
+5;242;dehors;le dehors;outside;Ils sont dehors.  /  Mon frère est dehors.;adverb;adverb noun
+5;251;regardez;regardez;look!;Regardez-nous !  /  Regardez-le !  /;interjection;interjection
+5;256;près;près;near, close, by;Reste près.;adverb;adverb
+5;259;dessus;dessus;over, above, on top;;adverb;adverb
+5;268;derrière;le derrière;behind;Il est juste derrière toi.  /  Il a des yeux derrière la tête.;adverb;adverb preposition
+5;272;exactement;exactement;exactly;Je sais exactement ce que je vais faire.  /  Tu dois faire exactement comme je te dis.;adverb;adverb
+5;273;presque;presque;almost, nearly, most;Mon travail est presque fini.  /  Il est presque toujours chez lui.  /  Cela fait presque trois ans que je suis ici.;adverb;adverb
+5;287;bientôt;bientôt;soon, shortly, in the near future;Il sera bientôt là.  /  Je dois bientôt partir.  /  Ça va bientôt être le matin.  /  Ce sera bientôt le moment de partir.  /  Je pense que le train va bientôt arriver.;adverb;adverb
+5;288;cinq;cinq;five;Je la connais depuis cinq ans.  /  Elle a cinq ans de moins que moi.;numeral;numeral
+5;291;ainsi;ainsi;thus, so, as;Il doit en être ainsi.;adverb;adverb
+5;292;autant;autant;"so much; as much as, as far as";;adverb;adverb
+5;300;quatre;quatre;four;Nous sommes une famille de quatre.  /  Ils ont quatre cours le matin.;numeral;numeral
+5;306;parfois;parfois;sometimes;Ça arrive parfois.;adverb;adverb
+5;317;ensuite;ensuite;after, afterwards, in turn, next;Que devrais-je faire ensuite ?;adverb;adverb
+5;331;ceci;ceci;this;Ceci est pour mon ami.  /  Je dois te parler de ceci.  /  Vous êtes très bon à ceci.  /  Tu es bien trop jeune pour faire ceci.;pronoun;pronoun
+5;337;tôt;tôt;early;Désolé de vous appeler si tôt.  /  Je ne pensais pas être là si tôt.;adverb;adverb
+5;338;dès;dès;from, since;;preposition;preposition
+5;344;accord;d'accord (m);okay, fine;;interjection;interjection
+5;346;sûrement;sûrement;surely, certainly;;adverb;adverb
+5;362;six;six;six;Il est déjà six heures.  /  Le dîner est à six heures.  /  Je serai de retour à six heures.  /  Elle a six ans de plus que moi.;numeral;numeral
+5;369;partout;partout;everywhere;Nos gens sont partout.;adverb;adverb
+5;376;surtout;surtout;mostly, above all;;adverb;adverb
+5;382;sinon;sinon;"otherwise; if not; except, other than";;conjunction;conjunction
+5;387;souvent;souvent;often;Cela nous arrive souvent.  /  Je ne viens pas souvent ici.  /  Il est souvent en retard au travail.  /  Comme cela lui arrive souvent, il était en retard.;adverb;adverb
+5;399;bonsoir;bonsoir;good evening;;interjection;interjection
+5;408;secret;le secret;secret;Je vais te dire un secret.  /  Je sais que tu as un secret.  /  Ton secret est en sécurité avec moi.;adjective;adjective noun
+5;421;général;le général;general;;adjective;adjective noun
+5;422;noir;noir;black;;adjective;adjective
+5;423;long;long;long;;adjective;adjective
+5;425;dix;dix;ten;Le film commence à dix heures.  /  Je peux être là dans dix minutes.  /  Je peux faire ça en moins de dix minutes.;numeral;numeral
+5;427;probablement;probablement;probably, likely;Tu savais probablement déjà ça.  /  Il est probablement toujours en vie.;adverb;adverb
+5;429;ordre;l'ordre (m);order, command;Tout est en ordre.  /  Tout semble être en ordre.  /  Mets ta chambre en ordre.;noun;noun
+5;430;okay;okay;okay!;;interjection;interjection
+5;431;incroyable;incroyable;incredible, amazing, unbelievable;Tu es vraiment incroyable.;adjective;adjective
+5;432;voyage;le voyage;travel, trip, journey;Ça vaut le voyage.  /  Faites un bon voyage !  /  La vie est comme un voyage.  /  Je veux tout entendre au sujet de votre voyage.;noun;noun
+5;434;bienvenue;bienvenue;welcome!;;interjection;interjection
+5;435;force;la force;force, strength;Il a plus de force que moi.;noun;noun
+5;436;ailleurs;ailleurs;elsewhere;Regardez ailleurs.  /  Va ailleurs.;adverb;adverb
+5;437;situation;la situation;situation;;noun;noun
+5;439;hôtel;l'hôtel (m);hotel;Cet hôtel est meilleur que celui-là.;noun;noun
+5;441;sœur;la sœur;sister;Ta sœur est toujours aussi belle.  /  Ma sœur est plus jeune que moi.  /  Je suis allé voir sa sœur la semaine dernière.;noun;noun
+5;442;complètement;complètement;completely, fully, totally;;adverb;adverb
+5;443;crime;le crime;crime;Est-ce un crime ?;noun;noun
+5;444;dos;le dos;(anatomy) back of a person;;noun;noun
+5;445;idiot;l'idiot (m);idiot;Je pense que tu es un idiot.;noun;noun
+5;446;sale;sale;dirty, nasty, unclean;Est-ce sale ?  /  Ma voiture est sale.  /  Votre visage est sale.  /  Mon verre est sale.;adjective;adjective
+5;447;liste;la liste;list;Fais une liste !  /  Avez-vous déjà fait une liste ?  /  Ton nom est toujours sur la liste.  /  Je veux te parler de cette liste.;noun;noun
+5;448;anniversaire;l'anniversaire (m);birthday, anniversary;Demain est mon anniversaire.  /  Mon anniversaire était la semaine dernière.  /  Que veux-tu pour ton anniversaire ?;noun;noun
+5;449;oncle;l'oncle (m);uncle;Mon oncle a trois enfants.  /  Mon oncle est venu me voir.  /  Je veux parler à ton oncle.  /  Je compte rester chez mon oncle.  /  Mon oncle vient me voir de temps en temps.;noun;noun
+5;450;victime;la victime;victim;La victime était-elle un homme ou une femme ?  /  La première victime de toute guerre est la vérité.;noun;noun
+5;451;paix;la paix;peace;Ils veulent la paix.  /  Je viens en paix.  /  Laisse-moi travailler en paix.  /  Il a parlé de paix.;noun;noun
+5;453;absolument;absolument;absolutely, completely, definitely;Je veux absolument tout savoir.;adverb;adverb
+5;454;finir;finir;to end, to finish;En tout cas, je dois finir ce travail pour demain.;verb;verb
+5;455;libre;libre;"free, unrestricted; open, vacant";Je suis un homme libre.  /  Tu est libre de partir maintenant.  /  Vous êtes libre de dire ce que vous pensez.;adjective;adjective
+5;456;avion;l'avion (m);aircraft, airplane;;noun;noun
+5;457;rouge;rouge;red;Le téléphone est rouge.  /  Le rouge est mieux.  /  Ton visage est rouge.  /  Ma nouvelle voiture est rouge.  /  Tu es passé au feu rouge.;adjective;adjective
+5;458;retourner;retourner;"to return; to revert";;verb;verb
+5;459;bateau;le bateau;boat, ship;Mon bateau est petit.  /  Ils avaient un bateau.  /  Tu peux y aller en bateau.  /  Je suis le capitaine de ce bateau.  /  Vous et moi sommes dans le même bateau.;noun;noun
+5;460;sympa;sympa;"nice; friendly";Ta maison est très sympa.  /  Elle est sympa avec moi.  /  Je pense que ce serait sympa.  /  Je pense que tu es sympa.  /  Ça va être sympa de revoir tout le monde.;adjective;adjective
+5;461;stupide;stupide;stupid;;adjective;adjective
+5;462;médecin;le médecin;doctor, physician;Je veux un médecin.  /  Il me faut un médecin.  /  Le médecin sera là dans une minute.;noun;noun
+5;463;balle;la balle;ball, bullet;;noun;noun
+5;464;faim;la faim;hunger;;noun;noun
+5;465;contrôle;le contrôle;control;Je pense que tout est sous contrôle.  /  Je pris le contrôle de la situation.;noun;noun
+5;466;table;la table;table (item of furniture);Mets le livre sur la table.  /  Le chien est sous la table.  /  Laissez vos mains au-dessus de la table.  /  Puis-je vous faire une place à table ?  /  Il y a un livre sur la table.;noun;noun
+5;467;fond;le fond;"background; bottom";;noun;noun
+5;468;habitude;l'habitude (f);habit;;noun;noun
+5;469;impression;l'impression (f);impression;;noun;noun
+5;470;surprise;la surprise;surprise;Nous avons une surprise.  /  Je les ai pris par surprise.  /  Je voulais que ce soit une surprise.;noun;noun
+5;471;porter;porter;to wear, to carry, to bear;Nous avons le droit de porter des armes.;verb;verb
+5;472;autour;autour;around, about;Regardez autour de toi.;adverb;adverb
+5;473;colère;la colère;anger, rage;;noun;noun
+5;474;or;l'or (m);gold;;noun;noun
+5;475;ligne;la ligne;line;Restez en ligne.  /  Il est sur une autre ligne.;noun;noun
+5;476;magnifique;magnifique;magnificent, wonderful, splendid;Ça a été magnifique.  /  Sa mère est une femme magnifique.  /  La vue depuis cette pièce est magnifique.;adjective;adjective
+5;477;gauche;la gauche;left;Votre chambre est la première à gauche.;adjective;adjective noun
+5;478;clair;clair;clear, light, bright;Tout est clair pour moi maintenant.  /  Je veux être très clair à ce propos.;adjective;adjective
+5;479;neuf;neuf;nine new;Il est tout neuf.;adjective;adjective numeral
+5;480;cadeau;le cadeau;gift, present;Je veux te donner un cadeau.  /  Elle a été très heureuse de mon cadeau.  /  Elle ne voulait pas lui donner de cadeau.  /  Je suis venu ici pour te faire un cadeau.  /  Merci pour le cadeau que vous avez donné à mon fils.;noun;noun
+5;481;risque;le risque;risk;Il a pris un gros risque.  /  Je pense que ça vaut le risque.;noun;noun
+5;482;système;le système;system;Vous êtes une victime du système.  /  Il est temps pour nous de changer le système.;noun;noun
+5;483;police;la police;police;Appelle la police!  /  Je vais voir la police.  /  La police est ici pour te parler.;noun;noun
+5;484;hors;hors;outside, out of;;adverb;adverb
+5;485;dedans;dedans;in, within;Il doit y avoir quelque chose là-dedans.;adverb;adverb preposition
+5;486;pote;le pote, la pote;buddy, mate, pal;;noun;noun
+5;487;expliquer;expliquer;to explain;Elle ne va pas le leur expliquer.;verb;verb
+5;488;espèce;l'espèce (f);kind, sort, type;;noun;noun
+5;489;montre;la montre;watch, wristwatch;Je vais vous acheter une montre.  /  Cette montre est vraiment une bonne affaire.  /  Quel est le prix de cette montre ?;noun;noun
+5;490;pied;le pied;foot;Je vais toujours à pied.;noun;noun
+5;491;présent;le présent;present;Le moment présent est un bon moment.  /  Elle a reçu un présent de son ami.;adjective;adjective noun
+5;492;plusieurs;plusieurs;several, many, a lot;Il est venu plusieurs fois.  /  Je veux rester plusieurs jours.  /  Je travaille ici depuis plusieurs années.;adjective;adjective
+5;493;marcher;marcher;to walk;Tu dois me faire marcher.;verb;verb
+5;494;lumière;la lumière;light;Je peux voir la lumière.  /  La lumière est meilleure par ici.;noun;noun
+5;495;réponse;la réponse;response, answer;Votre réponse est au point.  /  Vous êtes très loin de trouver la bonne réponse.  /  Je veux votre réponse pour la fin de la journée.;noun;noun
+5;496;coin;le coin;corner (of the street, etc.);Dans quel coin dites-vous que ça a eu lieu ?  /  Il y a un bureau dans un coin de la pièce.;noun;noun
+5;497;suivre;suivre;"to follow (literal sense); to follow, to get (figurative sense: to understand what someone is saying)";;verb;verb
+5;498;moitié;la moitié;half;Donne-moi la moitié.  /  Je peux le faire en la moitié du temps.  /  Je ne pense pas la moitié de ce que je dis.;noun;noun
+5;499;club;le club;club, team;;noun;noun
