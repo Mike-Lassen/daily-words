@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -25,9 +26,11 @@ public class DashboardService {
 
     @Transactional
     public DashboardSummary getDashboardSummary() {
-        Deck deck = deckRepository.findAll().stream()
+        Optional<Deck> genki = deckRepository.findByName("Genki");
+        Deck deck = genki.orElse( deckRepository.findAll().stream()
                 .findFirst()
-                .orElseThrow(() -> new IllegalStateException("No decks exist yet"));
+                .orElseThrow(() -> new IllegalStateException("No decks exist yet")));
+
         DeckProgress progress = deckProgressRepository.findByDeck(deck)
                 .orElseGet(() -> initializeProgress(deck));
 
@@ -44,7 +47,7 @@ public class DashboardService {
 
         LocalDateTime now = LocalDateTime.now(clock);
 
-        long newWordsAvailable = wordRepository.countByStatus(WordStatus.LEARNING);
+        long newWordsAvailable = wordRepository.countByLevelDeckAndStatus(deck, WordStatus.LEARNING);
         long reviewsDue = wordRepository.countWordsDueForReview(now);
 
         return new DashboardSummary(level.getName(), newWordsAvailable, reviewsDue, total, notInReview, trainee, expert);

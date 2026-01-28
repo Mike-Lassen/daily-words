@@ -18,7 +18,7 @@ public class DeckProgress {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     private Deck deck;
 
     /**

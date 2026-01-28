@@ -1,9 +1,6 @@
 package io.grann.words.repository;
 
-import io.grann.words.domain.Level;
-import io.grann.words.domain.SrsLevel;
-import io.grann.words.domain.Word;
-import io.grann.words.domain.WordStatus;
+import io.grann.words.domain.*;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -83,7 +80,7 @@ public interface WordRepository extends JpaRepository<Word, Long> {
             """)
     Optional<Word> findByIdWithAnnotations(@Param("id") Long id);
 
-    long countByStatus(WordStatus status);
+    long countByLevelDeckAndStatus(Deck deck, WordStatus status);
 
     boolean existsByLevelAndForeignTextAndNativeText(Level level, String foreignText, String nativeText);
 
