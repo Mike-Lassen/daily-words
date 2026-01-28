@@ -1,6 +1,6 @@
 package io.grann.words;
 
-import io.grann.words.bootstrap.GenkiCsvImporter;
+import io.grann.words.bootstrap.DeckCsvImporter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -13,7 +13,8 @@ public class GenkiImportApplication {
                 SpringApplication.run(GenkiImportApplication.class, args);
 
         try {
-            context.getBean(GenkiCsvImporter.class).run();
+            DeckCsvImporter deckCsvImporter = context.getBean(DeckCsvImporter.class);
+            deckCsvImporter.importFromClasspath("french-500-deck.csv");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
