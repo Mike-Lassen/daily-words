@@ -20,6 +20,8 @@ public class DeckProgress {
 
     @ManyToOne(optional = false)
     private Deck deck;
+    @ManyToOne(optional = false)
+    private UserAccount userAccount;
 
     /**
      * Highest level orderIndex that is unlocked for learning in this deck (inclusive).

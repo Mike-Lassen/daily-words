@@ -100,7 +100,6 @@ public class GenkiCsvImporter {
                     .foreignText(foreignText)
                     .nativeText(nativeText)
                     .level(level)
-                    .status(WordStatus.LEARNING)
                     .build();
 
             if (word.getAnnotations() == null) {

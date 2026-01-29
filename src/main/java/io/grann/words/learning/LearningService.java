@@ -28,7 +28,6 @@ public class LearningService {
     private final Clock clock;
 
     public LearningSession startSession() {
-        // MVP: pick the first deck (single-user, single-deck UX for now)
         Deck deck = deckRepository.findAll().stream()
                 .findFirst()
                 .orElseThrow(() -> new IllegalStateException("No decks exist yet"));

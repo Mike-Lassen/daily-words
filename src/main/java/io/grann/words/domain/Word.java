@@ -29,10 +29,6 @@ public class Word {
     @ToString.Exclude
     private Level level;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private WordStatus status;
-
     @OneToMany(
             mappedBy = "word",
             cascade = CascadeType.ALL,

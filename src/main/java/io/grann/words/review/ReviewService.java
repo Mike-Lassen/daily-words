@@ -54,7 +54,7 @@ public class ReviewService {
                         : Srs.onAgain(currentLevel);
 
         if (rating == ReviewRating.GOOD && nextLevel.isLastLevel()) {
-            word.setStatus(WordStatus.GRADUATED);
+            //TODO Graduate Word
         } else {
             reviewState.setLevel(nextLevel);
 

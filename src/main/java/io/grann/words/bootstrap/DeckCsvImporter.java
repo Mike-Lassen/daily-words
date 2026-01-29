@@ -104,7 +104,6 @@ public class DeckCsvImporter {
                         .foreignText(foreignText)
                         .nativeText(nativeText)
                         .level(level)
-                        .status(WordStatus.LEARNING)
                         .build();
 
                 // Optional annotations
