@@ -2,9 +2,11 @@ package io.grann.words.learning;
 
 import io.grann.words.domain.*;
 import io.grann.words.repository.*;
+import io.grann.words.session.UserSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,34 +29,19 @@ public class LearningService {
 
     private final Clock clock;
 
-    public LearningSession startSession() {
-        Deck deck = deckRepository.findAll().stream()
-                .findFirst()
-                .orElseThrow(() -> new IllegalStateException("No decks exist yet"));
+    public LearningSession startSession(UserSession userSession) {
+        DeckProgress deckProgress = deckProgressRepository.findById(userSession.getDeckProgressId()).get();
+        List<Word> words = wordRepository.findUnlockedWordsWithoutReviewState(deckProgress, Pageable.ofSize(5));
 
-        DeckProgress progress = deckProgressRepository.findByDeck(deck)
-                .orElseGet(() -> initializeProgress(deck));
-
-        List<Long> ids = wordRepository.findLearningIdsAvailableInDeckUpToOrderIndex(
-                deck.getId(),
-                progress.getCurrentOrderIndex(),
-                PageRequest.of(0, 5)
-        );
-
-        if (ids.size() < 5) {
+        if (words.size() < 5) {
             throw new IllegalStateException("Not enough new words to learn");
         }
-
-        List<Word> words = wordRepository.findByIdInWithAnnotations(ids);
-
-        // Preserve the deterministic ordering from the ID query (without O(n^2) indexOf)
-        var positionById = new HashMap<Long, Integer>(ids.size());
-        for (int i = 0; i < ids.size(); i++) {
-            positionById.put(ids.get(i), i);
+        for (Word word : words) {
+            String kana = word.getKana();
         }
-        words.sort(java.util.Comparator.comparingInt(w -> positionById.getOrDefault(w.getId(), Integer.MAX_VALUE)));
 
         LearningSession session = new LearningSession();
+        session.setDeckProgress(deckProgress);
         session.setWords(words);
         return session;
     }
@@ -86,41 +73,43 @@ public class LearningService {
         // 1) Transition learned words to REVIEWING
         for (Word word : session.getWords()) {
             ReviewState rs = ReviewState.builder()
+                    .deckProgress(session.getDeckProgress())
                     .word(word)                // owning side (IMPORTANT)
                     .level(SrsLevel.LEVEL_1)   // adapt name to your enum
                     .nextReviewAt(LocalDateTime.now(clock).plusDays(1))
-                    .lastReviewedAt(null)
+                    .lastReviewedAt(LocalDateTime.now(clock))
                     .build();
             reviewStateRepository.save(rs);
         }
-        wordRepository.saveAll(session.getWords()); // merge + cascade
+
+
 
         // 2) If that exhausted the current level, unlock the next level (per deck)
-        Deck deck = session.getWords().getFirst().getLevel().getDeck();
-        DeckProgress progress = deckProgressRepository.findByDeck(deck)
-                .orElseGet(() -> initializeProgress(deck));
-
-        Level currentLevel = levelRepository.findFirstByDeckAndOrderIndexGreaterThanOrderByOrderIndexAsc(
-                        deck,
-                        progress.getCurrentOrderIndex() - 1
-                )
-                .orElse(null);
-
-        // If we can't resolve a current level entity, skip advancing.
-        if (currentLevel == null) {
-            return;
-        }
-
-        long remainingLearningInCurrentLevel = wordRepository.countByLevelAndStatus(currentLevel, WordStatus.LEARNING);
-        if (remainingLearningInCurrentLevel > 0) {
-            return;
-        }
-
-        levelRepository.findFirstByDeckAndOrderIndexGreaterThanOrderByOrderIndexAsc(deck, progress.getCurrentOrderIndex())
-                .ifPresent(nextLevel -> {
-                    progress.setCurrentOrderIndex(nextLevel.getOrderIndex());
-                    deckProgressRepository.save(progress);
-                });
+//        Deck deck = session.getWords().getFirst().getLevel().getDeck();
+//        DeckProgress progress = deckProgressRepository.findByDeck(deck)
+//                .orElseGet(() -> initializeProgress(deck));
+//
+//        Level currentLevel = levelRepository.findFirstByDeckAndOrderIndexGreaterThanOrderByOrderIndexAsc(
+//                        deck,
+//                        progress.getCurrentOrderIndex() - 1
+//                )
+//                .orElse(null);
+//
+//        // If we can't resolve a current level entity, skip advancing.
+//        if (currentLevel == null) {
+//            return;
+//        }
+//
+////        long remainingLearningInCurrentLevel = wordRepository.countByLevelAndStatus(currentLevel, WordStatus.LEARNING);
+////        if (remainingLearningInCurrentLevel > 0) {
+////            return;
+////        }
+//
+//        levelRepository.findFirstByDeckAndOrderIndexGreaterThanOrderByOrderIndexAsc(deck, progress.getCurrentOrderIndex())
+//                .ifPresent(nextLevel -> {
+//                    progress.setCurrentOrderIndex(nextLevel.getOrderIndex());
+//                    deckProgressRepository.save(progress);
+//                });
     }
 
     @Transactional

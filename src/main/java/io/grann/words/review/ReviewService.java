@@ -24,16 +24,17 @@ public class ReviewService {
     private final Clock clock;
 
     public ReviewSession startSession() {
-        LocalDateTime now = LocalDateTime.now(clock);
-        List<Word> dueWords = wordRepository.findWordsDueForReview(now);
-
-        ReviewSession session = new ReviewSession();
-        session.setTotalCount(dueWords.size());
-
-        var ids = dueWords.stream().map(Word::getId).toList();
-        session.setQueue(new ArrayDeque<>(ids));
-
-        return session;
+//        LocalDateTime now = LocalDateTime.now(clock);
+//        List<Word> dueWords = wordRepository.findWordsDueForReview(now);
+//
+//        ReviewSession session = new ReviewSession();
+//        session.setTotalCount(dueWords.size());
+//
+//        var ids = dueWords.stream().map(Word::getId).toList();
+//        session.setQueue(new ArrayDeque<>(ids));
+//
+//        return session;
+        return null;
     }
 
     @Transactional

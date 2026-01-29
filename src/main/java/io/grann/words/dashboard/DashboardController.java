@@ -1,18 +1,33 @@
 package io.grann.words.dashboard;
 
+import io.grann.words.session.UserSession;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @RequiredArgsConstructor
 @Controller
+@Slf4j
+@SessionAttributes("userSession")
 public class DashboardController {
 
     private final DashboardService dashboardService;
 
+    @ModelAttribute("userSession")
+    public UserSession userSession() {
+        return dashboardService.getUserSession();
+    }
+
     @GetMapping({"/", "/dashboard"})
     public String dashboard(Model model) {
+
+        UserSession userSession = (UserSession) model.getAttribute("userSession");
+        log.info("uses-session: " + userSession);
+
         DashboardService.DashboardSummary summary = dashboardService.getDashboardSummary();
 
         model.addAttribute("newWordsAvailable", summary.newWordsAvailable());

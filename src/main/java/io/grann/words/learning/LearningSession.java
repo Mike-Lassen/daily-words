@@ -1,5 +1,6 @@
 package io.grann.words.learning;
 
+import io.grann.words.domain.DeckProgress;
 import io.grann.words.domain.Word;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import java.util.List;
 @Setter
 public class LearningSession {
 
+    private DeckProgress deckProgress;
     private List<Word> words;
 
     // Phase control
