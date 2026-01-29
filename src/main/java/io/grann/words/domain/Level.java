@@ -14,7 +14,6 @@ import lombok.*;
         )
 )
 public class Level {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,7 +22,7 @@ public class Level {
     private Deck deck;
 
     @Column(nullable = false)
-    private String name; // e.g. "Lesson 1", "Chapter 3"
+    private String name;
 
     @Column(nullable = false)
     private int orderIndex;

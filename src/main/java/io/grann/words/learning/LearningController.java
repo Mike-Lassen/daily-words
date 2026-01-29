@@ -16,7 +16,6 @@ public class LearningController {
 
     private final LearningService learningService;
 
-    // TEMP: inject words manually or via repository later
     @PostMapping("/start")
     public String startLearning(Model model) {
         LearningSession session = learningService.startSession();

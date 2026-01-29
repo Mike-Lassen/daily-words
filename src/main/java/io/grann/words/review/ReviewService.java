@@ -4,6 +4,7 @@ import io.grann.words.domain.ReviewState;
 import io.grann.words.domain.SrsLevel;
 import io.grann.words.domain.Word;
 import io.grann.words.domain.WordStatus;
+import io.grann.words.repository.ReviewStateRepository;
 import io.grann.words.repository.WordRepository;
 import io.grann.words.srs.Srs;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ReviewService {
     private final WordRepository wordRepository;
+    private final ReviewStateRepository reviewStateRepository;
     private final Clock clock;
 
     public ReviewSession startSession() {
@@ -42,7 +44,8 @@ public class ReviewService {
         }
 
         Word word = wordRepository.findById(wordIdentifier).orElseThrow();
-        ReviewState reviewState = word.getReviewState();
+
+        ReviewState reviewState = reviewStateRepository.findByWord(word).get();
 
         SrsLevel currentLevel = reviewState.getLevel();
         SrsLevel nextLevel =

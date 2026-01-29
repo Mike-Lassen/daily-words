@@ -1,14 +1,7 @@
 package io.grann.words.learning;
 
-import io.grann.words.domain.Deck;
-import io.grann.words.domain.DeckProgress;
-import io.grann.words.domain.Level;
-import io.grann.words.domain.Word;
-import io.grann.words.domain.WordStatus;
-import io.grann.words.repository.DeckProgressRepository;
-import io.grann.words.repository.DeckRepository;
-import io.grann.words.repository.LevelRepository;
-import io.grann.words.repository.WordRepository;
+import io.grann.words.domain.*;
+import io.grann.words.repository.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
@@ -16,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Clock;
+import java.time.LocalDateTime;
 import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.List;
@@ -29,6 +23,8 @@ public class LearningService {
     private final DeckRepository deckRepository;
     private final LevelRepository levelRepository;
     private final DeckProgressRepository deckProgressRepository;
+    private final ReviewStateRepository reviewStateRepository;
+
     private final Clock clock;
 
     public LearningSession startSession() {
@@ -90,7 +86,13 @@ public class LearningService {
     public void complete(LearningSession session) {
         // 1) Transition learned words to REVIEWING
         for (Word word : session.getWords()) {
-            word.enterReviewing(clock); // sets status + ensures reviewState exists
+            ReviewState rs = ReviewState.builder()
+                    .word(word)                // owning side (IMPORTANT)
+                    .level(SrsLevel.LEVEL_1)   // adapt name to your enum
+                    .nextReviewAt(LocalDateTime.now(clock).plusDays(1))
+                    .lastReviewedAt(null)
+                    .build();
+            reviewStateRepository.save(rs);
         }
         wordRepository.saveAll(session.getWords()); // merge + cascade
 
