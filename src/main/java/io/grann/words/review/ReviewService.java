@@ -1,13 +1,13 @@
 package io.grann.words.review;
 
-import io.grann.words.domain.ReviewState;
-import io.grann.words.domain.SrsLevel;
-import io.grann.words.domain.Word;
-import io.grann.words.domain.WordStatus;
+import io.grann.words.domain.*;
+import io.grann.words.repository.DeckProgressRepository;
 import io.grann.words.repository.ReviewStateRepository;
 import io.grann.words.repository.WordRepository;
+import io.grann.words.session.UserSession;
 import io.grann.words.srs.Srs;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,32 +21,31 @@ import java.util.List;
 public class ReviewService {
     private final WordRepository wordRepository;
     private final ReviewStateRepository reviewStateRepository;
+    private final DeckProgressRepository deckProgressRepository;
     private final Clock clock;
 
-    public ReviewSession startSession() {
-//        LocalDateTime now = LocalDateTime.now(clock);
-//        List<Word> dueWords = wordRepository.findWordsDueForReview(now);
-//
-//        ReviewSession session = new ReviewSession();
-//        session.setTotalCount(dueWords.size());
-//
-//        var ids = dueWords.stream().map(Word::getId).toList();
-//        session.setQueue(new ArrayDeque<>(ids));
-//
-//        return session;
-        return null;
+    public ReviewSession startSession(UserSession userSession) {
+        DeckProgress deckProgress = deckProgressRepository.findById(userSession.getDeckProgressId()).get();
+        LocalDateTime now = LocalDateTime.now(clock);
+        List<ReviewState> reviewStates = reviewStateRepository.findDueByDeckProgress(deckProgress, now, Pageable.ofSize(100));
+
+        ReviewSession session = new ReviewSession();
+        session.setTotalCount(reviewStates.size());
+
+        var ids = reviewStates.stream().map(ReviewState::getId).toList();
+        session.setQueue(new ArrayDeque<>(ids));
+
+        return session;
     }
 
     @Transactional
     public void applyRating(ReviewSession reviewSession, ReviewRating rating) {
-        Long wordIdentifier = reviewSession.getQueue().pollFirst();
-        if (wordIdentifier == null) {
+        Long reviewStateId = reviewSession.getQueue().pollFirst();
+        if (reviewStateId == null) {
             return;
         }
 
-        Word word = wordRepository.findById(wordIdentifier).orElseThrow();
-
-        ReviewState reviewState = reviewStateRepository.findByWord(word).get();
+        ReviewState reviewState = reviewStateRepository.findById(reviewStateId).get();
 
         SrsLevel currentLevel = reviewState.getLevel();
         SrsLevel nextLevel =
@@ -65,7 +64,7 @@ public class ReviewService {
 
         // in-session behavior
         if (rating == ReviewRating.AGAIN) {
-            reviewSession.getQueue().addLast(wordIdentifier);
+            reviewSession.getQueue().addLast(reviewStateId);
         }
 
         reviewSession.setShowAnswer(false);

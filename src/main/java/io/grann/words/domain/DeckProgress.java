@@ -10,7 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @Table(
-        uniqueConstraints = @UniqueConstraint(columnNames = {"deck_id"})
+        uniqueConstraints = @UniqueConstraint(columnNames = {"deck_id", "user_account_id"})
 )
 public class DeckProgress {
 
