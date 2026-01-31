@@ -17,18 +17,15 @@ public class DashboardController {
 
     private final DashboardService dashboardService;
 
-    @ModelAttribute("userSession")
-    public UserSession userSession() {
-        return dashboardService.getUserSession();
-    }
+    @GetMapping("/dashboard")
+    public String dashboard(@ModelAttribute("userSession") UserSession userSession,
+                            Model model) {
 
-    @GetMapping({"/", "/dashboard"})
-    public String dashboard(Model model) {
+        if (userSession.getDeckProgressId() == null) {
+            return "redirect:/";
+        }
 
-        UserSession userSession = (UserSession) model.getAttribute("userSession");
-        log.info("uses-session: " + userSession);
-
-        DashboardService.DashboardSummary summary = dashboardService.getDashboardSummary();
+        DashboardService.DashboardSummary summary = dashboardService.getDashboardSummary(userSession.getDeckProgressId());
 
         model.addAttribute("newWordsAvailable", summary.newWordsAvailable());
         model.addAttribute("reviewsDue", summary.reviewsDue());
@@ -45,5 +42,10 @@ public class DashboardController {
         model.addAttribute("currentLevelExpertPercent", (summary.expert() * 100) / safeTotal);
 
         return "dashboard";
+    }
+
+    @ModelAttribute("userSession")
+    public UserSession userSession() {
+        return new UserSession();
     }
 }
