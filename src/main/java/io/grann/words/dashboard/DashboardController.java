@@ -12,14 +12,12 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @RequiredArgsConstructor
 @Controller
 @Slf4j
-@SessionAttributes("userSession")
 public class DashboardController {
-
+    private final UserSession userSession;
     private final DashboardService dashboardService;
 
     @GetMapping("/dashboard")
-    public String dashboard(@ModelAttribute("userSession") UserSession userSession,
-                            Model model) {
+    public String dashboard(Model model) {
 
         if (userSession.getDeckProgressId() == null) {
             return "redirect:/";
@@ -42,10 +40,5 @@ public class DashboardController {
         model.addAttribute("currentLevelExpertPercent", (summary.expert() * 100) / safeTotal);
 
         return "dashboard";
-    }
-
-    @ModelAttribute("userSession")
-    public UserSession userSession() {
-        return new UserSession();
     }
 }

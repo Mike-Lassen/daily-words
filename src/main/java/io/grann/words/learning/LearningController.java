@@ -14,14 +14,14 @@ import java.util.List;
 @RequestMapping("/learning")
 @Slf4j
 @RequiredArgsConstructor
-@SessionAttributes({"learningSession", "userSession"})
+@SessionAttributes("learningSession")
 public class LearningController {
-
+    private final UserSession userSession;
     private final LearningService learningService;
 
 
     @PostMapping("/start")
-    public String startLearning(@ModelAttribute("userSession") UserSession userSession, Model model) {
+    public String startLearning(Model model) {
         log.info("learning user-session: " + userSession);
 
         LearningSession session = learningService.startSession(userSession);

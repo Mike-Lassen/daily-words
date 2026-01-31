@@ -14,16 +14,14 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
-@SessionAttributes("userSession")
 public class LandingController {
-
+    private final UserSession userSession;
     private final UserAccountRepository userAccountRepository;
     private final DeckRepository deckRepository;
     private final DeckProgressRepository deckProgressRepository;
 
     @GetMapping("/")
-    public String landing(Model model,
-                          @ModelAttribute("userSession") UserSession userSession) {
+    public String landing(Model model) {
 
         if (userSession.getDeckProgressId() != null) {
             return "redirect:/dashboard";
@@ -36,8 +34,7 @@ public class LandingController {
     @PostMapping("/start")
     public String start(@RequestParam String name,
                         @RequestParam String email,
-                        @RequestParam Long deckId,
-                        @ModelAttribute("userSession") UserSession userSession) {
+                        @RequestParam Long deckId) {
 
         UserAccount user = userAccountRepository
                 .findByEmail(email)
@@ -64,10 +61,5 @@ public class LandingController {
         userSession.setDeckProgressId(progress.getId());
 
         return "redirect:/dashboard";
-    }
-
-    @ModelAttribute("userSession")
-    public UserSession userSession() {
-        return new UserSession();
     }
 }

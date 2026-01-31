@@ -13,15 +13,15 @@ import org.springframework.web.bind.support.SessionStatus;
 @Controller
 @RequestMapping("/reviews")
 @RequiredArgsConstructor
-@SessionAttributes({"userSession", "reviewSession"})
+@SessionAttributes("reviewSession")
 public class ReviewController {
-
+    private final UserSession userSession;
     private final ReviewService reviewService;
     private final ReviewStateRepository reviewStateRepository;
 
 
     @PostMapping("/start")
-    public String start(@ModelAttribute("userSession") UserSession userSession, Model model) {
+    public String start(Model model) {
         ReviewSession session = reviewService.startSession(userSession);
 
         if (session.getTotalCount() == 0) {
