@@ -13,7 +13,8 @@ public class DailyWordsApplication {
 		ConfigurableApplicationContext context = SpringApplication.run(DailyWordsApplication.class, args);
 		try {
 			DeckCsvImporter deckCsvImporter = context.getBean(DeckCsvImporter.class);
-			Deck deck = deckCsvImporter.importFromClasspath("genki-deck.csv");
+			Deck genki = deckCsvImporter.importFromClasspath("genki-deck.csv");
+			Deck french = deckCsvImporter.importFromClasspath("french-500-deck.csv");
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
