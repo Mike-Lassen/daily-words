@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>New user · Daily Words</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/dashboard.css?version=3">
+</head>
+<body class="container mt-5">
+
+<div class="dashboard-container">
+    <div class="dashboard-card dashboard-card--full">
+        <div class="card-content">
+
+            <div class="level-progress-header">
+                <div class="level-progress-title">New user</div>
+                <div class="level-progress-subtitle">
+                    Create a user to start learning.
+                </div>
+            </div>
+
+            <form method="post" th:action="@{/users}" class="landing-form">
+
+                <div class="landing-form-grid">
+                    <div class="landing-field">
+                        <label for="name" class="landing-label">Name</label>
+                        <input id="name"
+                               name="name"
+                               type="text"
+                               class="form-control landing-input"
+                               autocomplete="name"
+                               required>
+                    </div>
+
+                    <div class="landing-field">
+                        <label for="email" class="landing-label">Email</label>
+                        <input id="email"
+                               name="email"
+                               type="email"
+                               class="form-control landing-input"
+                               autocomplete="email"
+                               required>
+                    </div>
+                </div>
+
+                <div class="landing-actions">
+                    <button type="submit" class="primary-button">
+                        Continue
+                    </button>
+
+                    <a href="/" class="secondary-button text-center">
+                        Cancel
+                    </a>
+
+                    <div class="landing-help">
+                        This is only used to identify you. No passwords yet.
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

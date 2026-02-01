@@ -20,7 +20,7 @@ public class LandingController {
     private final DeckRepository deckRepository;
     private final DeckProgressRepository deckProgressRepository;
 
-    @GetMapping("/")
+    @GetMapping("/landing")
     public String landing(Model model) {
 
         if (userSession.getDeckProgressId() != null) {
@@ -40,7 +40,7 @@ public class LandingController {
                 .findByEmail(email)
                 .orElseGet(() -> userAccountRepository.save(
                         UserAccount.builder()
-                                .fullName(name)
+                                .name(name)
                                 .email(email).build()
                 ));
 
@@ -48,7 +48,7 @@ public class LandingController {
                 .orElseThrow();
 
         DeckProgress progress = deckProgressRepository
-                .findByDeckAndUserAccount(deck, user)
+                .findByUserAccountAndDeck(user, deck)
                 .orElseGet(() -> deckProgressRepository.save(
                         DeckProgress.builder()
                                 .userAccount(user)

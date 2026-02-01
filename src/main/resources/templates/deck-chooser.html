@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Choose deck · Daily Words</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/dashboard.css?version=4">
+</head>
+<body class="container mt-5">
+
+<div class="dashboard-container">
+
+    <div class="dashboard-card dashboard-card--full">
+        <div class="card-content">
+
+            <div class="level-progress-header">
+                <div class="level-progress-title"
+                     th:text="'Choose a deck for ' + ${user.name}">
+                    Choose a deck
+                </div>
+                <div class="level-progress-subtitle">
+                    Pick a deck to start or continue learning.
+                </div>
+            </div>
+
+            <div class="deck-chooser-grid">
+
+                <div th:each="deck : ${decks}" class="deck-chooser-item">
+
+                    <div class="deck-chooser-card">
+                        <div class="deck-chooser-name" th:text="${deck.name}">Genki</div>
+
+                        <!-- Optional: if you add deck description later -->
+                        <!-- <div class="deck-chooser-meta" th:text="${deck.description}">…</div> -->
+
+                        <form method="post" th:action="@{/select-deck}">
+                            <input type="hidden" name="deckId" th:value="${deck.id}"/>
+
+                            <button type="submit"
+                                    class="primary-button"
+                                    th:text="${deckIdToProgressId.containsKey(deck.id)} ? 'Continue' : 'Start'">
+                                Start
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="landing-actions" style="margin-top: 1.5rem;">
+                <form method="post" th:action="@{/switch-user}">
+                    <button type="submit" class="secondary-button">
+                        Back to user chooser
+                    </button>
+                </form>
+
+                <div class="landing-help">
+                    Progress is saved per user and per deck.
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

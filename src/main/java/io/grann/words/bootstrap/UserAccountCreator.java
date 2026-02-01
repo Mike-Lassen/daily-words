@@ -18,7 +18,7 @@ public class UserAccountCreator {
     public UserAccount createUserAccount(String fullName, String email, Deck deck) {
         UserAccount userAccount = userAccountRepository.findByEmail(email)
                 .orElse(intializeUserAccount(fullName, email));
-        DeckProgress deckProgress = deckProgressRepository.findByDeckAndUserAccount(deck, userAccount)
+        DeckProgress deckProgress = deckProgressRepository.findByUserAccountAndDeck(userAccount, deck)
                 .orElse(initializeDeckProgress(userAccount, deck));
         return userAccount;
     }
@@ -26,7 +26,7 @@ public class UserAccountCreator {
     private UserAccount intializeUserAccount(String fullName, String email) {
         UserAccount userAccount = UserAccount.builder()
                 .email(email)
-                .fullName(fullName)
+                .name(fullName)
                 .build();
         userAccountRepository.save(userAccount);
         return userAccount;

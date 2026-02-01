@@ -219,4 +219,130 @@ button:disabled {
     }
 }
 
+/* User chooser */
+.user-chooser-grid {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.user-chooser-item {
+    margin: 0;
+}
+
+.user-chooser-card {
+    width: 100%;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    padding: 1.25rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+}
+
+.user-chooser-card:hover {
+    background: #f9fafb;
+}
+
+.user-chooser-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 999px;
+    background: #111827;
+    color: #ffffff;
+    display: grid;
+    place-items: center;
+    font-weight: 600;
+    font-size: 1.25rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.user-chooser-name {
+    color: #111827;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.user-chooser-meta {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+/* New user tile */
+.user-chooser-item--new {
+    text-decoration: none;
+}
+
+.user-chooser-card--new {
+    border-style: dashed;
+}
+
+.user-chooser-avatar--new {
+    background: #ffffff;
+    color: #111827;
+    border: 1px solid #d1d5db;
+    font-size: 1.75rem;
+    line-height: 1;
+}
+
+/* Mobile */
+@media (max-width: 992px) {
+    .user-chooser-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+@media (max-width: 576px) {
+    .user-chooser-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Deck chooser */
+.deck-chooser-grid {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.deck-chooser-item {
+    display: flex;
+}
+
+.deck-chooser-card {
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.deck-chooser-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+.deck-chooser-meta {
+    font-size: 0.95rem;
+    color: #6b7280;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .deck-chooser-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
