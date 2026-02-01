@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Daily Words</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/dashboard.css?version=3">
+</head>
+<body class="container mt-5">
+
+<div class="dashboard-container">
+
+    <div class="dashboard-card dashboard-card--full">
+        <div class="card-content">
+
+            <div class="level-progress-header">
+                <div class="level-progress-title">Who’s learning?</div>
+                <div class="level-progress-subtitle">Choose a user to continue, or create a new one.</div>
+            </div>
+
+            <div class="user-chooser-grid">
+
+                <!-- Existing users -->
+                <form th:each="user : ${users}"
+                      method="post"
+                      th:action="@{/select-user}"
+                      class="user-chooser-item">
+
+                    <input type="hidden" name="userId" th:value="${user.id}"/>
+
+                    <button type="submit" class="user-chooser-card">
+                        <div class="user-chooser-avatar"
+                             th:text="${#strings.substring(user.name, 0, 1)}">A</div>
+
+                        <div class="user-chooser-name"
+                             th:text="${user.name}">Alice</div>
+
+                        <!-- Optional: if you later add lastUsedAt or stats -->
+                        <!--
+                        <div class="user-chooser-meta">Last active: today</div>
+                        -->
+                    </button>
+                </form>
+
+                <!-- New user -->
+                <a class="user-chooser-item user-chooser-item--new"
+                   th:href="@{/users/new}">
+                    <div class="user-chooser-card user-chooser-card--new">
+                        <div class="user-chooser-avatar user-chooser-avatar--new">+</div>
+                        <div class="user-chooser-name">New user</div>
+                    </div>
+                </a>
+
+            </div>
+
+            <!-- Optional reassurance / small print -->
+            <div class="landing-help" style="margin-top: 1.5rem;">
+                Each user has their own progress, even when decks are shared.
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

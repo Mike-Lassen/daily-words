@@ -12,65 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface WordRepository extends JpaRepository<Word, Long> {
-    List<Word> findTop5ByStatusOrderByIdAsc(WordStatus status);
-
-    @Query("""
-            select w
-            from Word w
-            where w.status = io.grann.words.domain.WordStatus.LEARNING
-              and w.level.deck.id = :deckId
-              and w.level.orderIndex <= :maxOrderIndex
-            order by w.level.orderIndex asc, w.id asc
-            """)
-    List<Word> findTop5LearningAvailableInDeckUpToOrderIndex(
-            @Param("deckId") Long deckId,
-            @Param("maxOrderIndex") int maxOrderIndex
-    );
-
-    @Query("""
-            select w.id
-            from Word w
-            where w.status = io.grann.words.domain.WordStatus.LEARNING
-              and w.level.deck.id = :deckId
-              and w.level.orderIndex <= :maxOrderIndex
-            order by w.level.orderIndex asc, w.id asc
-            """)
-    List<Long> findLearningIdsAvailableInDeckUpToOrderIndex(
-            @Param("deckId") Long deckId,
-            @Param("maxOrderIndex") int maxOrderIndex,
-            Pageable pageable
-    );
-
-    @Query("""
-            select distinct w
-            from Word w
-            left join fetch w.annotations
-            where w.id in :ids
-            """)
-    List<Word> findByIdInWithAnnotations(@Param("ids") List<Long> ids);
-
-    long countByLevelAndStatus(Level level, WordStatus status);
     long countByLevel(Level level);
-    long countByLevelAndReviewStateLevelIn(Level level, Collection<SrsLevel> levels);
-
-    @Query("""
-            select w
-            from Word w
-            join w.reviewState rs
-            where w.status = io.grann.words.domain.WordStatus.REVIEWING
-              and rs.nextReviewAt <= :now
-            order by rs.nextReviewAt asc, w.id asc
-            """)
-    List<Word> findWordsDueForReview(@Param("now") LocalDateTime now);
-
-    @Query("""
-            select count(w)
-            from Word w
-            join w.reviewState rs
-            where w.status = io.grann.words.domain.WordStatus.REVIEWING
-              and rs.nextReviewAt <= :now
-            """)
-    long countWordsDueForReview(@Param("now") LocalDateTime now);
 
     @Query("""
                 select w
@@ -80,8 +22,51 @@ public interface WordRepository extends JpaRepository<Word, Long> {
             """)
     Optional<Word> findByIdWithAnnotations(@Param("id") Long id);
 
-    long countByLevelDeckAndStatus(Deck deck, WordStatus status);
-
     boolean existsByLevelAndForeignTextAndNativeText(Level level, String foreignText, String nativeText);
+
+    @Query("""
+        select w
+        from DeckProgress dp
+        join dp.deck d
+        join Level l
+            on l.deck = d
+           and l.orderIndex <= dp.currentOrderIndex
+        join Word w
+            on w.level = l
+        where dp = :deckProgress
+          and not exists (
+              select 1
+              from ReviewState rs
+              where rs.deckProgress = dp
+                and rs.word = w
+          )
+        order by w.id
+    """)
+    List<Word> findUnlockedWordsWithoutReviewState(
+            @Param("deckProgress") DeckProgress deckProgress,
+            Pageable pageable
+    );
+
+    @Query("""
+        select count(w)
+        from DeckProgress dp
+        join dp.deck d
+        join Level l
+            on l.deck = d
+           and l.orderIndex <= dp.currentOrderIndex
+        join Word w
+            on w.level = l
+        where dp = :deckProgress
+          and not exists (
+              select 1
+              from ReviewState rs
+              where rs.deckProgress = dp
+                and rs.word = w
+          )
+    """)
+    long countUnlockedWordsWithoutReviewState(
+            @Param("deckProgress") DeckProgress deckProgress
+    );
+
 
 }

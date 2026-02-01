@@ -1,6 +1,10 @@
 package io.grann.words.review;
 
+import io.grann.words.domain.ReviewState;
+import io.grann.words.repository.ReviewStateRepository;
 import io.grann.words.repository.WordRepository;
+import io.grann.words.session.UserSession;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -8,20 +12,17 @@ import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 @RequestMapping("/reviews")
+@RequiredArgsConstructor
 @SessionAttributes("reviewSession")
 public class ReviewController {
-
+    private final UserSession userSession;
     private final ReviewService reviewService;
-    private final WordRepository wordRepository;
+    private final ReviewStateRepository reviewStateRepository;
 
-    public ReviewController(ReviewService reviewService, WordRepository wordRepository) {
-        this.reviewService = reviewService;
-        this.wordRepository = wordRepository;
-    }
 
     @PostMapping("/start")
     public String start(Model model) {
-        ReviewSession session = reviewService.startSession();
+        ReviewSession session = reviewService.startSession(userSession);
 
         if (session.getTotalCount() == 0) {
             return "redirect:/dashboard";
@@ -40,10 +41,10 @@ public class ReviewController {
             return "redirect:/dashboard";
         }
 
-        Long id = session.getCurrentWordId();
-        var word = wordRepository.findByIdWithAnnotations(id).orElseThrow();
+        Long id = session.getCurrentReviewStateId();
+        ReviewState reviewState = reviewStateRepository.findById(id).orElseThrow();
 
-        model.addAttribute("word", word);
+        model.addAttribute("word", reviewState.getWord());
         model.addAttribute("showAnswer", session.isShowAnswer());
         model.addAttribute("completedCount", session.getCompletedCount());
         model.addAttribute("totalCount", session.getTotalCount());

@@ -15,7 +15,6 @@ import java.util.List;
 @Builder
 @ToString
 public class Word {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,17 +28,6 @@ public class Word {
     @ManyToOne(optional = false)
     @ToString.Exclude
     private Level level;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private WordStatus status;
-
-    @OneToOne(
-            mappedBy = "word",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    private ReviewState reviewState;
 
     @OneToMany(
             mappedBy = "word",
@@ -68,26 +56,4 @@ public class Word {
         return getAnnotationValue(WordAnnotationType.NOTE);
     }
 
-    public void enterReviewing(Clock clock) {
-        // 1) Word state
-        this.status = WordStatus.REVIEWING;
-
-        // 2) Ensure ReviewState exists and is linked both ways
-        if (this.reviewState == null) {
-            ReviewState rs = ReviewState.builder()
-                    .word(this)                // owning side (IMPORTANT)
-                    .level(SrsLevel.LEVEL_1)   // adapt name to your enum
-                    .nextReviewAt(LocalDateTime.now(clock).plusDays(1))
-                    .lastReviewedAt(null)
-                    .build();
-
-            this.reviewState = rs;            // inverse side
-        } else {
-            // 3) If it exists already, enforce invariants for "newly learned" words
-            this.reviewState.setWord(this); // ensure owning side is consistent
-            this.reviewState.setLevel(SrsLevel.LEVEL_1);
-            this.reviewState.setNextReviewAt(LocalDateTime.now(clock).plusDays(1));
-            this.reviewState.setLastReviewedAt(null);
-        }
-    }
 }

@@ -16,7 +16,10 @@ public class ReviewState {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
+    private DeckProgress deckProgress;
+
+    @ManyToOne(optional = false)
     private Word word;
 
     @Enumerated(EnumType.STRING)

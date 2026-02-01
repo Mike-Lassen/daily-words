@@ -12,7 +12,7 @@ public class ReviewSession {
     private boolean showAnswer = false;
     private int totalCount = 0;
 
-    public Long getCurrentWordId() {
+    public Long getCurrentReviewStateId() {
         return queue.peekFirst(); // does NOT remove
     }
 

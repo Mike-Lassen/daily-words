@@ -36,7 +36,7 @@ public class DeckCsvImporter {
      * Optional headers: kana (or more, if you extend it)
      */
     @Transactional
-    public void importFromClasspath(String resourceName) throws Exception {
+    public Deck importFromClasspath(String resourceName) throws Exception {
         CsvMapImporter csvMapImporter = new CsvMapImporter();
         InputStream resourceStream = getClass().getClassLoader().getResourceAsStream(resourceName);
         if (resourceStream == null) {
@@ -66,7 +66,7 @@ public class DeckCsvImporter {
             // 2) Remaining content (starts with CSV header row)
             String remainder = readRemaining(reader);
             if (remainder.isBlank()) {
-                return; // only deck header + no CSV body
+                return null; // only deck header + no CSV body
             }
 
             List<Map<String, String>> rows = csvMapImporter.importToMaps(
@@ -104,7 +104,6 @@ public class DeckCsvImporter {
                         .foreignText(foreignText)
                         .nativeText(nativeText)
                         .level(level)
-                        .status(WordStatus.LEARNING)
                         .build();
 
                 // Optional annotations
@@ -116,8 +115,8 @@ public class DeckCsvImporter {
             if (!wordsToInsert.isEmpty()) {
                 wordRepository.saveAll(wordsToInsert);
             }
-
-            ensureDeckProgressInitialized(deck);
+            return deck;
+            //ensureDeckProgressInitialized(deck);
         }
     }
 

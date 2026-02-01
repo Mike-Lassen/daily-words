@@ -1,6 +1,8 @@
 package io.grann.words.learning;
 
+import io.grann.words.session.UserSession;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,16 +12,19 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/learning")
+@Slf4j
 @RequiredArgsConstructor
 @SessionAttributes("learningSession")
 public class LearningController {
-
+    private final UserSession userSession;
     private final LearningService learningService;
 
-    // TEMP: inject words manually or via repository later
+
     @PostMapping("/start")
     public String startLearning(Model model) {
-        LearningSession session = learningService.startSession();
+        log.info("learning user-session: " + userSession);
+
+        LearningSession session = learningService.startSession(userSession);
         model.addAttribute("learningSession", session);
         return "redirect:/learning/session";
     }
