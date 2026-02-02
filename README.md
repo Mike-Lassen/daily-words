@@ -4,6 +4,41 @@
 
 ---
 
+## Running
+
+### Local (default)
+
+By default the app uses the values in `src/main/resources/application.properties`.
+
+Notes:
+- Default DB points at `jdbc:postgresql://localhost:5433/vocab` with `mike/mike`.
+- Startup CSV seeding is enabled locally by default (`APP_SEED_ENABLED=true`).
+
+You can override any setting with environment variables (Spring Boot convention):
+- `SPRING_DATASOURCE_URL`
+- `SPRING_DATASOURCE_USERNAME`
+- `SPRING_DATASOURCE_PASSWORD`
+- `PORT` (optional)
+- `APP_SEED_ENABLED` (`true`/`false`)
+
+### Render
+
+This repo includes a Render-specific Spring profile: `render`.
+
+On Render, set:
+- `SPRING_PROFILES_ACTIVE=render`
+- `SPRING_DATASOURCE_URL` / `SPRING_DATASOURCE_USERNAME` / `SPRING_DATASOURCE_PASSWORD`
+  - (Render Postgres can inject these automatically if you link the database)
+- `APP_SEED_ENABLED=false` (recommended; set to `true` only if you intend to seed on boot)
+
+Build command (Render UI):
+- `./mvnw -DskipTests package`
+
+Start command (Render UI):
+- `java -jar target/*.jar`
+
+---
+
 ## Mission
 
 This project was created out of long-term frustration with existing vocabulary learning tools.
