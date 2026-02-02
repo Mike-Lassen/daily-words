@@ -41,8 +41,6 @@ Start command (Render UI):
 
 ## Mission
 
-This project was created out of long-term frustration with existing vocabulary learning tools.
-
 I have used Anki extensively for learning Japanese and deeply value its serious, distraction-free interface and emphasis on active recall. Compared to heavily gamified apps, it better supports long-term retention. However, Anki also exposes a common failure pattern: learners often start too enthusiastically, accumulate large review queues, take a break, and then abandon the tool entirely when returning feels overwhelming.
 
 This app is an attempt to address that problem directly.
