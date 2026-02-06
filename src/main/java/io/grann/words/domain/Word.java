@@ -55,5 +55,8 @@ public class Word {
     public String getNote() {
         return getAnnotationValue(WordAnnotationType.NOTE);
     }
+    public String getSummary() {
+        return getAnnotationValue(WordAnnotationType.SUMMARY);
+    }
 
 }
