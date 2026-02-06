@@ -1,6 +1,5 @@
 package io.grann.words.importer;
 
-import io.grann.words.domain.WordStatus;
 
 import java.util.ArrayList;
 import java.util.List;

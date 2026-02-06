@@ -3,10 +3,8 @@ package io.grann.words;
 import io.grann.words.domain.Deck;
 import io.grann.words.domain.Level;
 import io.grann.words.domain.Word;
-import io.grann.words.domain.WordStatus;
 import io.grann.words.repository.DeckRepository;
 import io.grann.words.repository.WordRepository;
-import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +39,6 @@ class DomainPersistenceTest {
                 .foreignText("勉強する")
                 .nativeText("to study")
                 .level(level)
-                .status(WordStatus.LEARNING)
                 .build();
 
         deck.setLevels(List.of(level));
@@ -86,7 +83,6 @@ class DomainPersistenceTest {
                 .foreignText(foreign)
                 .nativeText(nativeText)
                 .level(level)
-                .status(WordStatus.LEARNING)
                 .build();
     }
 
