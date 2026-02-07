@@ -93,7 +93,8 @@ public class LearningController {
         learningService.applyRating(session, rating);
 
         if (session.isFinished()) {
-            learningService.complete(session);
+
+            learningService.complete(userSession, session);
             status.setComplete(); // clears session
             return "redirect:/dashboard";
         }

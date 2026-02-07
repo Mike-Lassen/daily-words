@@ -41,7 +41,6 @@ public class LearningService {
         }
 
         LearningSession session = new LearningSession();
-        session.setDeckProgress(deckProgress);
         session.setWords(words);
         return session;
     }
@@ -69,11 +68,12 @@ public class LearningService {
     }
 
     @Transactional
-    public void complete(LearningSession session) {
+    public void complete(UserSession userSession, LearningSession session) {
+        DeckProgress deckProgress = deckProgressRepository.findById(userSession.getDeckProgressId()).get();
         // 1) Transition learned words to REVIEWING
         for (Word word : session.getWords()) {
             ReviewState rs = ReviewState.builder()
-                    .deckProgress(session.getDeckProgress())
+                    .deckProgress(deckProgress)
                     .word(word)                // owning side (IMPORTANT)
                     .level(SrsLevel.LEVEL_1)   // adapt name to your enum
                     .nextReviewAt(LocalDateTime.now(clock).plusDays(1))

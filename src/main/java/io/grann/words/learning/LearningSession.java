@@ -12,8 +12,6 @@ import java.util.List;
 @Getter
 @Setter
 public class LearningSession {
-
-    private DeckProgress deckProgress;
     private List<Word> words;
 
     // Phase control
