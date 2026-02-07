@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/components/word-display.css">
     <script src="/js/jquery-4.0.0.min.js"></script>
+
     <style>
         .word-card {
             min-height: 220px;
@@ -44,11 +45,7 @@
     <h4 th:text="'New words (' + (${introIndex} + 1) + ' / ' + ${totalCount} + ')'"></h4>
 
     <div class="card word-card p-4 mt-4 text-center">
-        <div class="word-display"
-             th:data-kanji="${word.foreignText}"
-             th:data-kana="${word.kana}">
-            [[${word.foreignText}]]
-        </div>
+        <div th:replace="~{fragments/word :: wordDisplay(${word})}"></div>
 
         <div class="meaning mt-3">
             <p class="fs-5 text-muted"
@@ -99,30 +96,7 @@
 </th:block>
 
 
-
-<script>
-    $(function () {
-        const $word = $(".word-display");
-
-        if ($word.length === 0) {
-            return;
-        }
-
-        const kanji = $word.data("kanji");
-        const kana = $word.data("kana");
-
-        if (!kana) {
-            return; // no kana → no behavior
-        }
-
-        $word.hover(
-            function () { $word.text(kana); },
-            function () { $word.text(kanji); }
-        );
-    });
-</script>
-
-
+<script src="/js/components/word-display-jquery.js"></script>
 
 </body>
 </html>

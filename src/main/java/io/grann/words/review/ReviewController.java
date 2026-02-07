@@ -46,7 +46,7 @@ public class ReviewController {
 
         model.addAttribute("word", reviewState.getWord());
         model.addAttribute("showAnswer", session.isShowAnswer());
-        model.addAttribute("completedCount", session.getCompletedCount());
+        model.addAttribute("completedCount", session.getCompletedCount() + 1);
         model.addAttribute("totalCount", session.getTotalCount());
 
         return "review-session";

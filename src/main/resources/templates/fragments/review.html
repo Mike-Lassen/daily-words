@@ -27,11 +27,7 @@
     <h4 th:text="'Review (' + ${completedCount} + ' / ' + ${totalCount} + ')'"></h4>
 
     <div class="card word-card p-4 mt-4 text-center">
-        <div class="word-display"
-             th:data-kanji="${word.foreignText}"
-             th:data-kana="${word.kana}">
-            [[${word.foreignText}]]
-        </div>
+        <div th:replace="~{fragments/word :: wordDisplay(${word})}"></div>
 
         <div class="meaning mt-3">
             <p class="fs-5 text-muted"
@@ -88,23 +84,6 @@
         </div>
 
     </div>
-
-    <script>
-        $(function () {
-            $(".word-display").each(function () {
-                const $el = $(this);
-                const kanji = $el.data("kanji");
-                const kana = $el.data("kana");
-
-                if (!kana) return;
-
-                $el.hover(
-                    function () { $el.text(kana); },
-                    function () { $el.text(kanji); }
-                );
-            });
-        });
-    </script>
 
 </div>
 
