@@ -1,0 +1,7 @@
+.word-display {
+  font-size: 3rem;
+  text-align: center;
+  min-height: 4.5rem; /* prevents layout jump */
+  cursor: default;
+  user-select: none;
+}

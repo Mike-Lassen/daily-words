@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="wordDisplay(word)"
+     class="word-display js-word-display"
+     th:data-kanji="${word.foreignText}"
+     th:data-kana="${word.kana}">
+    [[${word.foreignText}]]
+</div>
+</body>
+</html>
