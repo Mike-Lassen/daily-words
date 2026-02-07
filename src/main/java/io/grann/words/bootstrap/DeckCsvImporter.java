@@ -78,8 +78,8 @@ public class DeckCsvImporter {
             List<Word> wordsToInsert = new ArrayList<>();
 
             for (Map<String, String> row : rows) {
-                String foreignText = get(row, "foreign");
-                String nativeText = get(row, "native");
+                String foreignText = get(row, "word");
+                String nativeText = get(row, "translation");
                 String levelName = get(row, "level");
 
                 if (isBlank(foreignText) || isBlank(nativeText) || isBlank(levelName)) {
@@ -107,7 +107,8 @@ public class DeckCsvImporter {
                         .build();
 
                 // Optional annotations
-                addOptionalKanaAnnotation(word, row);
+                addOptionalAnnotation(word, row, "kana", WordAnnotationType.KANA);
+                addOptionalAnnotation(word, row, "summary", WordAnnotationType.SUMMARY);
 
                 wordsToInsert.add(word);
             }
@@ -129,8 +130,8 @@ public class DeckCsvImporter {
         }
 
         Map<String, String> firstRow = rows.get(0);
-        requireHeader(firstRow, "foreign");
-        requireHeader(firstRow, "native");
+        requireHeader(firstRow, "word");
+        requireHeader(firstRow, "translation");
         requireHeader(firstRow, "level");
     }
 
@@ -140,9 +141,9 @@ public class DeckCsvImporter {
         }
     }
 
-    private void addOptionalKanaAnnotation(Word word, Map<String, String> row) {
-        String kana = get(row, "kana");
-        if (isBlank(kana)) {
+    private void addOptionalAnnotation(Word word, Map<String, String> row, String key, WordAnnotationType type) {
+        String value = get(row, key);
+        if (isBlank(value)) {
             return;
         }
 
@@ -150,13 +151,13 @@ public class DeckCsvImporter {
             word.setAnnotations(new ArrayList<>());
         }
 
-        WordAnnotation kanaAnnotation = WordAnnotation.builder()
+        WordAnnotation annotation = WordAnnotation.builder()
                 .word(word)
-                .type(WordAnnotationType.KANA)
-                .value(kana.trim())
+                .type(type)
+                .value(value.trim())
                 .build();
 
-        word.getAnnotations().add(kanaAnnotation);
+        word.getAnnotations().add(annotation);
     }
 
     private static String get(Map<String, String> row, String key) {
