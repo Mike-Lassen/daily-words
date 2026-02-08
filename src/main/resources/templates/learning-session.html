@@ -40,47 +40,16 @@
 
 <!-- ================= INTRODUCTION ================= -->
 
-<div th:if="${phase.name() == 'INTRODUCTION'}">
-
-    <h4 th:text="'New words (' + (${introIndex} + 1) + ' / ' + ${totalCount} + ')'"></h4>
-
-    <div class="card word-card p-4 mt-4 text-center">
-        <div th:replace="~{fragments/word :: wordDisplay(${word})}"></div>
-
-        <div class="meaning mt-3">
-            <p class="fs-5 text-muted"
-               th:text="${word.nativeText}">
-            </p>
-        </div>
-    </div>
-
-    <div class="button-row">
-
-        <!-- PREVIOUS -->
-        <div class="button-slot">
-            <form method="post" action="/learning/intro/prev">
-                <button class="btn btn-outline-secondary action-btn"
-                        th:disabled="${introIndex == 0}">
-                    Previous
-                </button>
-            </form>
-        </div>
-
-        <!-- CENTER (empty, keeps symmetry) -->
-        <div class="button-slot"></div>
-
-        <!-- NEXT / REVIEW -->
-        <div class="button-slot">
-            <form method="post"
-                  th:action="${lastIntroWord} ? '/learning/intro/review' : '/learning/intro/next'">
-                <button class="btn btn-primary action-btn"
-                        th:text="${lastIntroWord} ? 'Review' : 'Next'">
-                </button>
-            </form>
-        </div>
-
-    </div>
-</div>
+<th:block th:if="${phase.name() == 'INTRODUCTION'}">
+    <div th:replace="~{fragments/intro :: intro(
+        ${word},
+        ${introIndex},
+        ${totalCount},
+        ${lastIntroWord},
+        '/learning/intro/prev',
+        (${lastIntroWord} ? '/learning/intro/review' : '/learning/intro/next')
+    )}"></div>
+</th:block>
 
 <!-- ================= REVIEW ================= -->
 
