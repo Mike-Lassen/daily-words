@@ -26,8 +26,13 @@ public class LearningSession {
     private int introIndex = 0;
 
     // REVIEW
-    private Deque<Word> reviewQueue;
-    private Word currentWord;
+    /**
+     * Session-local list of Word IDs.
+     *
+     * <p>Created when the review part of session starts
+     */
+    private Deque<Long> reviewQueue;
+    private Long currentWord;
     private boolean showAnswer = false;
 
     // ---------- Introduction ----------

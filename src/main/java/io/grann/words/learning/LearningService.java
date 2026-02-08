@@ -46,20 +46,14 @@ public class LearningService {
 
     public void startReview(LearningSession session) {
         session.setPhase(LearningPhase.REVIEW);
-        List<Word> words = session.getWords().stream()
-                .map(id -> wordRepository.findById(id).get())
-                .toList();
-        for (Word word : words) {
-            String kana = word.getKana();
-        }
-        session.setReviewQueue(new ArrayDeque<>(words));
+        session.setReviewQueue(new ArrayDeque<>(session.getWords()));
         advance(session);
     }
 
     public void applyRating(LearningSession session, ReviewRating rating) {
-        Word word = session.getCurrentWord();
+        Long wordId = session.getCurrentWord();
         if (rating == ReviewRating.AGAIN) {
-            session.getReviewQueue().addLast(word);
+            session.getReviewQueue().addLast(wordId);
         }
         session.setShowAnswer(false);
     }

@@ -1,5 +1,6 @@
 package io.grann.words.learning;
 
+import io.grann.words.domain.Word;
 import io.grann.words.repository.WordRepository;
 import io.grann.words.session.UserSession;
 import lombok.RequiredArgsConstructor;
@@ -45,16 +46,20 @@ public class LearningController {
 
         if (session.getPhase() == LearningPhase.INTRODUCTION) {
             model.addAttribute("introIndex", session.getIntroIndex());
-            model.addAttribute("word", wordRepository.findById(session.getIntroWordId()).get());
+            model.addAttribute("word", findById(session.getIntroWordId()));
             model.addAttribute("lastIntroWord", session.isLastIntroWord());
         } else {
-            model.addAttribute("word", session.getCurrentWord());
+            model.addAttribute("word", findById(session.getCurrentWord()));
             model.addAttribute("remainingCount", session.getRemainingCount());
             model.addAttribute("totalCount", session.getTotalCount());
             model.addAttribute("showAnswer", session.isShowAnswer());
         }
 
         return "learning-session";
+    }
+
+    private Word findById(Long id) {
+        return wordRepository.findById(id).get();
     }
 
     // ---------- INTRODUCTION ----------
