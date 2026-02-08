@@ -12,7 +12,12 @@ import java.util.List;
 @Getter
 @Setter
 public class LearningSession {
-    private List<Word> words;
+    /**
+     * Session-local list of Word IDs.
+     *
+     * <p>Created when a learning session starts
+     */
+    private List<Long> words;
 
     // Phase control
     private LearningPhase phase = LearningPhase.INTRODUCTION;
@@ -25,9 +30,9 @@ public class LearningSession {
     private Word currentWord;
     private boolean showAnswer = false;
 
-    // ---------- Convenience ----------
+    // ---------- Introduction ----------
 
-    public Word getIntroWord() {
+    public long getIntroWordId() {
         return words.get(introIndex);
     }
 
@@ -38,6 +43,8 @@ public class LearningSession {
     public int getTotalCount() {
         return words.size();
     }
+
+    // ---------- Review ----------
 
     public int getRemainingCount() {
         return reviewQueue.size();

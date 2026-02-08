@@ -32,7 +32,7 @@ public class ReviewService {
         ReviewSession session = new ReviewSession();
         session.setTotalCount(reviewStates.size());
 
-        var ids = reviewStates.stream().map(ReviewState::getId).toList();
+        List<Long> ids = reviewStates.stream().map(ReviewState::getId).toList();
         session.setReviewQueue(new ArrayDeque<>(ids));
 
         return session;

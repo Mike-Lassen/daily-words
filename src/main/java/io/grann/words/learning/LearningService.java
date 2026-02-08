@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -36,18 +37,22 @@ public class LearningService {
         if (words.size() < 5) {
             throw new IllegalStateException("Not enough new words to learn");
         }
-        for (Word word : words) {
-            String kana = word.getKana();
-        }
 
         LearningSession session = new LearningSession();
-        session.setWords(words);
+        List<Long> ids = words.stream().map(Word::getId).toList();
+        session.setWords(new ArrayList<>(ids));
         return session;
     }
 
     public void startReview(LearningSession session) {
         session.setPhase(LearningPhase.REVIEW);
-        session.setReviewQueue(new ArrayDeque<>(session.getWords()));
+        List<Word> words = session.getWords().stream()
+                .map(id -> wordRepository.findById(id).get())
+                .toList();
+        for (Word word : words) {
+            String kana = word.getKana();
+        }
+        session.setReviewQueue(new ArrayDeque<>(words));
         advance(session);
     }
 
@@ -68,8 +73,11 @@ public class LearningService {
     @Transactional
     public void complete(UserSession userSession, LearningSession session) {
         DeckProgress deckProgress = deckProgressRepository.findById(userSession.getDeckProgressId()).get();
+        List<Word> words = session.getWords().stream()
+                .map(id -> wordRepository.findById(id).get())
+                .toList();
         // 1) Transition learned words to REVIEWING
-        for (Word word : session.getWords()) {
+        for (Word word : words) {
             ReviewState rs = ReviewState.builder()
                     .deckProgress(deckProgress)
                     .word(word)                // owning side (IMPORTANT)
