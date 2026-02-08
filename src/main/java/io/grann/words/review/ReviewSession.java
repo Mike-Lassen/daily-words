@@ -8,16 +8,23 @@ import java.util.Deque;
 @Getter
 @Setter
 public class ReviewSession {
-    private Deque<Long> queue;
+    /**
+     * Session-local queue of ReviewState IDs.
+     *
+     * <p>Created when a review session starts and consumed sequentially
+     * as the user completes reviews. This queue is mutated during the session
+     * and discarded when the session ends.
+     */
+    private Deque<Long> reviewQueue;
     private boolean showAnswer = false;
     private int totalCount = 0;
 
     public Long getCurrentReviewStateId() {
-        return queue.peekFirst(); // does NOT remove
+        return reviewQueue.peekFirst();
     }
 
     public int getRemainingCount() {
-        return queue.size();
+        return reviewQueue.size();
     }
 
     public int getCompletedCount() {
@@ -25,6 +32,6 @@ public class ReviewSession {
     }
 
     public boolean isFinished() {
-        return queue.isEmpty();
+        return reviewQueue.isEmpty();
     }
 }

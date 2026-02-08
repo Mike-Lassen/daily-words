@@ -33,14 +33,14 @@ public class ReviewService {
         session.setTotalCount(reviewStates.size());
 
         var ids = reviewStates.stream().map(ReviewState::getId).toList();
-        session.setQueue(new ArrayDeque<>(ids));
+        session.setReviewQueue(new ArrayDeque<>(ids));
 
         return session;
     }
 
     @Transactional
     public void applyRating(ReviewSession reviewSession, ReviewRating rating) {
-        Long reviewStateId = reviewSession.getQueue().pollFirst();
+        Long reviewStateId = reviewSession.getReviewQueue().pollFirst();
         if (reviewStateId == null) {
             return;
         }
@@ -64,7 +64,7 @@ public class ReviewService {
 
         // in-session behavior
         if (rating == ReviewRating.AGAIN) {
-            reviewSession.getQueue().addLast(reviewStateId);
+            reviewSession.getReviewQueue().addLast(reviewStateId);
         }
 
         reviewSession.setShowAnswer(false);

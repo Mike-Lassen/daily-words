@@ -56,8 +56,6 @@ public class LearningService {
         if (rating == ReviewRating.AGAIN) {
             session.getReviewQueue().addLast(word);
         }
-        // GOOD → word is simply discarded
-
         session.setShowAnswer(false);
     }
 
