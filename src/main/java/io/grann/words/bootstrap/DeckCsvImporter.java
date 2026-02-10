@@ -92,23 +92,22 @@ public class DeckCsvImporter {
 
                 Level level = getOrCreateLevel(deck, levelsByName, levelName);
 
-                boolean alreadyExists = wordRepository.existsByLevelAndForeignTextAndNativeText(
-                        level, foreignText, nativeText
-                );
-                if (alreadyExists) {
-                    // Optional: if you want to backfill kana later, do it here.
-                    continue;
-                }
+                Optional<Word> existing = wordRepository.findByLevelAndForeignText(level, foreignText);
 
-                Word word = Word.builder()
-                        .foreignText(foreignText)
-                        .nativeText(nativeText)
-                        .level(level)
-                        .build();
+                Word word = existing.orElse(
+                        Word.builder()
+                                .foreignText(foreignText)
+                                .nativeText(nativeText)
+                                .level(level)
+                                .build()
+                );
+
+                word.setNativeText(nativeText);
 
                 // Optional annotations
                 addOptionalAnnotation(word, row, "kana", WordAnnotationType.KANA);
                 addOptionalAnnotation(word, row, "summary", WordAnnotationType.SUMMARY);
+                addOptionalAnnotation(word, row, "note", WordAnnotationType.NOTE);
 
                 wordsToInsert.add(word);
             }
@@ -146,18 +145,7 @@ public class DeckCsvImporter {
         if (isBlank(value)) {
             return;
         }
-
-        if (word.getAnnotations() == null) {
-            word.setAnnotations(new ArrayList<>());
-        }
-
-        WordAnnotation annotation = WordAnnotation.builder()
-                .word(word)
-                .type(type)
-                .value(value.trim())
-                .build();
-
-        word.getAnnotations().add(annotation);
+        word.setAnnotationValue(type, value.trim());
     }
 
     private static String get(Map<String, String> row, String key) {

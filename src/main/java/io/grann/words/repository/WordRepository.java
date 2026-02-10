@@ -14,15 +14,9 @@ import java.util.Optional;
 public interface WordRepository extends JpaRepository<Word, Long> {
     long countByLevel(Level level);
 
-    @Query("""
-                select w
-                from Word w
-                left join fetch w.annotations
-                where w.id = :id
-            """)
-    Optional<Word> findByIdWithAnnotations(@Param("id") Long id);
-
     boolean existsByLevelAndForeignTextAndNativeText(Level level, String foreignText, String nativeText);
+
+    Optional<Word> findByLevelAndForeignText(Level level, String foreignText);
 
     @Query("""
         select w

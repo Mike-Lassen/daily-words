@@ -7,6 +7,7 @@ import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Getter @Setter
@@ -37,6 +38,19 @@ public class Word {
     @Builder.Default
     private List<WordAnnotation> annotations = new ArrayList<>();
 
+    public void setAnnotationValue(WordAnnotationType type, String value) {
+        for (WordAnnotation annotation : getAnnotations()) {
+            if (annotation.getType() == type) {
+                annotation.setValue(value);
+                return;
+            }
+        }
+        WordAnnotation annotation = WordAnnotation.builder()
+                .word(this)
+                .type(type)
+                .value(value).build();
+        getAnnotations().add(annotation);
+    }
     public String getAnnotationValue(WordAnnotationType type) {
         for (WordAnnotation annotation : getAnnotations()) {
             if (annotation.getType() == type) {

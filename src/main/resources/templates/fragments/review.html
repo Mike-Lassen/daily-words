@@ -3,86 +3,57 @@
 <body>
 
 <div th:fragment="review(word, showAnswer, completedCount, totalCount, showAnswerAction, gradeAction)">
-    <style>
-        .word-card { min-height: 220px; }
-        .meaning { min-height: 3rem; }
 
-        .button-row {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
+    <div class="learning-header">
+        <div class="learning-title" th:text="'Review (' + ${completedCount} + ' / ' + ${totalCount} + ')'"></div>
+    </div>
 
-        .button-slot {
-            width: 160px;
-            text-align: center;
-        }
+    <div class="dashboard-card dashboard-card--full">
+        <div class="card-content learning-card">
 
-        .action-btn { width: 100%; }
-        .invisible { visibility: hidden; }
-    </style>
+            <div class="learning-center">
+                <div class="learning-foreign">
+                    <div th:replace="~{fragments/word :: wordDisplay(${word})}"></div>
+                </div>
 
+                <div class="learning-native"
+                     th:classappend="${!showAnswer} ? 'invisible'"
+                     th:text="${word.nativeText}">
+                </div>
+            </div>
 
-    <h4 th:text="'Review (' + ${completedCount} + ' / ' + ${totalCount} + ')'"></h4>
-
-    <div class="card word-card p-4 mt-4 text-center">
-        <div th:replace="~{fragments/word :: wordDisplay(${word})}"></div>
-
-        <div class="meaning mt-3">
-            <p class="fs-5 text-muted"
-               th:classappend="${!showAnswer} ? 'invisible'"
-               th:text="${word.nativeText}">
-            </p>
+            <div class="learning-summary"
+                 th:classappend="${!showAnswer} ? 'invisible'"
+                 th:text="${word.summary}">
+            </div>
         </div>
     </div>
 
-    <div class="button-row">
-
-        <!-- LEFT: AGAIN -->
-        <div class="button-slot">
+    <div class="learning-actions">
+        <div class="learning-actions-slot">
             <form th:if="${showAnswer}" method="post" th:action="${gradeAction}">
-                <button name="rating" value="AGAIN"
-                        class="btn btn-outline-danger action-btn">
+                <button name="rating" value="AGAIN" class="danger-button">
                     Again
                 </button>
             </form>
-
-            <button th:if="${!showAnswer}"
-                    class="btn btn-outline-danger action-btn invisible">
-                Again
-            </button>
+            <button th:if="${!showAnswer}" class="danger-button invisible">Again</button>
         </div>
 
-        <!-- CENTER: SHOW ANSWER -->
-        <div class="button-slot">
+        <div class="learning-actions-slot">
             <form th:if="${!showAnswer}" method="post" th:action="${showAnswerAction}">
-                <button class="btn btn-secondary action-btn">
-                    Show answer
-                </button>
+                <button class="secondary-button">Show answer</button>
             </form>
-
-            <button th:if="${showAnswer}"
-                    class="btn btn-secondary action-btn invisible">
-                Show answer
-            </button>
+            <button th:if="${showAnswer}" class="secondary-button invisible">Show answer</button>
         </div>
 
-        <!-- RIGHT: GOOD -->
-        <div class="button-slot">
+        <div class="learning-actions-slot">
             <form th:if="${showAnswer}" method="post" th:action="${gradeAction}">
-                <button name="rating" value="GOOD"
-                        class="btn btn-success action-btn">
+                <button name="rating" value="GOOD" class="success-button">
                     Good
                 </button>
             </form>
-
-            <button th:if="${!showAnswer}"
-                    class="btn btn-success action-btn invisible">
-                Good
-            </button>
+            <button th:if="${!showAnswer}" class="success-button invisible">Good</button>
         </div>
-
     </div>
 
 </div>
