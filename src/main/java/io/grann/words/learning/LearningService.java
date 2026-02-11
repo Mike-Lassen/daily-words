@@ -78,6 +78,7 @@ public class LearningService {
                     .level(SrsLevel.LEVEL_1)   // adapt name to your enum
                     .nextReviewAt(LocalDateTime.now(clock).plusDays(1))
                     .lastReviewedAt(LocalDateTime.now(clock))
+                    .status(ReviewStateStatus.LEARNING)
                     .build();
             reviewStateRepository.save(rs);
         }

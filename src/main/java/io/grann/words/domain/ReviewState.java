@@ -31,4 +31,8 @@ public class ReviewState {
 
     @Column
     private LocalDateTime lastReviewedAt;
+
+    @Enumerated(EnumType.STRING)
+    @Column
+    private ReviewStateStatus status;
 }

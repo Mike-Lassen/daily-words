@@ -54,7 +54,7 @@ public class ReviewService {
                         : Srs.onAgain(currentLevel);
 
         if (rating == ReviewRating.GOOD && nextLevel.isLastLevel()) {
-            //TODO Graduate Word
+            reviewState.setStatus(ReviewStateStatus.GRADUATED);
         } else {
             reviewState.setLevel(nextLevel);
 
@@ -62,7 +62,6 @@ public class ReviewService {
             reviewState.setNextReviewAt(nextReviewAt);
         }
 
-        // in-session behavior
         if (rating == ReviewRating.AGAIN) {
             reviewSession.getReviewQueue().addLast(reviewStateId);
         }

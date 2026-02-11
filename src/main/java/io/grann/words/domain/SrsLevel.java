@@ -4,12 +4,22 @@ import java.time.Duration;
 
 public enum SrsLevel {
 
+    //
+    // Should be
+    // 1: 1
+    // 2: 2
+    // 3: 5
+    // 4: 12
+    // 5: 28
+    // 6: 63
+    // 7: 120
+    //
     LEVEL_1(1, false),
     LEVEL_2(2, false),
-    LEVEL_3(5, false),
-    LEVEL_4(12, true),
-    LEVEL_5(28, true),
-    LEVEL_6(63, true);
+    LEVEL_3(3, false),
+    LEVEL_4(4, true),
+    LEVEL_5(5, true),
+    LEVEL_6(6, true);
 
     private final int intervalDays;
     private final boolean expert;
