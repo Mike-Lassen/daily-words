@@ -99,7 +99,7 @@
 /* Word note (markdown card) */
 
 .learning-note {
-    padding-top: 0.5rem;
+    padding-top: 2rem;
 }
 
 .learning-note-content {
@@ -107,6 +107,11 @@
     color: #374151; /* slightly darker than summary */
     line-height: 1.6;
 }
+
+.learning-note-content > :first-child {
+    margin-top: 0;
+}
+
 
 /* Markdown elements */
 
