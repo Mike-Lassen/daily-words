@@ -4,7 +4,7 @@
     <title>Learning – Daily Words</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/dashboard.css?version=2">
-    <link rel="stylesheet" href="/css/learning-session.css?version=2">
+    <link rel="stylesheet" href="/css/learning-session.css?version=3">
     <link rel="stylesheet" href="/css/components/word-display.css">
     <script src="/js/jquery-4.0.0.min.js"></script>
 </head>
@@ -15,6 +15,7 @@
 <th:block th:if="${phase.name() == 'INTRODUCTION'}">
     <div th:replace="~{fragments/intro :: intro(
         ${word},
+        ${wordNoteHtml},
         ${introIndex},
         ${totalCount},
         ${lastIntroWord},
