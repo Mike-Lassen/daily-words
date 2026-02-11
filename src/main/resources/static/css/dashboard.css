@@ -53,7 +53,7 @@ body {
 /* Buttons: serious and calm */
 .primary-button,
 .secondary-button {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     padding: 0.75rem 1.25rem;
     font-size: 1rem;
     border-radius: 10px;

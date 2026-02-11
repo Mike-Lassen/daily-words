@@ -1,6 +1,7 @@
 package io.grann.words.learning;
 
 import io.grann.words.domain.Word;
+import io.grann.words.markdown.MarkdownRenderer;
 import io.grann.words.repository.WordRepository;
 import io.grann.words.session.UserSession;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,7 @@ public class LearningController {
     private final UserSession userSession;
     private final LearningService learningService;
     private final WordRepository wordRepository;
+    private final MarkdownRenderer markdownRenderer;
 
 
     @PostMapping("/start")
@@ -45,6 +47,13 @@ public class LearningController {
         model.addAttribute("totalCount", session.getTotalCount());
 
         if (session.getPhase() == LearningPhase.INTRODUCTION) {
+            Word word = findById(session.getIntroWordId());
+            if (word.getNote() != null) {
+                model.addAttribute(
+                        "wordNoteHtml",
+                        markdownRenderer.render(word.getNote())
+                );
+            }
             model.addAttribute("introIndex", session.getIntroIndex());
             model.addAttribute("word", findById(session.getIntroWordId()));
             model.addAttribute("lastIntroWord", session.isLastIntroWord());

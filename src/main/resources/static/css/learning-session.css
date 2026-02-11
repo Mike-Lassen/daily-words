@@ -52,7 +52,7 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
-    margin-top: 1.25rem;
+    margin-top: 0rem;
     align-items: stretch;
 }
 
@@ -64,7 +64,7 @@
 /* Buttons (match dashboard vibe, but keep meaning via color) */
 .danger-button,
 .success-button {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     padding: 0.75rem 1.25rem;
     font-size: 1rem;
     border-radius: 10px;
@@ -95,3 +95,64 @@
 .invisible {
     visibility: hidden;
 }
+
+/* Word note (markdown card) */
+
+.learning-note {
+    padding-top: 2rem;
+}
+
+.learning-note-content {
+    font-size: 0.95rem;
+    color: #374151; /* slightly darker than summary */
+    line-height: 1.6;
+}
+
+.learning-note-content > :first-child {
+    margin-top: 0;
+}
+
+
+/* Markdown elements */
+
+.learning-note-content p {
+    margin: 0 0 0.75rem 0;
+}
+
+.learning-note-content p:last-child {
+    margin-bottom: 0;
+}
+
+.learning-note-content strong {
+    color: #111827;
+    font-weight: 600;
+}
+
+.learning-note-content em {
+    font-style: italic;
+}
+
+.learning-note-content ul,
+.learning-note-content ol {
+    margin: 0.5rem 0 0.75rem 1.25rem;
+    padding: 0;
+}
+
+.learning-note-content li {
+    margin-bottom: 0.35rem;
+}
+
+.learning-note-content code {
+    background: #f3f4f6;
+    padding: 0.15rem 0.35rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.learning-note-content blockquote {
+    border-left: 3px solid #e5e7eb;
+    padding-left: 0.75rem;
+    color: #6b7280;
+    margin: 0.5rem 0;
+}
+

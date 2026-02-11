@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 
-<div th:fragment="intro(word, introIndex, totalCount, lastIntroWord, prevAction, nextOrReviewAction)">
+<div th:fragment="intro(word, wordNoteHtml, introIndex, totalCount, lastIntroWord, prevAction, nextOrReviewAction)">
     <div class="learning-header">
         <div class="learning-title" th:text="'New words (' + (${introIndex} + 1) + ' / ' + ${totalCount} + ')'"></div>
     </div>
@@ -42,6 +42,15 @@
                         th:text="${lastIntroWord} ? 'Review' : 'Next'">
                 </button>
             </form>
+        </div>
+    </div>
+
+    <div class="dashboard-card dashboard-card--full"
+         th:if="${wordNoteHtml != null}">
+        <div class="card-content learning-note">
+            <div class="learning-note-content"
+                 th:utext="${wordNoteHtml}">
+            </div>
         </div>
     </div>
 </div>
