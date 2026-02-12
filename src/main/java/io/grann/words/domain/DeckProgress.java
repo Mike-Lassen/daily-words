@@ -25,8 +25,6 @@ public class DeckProgress {
 
     /**
      * Highest level orderIndex that is unlocked for learning in this deck (inclusive).
-     *
-     * MVP simplification: single user.
      */
     @Column(nullable = false)
     private int currentOrderIndex;

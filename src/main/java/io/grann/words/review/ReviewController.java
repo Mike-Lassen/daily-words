@@ -67,6 +67,7 @@ public class ReviewController {
         reviewService.applyRating(session, rating);
 
         if (session.isFinished()) {
+            reviewService.complete(userSession, session);
             status.setComplete();
             return "redirect:/dashboard";
         }
