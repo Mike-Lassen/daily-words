@@ -7,7 +7,7 @@
 .learning-home-button {
     position: fixed;
     top: 0.5rem;
-    left: 0.5rem;
+    left: 1rem;
     z-index: 1000;
     margin: 0;
 }
@@ -17,8 +17,8 @@
     align-items: center;
     justify-content: center;
 
-    width: 44px; /* accessible hit target */
-    height: 44px;
+    width: 26px; /* accessible hit target */
+    height: 26px;
 
     border-radius: 12px;
     background: transparent;
