@@ -11,8 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
-import java.util.List;
-
 @Controller
 @RequestMapping("/learning")
 @Slf4j
@@ -32,6 +30,12 @@ public class LearningController {
         LearningSession session = learningService.startSession(userSession);
         model.addAttribute("learningSession", session);
         return "redirect:/learning/session";
+    }
+
+    @PostMapping("/exit")
+    public String exit(SessionStatus status) {
+        status.setComplete();
+        return "redirect:/dashboard";
     }
 
     @GetMapping("/session")

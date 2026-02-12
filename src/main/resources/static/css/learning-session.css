@@ -3,6 +3,50 @@
     margin-top: 0.5rem;
 }
 
+/* Top-left home button (discard session) */
+.learning-home-button {
+    position: fixed;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 1000;
+    margin: 0;
+}
+
+.learning-home-button__inner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px; /* accessible hit target */
+    height: 44px;
+
+    border-radius: 12px;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+
+    cursor: pointer;
+    padding: 0;
+
+    color: #6b7280; /* muted gray */
+}
+
+.learning-home-button__inner:hover {
+    background: transparent;
+    color: #111827; /* darken on hover */
+}
+
+.learning-home-button__inner:focus {
+    outline: 2px solid #111827;
+    outline-offset: 2px;
+}
+
+.learning-home-button svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2;
+}
+
 .learning-title {
     font-size: 1rem;
     font-weight: 600;
@@ -52,7 +96,7 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
-    margin-top: 0rem;
+    margin-top: 0;
     align-items: stretch;
 }
 
@@ -155,4 +199,3 @@
     color: #6b7280;
     margin: 0.5rem 0;
 }
-
