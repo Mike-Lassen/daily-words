@@ -39,9 +39,12 @@ public class ReviewController {
 
     @GetMapping("/session")
     public String session(
-            @ModelAttribute("reviewSession") ReviewSession session,
+            @SessionAttribute(value = "reviewSession", required = false) ReviewSession session,
             Model model
     ) {
+        if (userSession.getDeckProgressId() == null) {
+            return "redirect:/";
+        }
         if (session == null || session.getTotalCount() == 0 || session.isFinished()) {
             return "redirect:/dashboard";
         }

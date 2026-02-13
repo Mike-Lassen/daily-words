@@ -40,9 +40,12 @@ public class LearningController {
 
     @GetMapping("/session")
     public String session(
-            @ModelAttribute("learningSession") LearningSession session,
+            @SessionAttribute(value = "learningSession", required = false) LearningSession session,
             Model model
     ) {
+        if (userSession.getDeckProgressId() == null) {
+            return "redirect:/";
+        }
         if (session == null) {
             return "redirect:/dashboard";
         }
