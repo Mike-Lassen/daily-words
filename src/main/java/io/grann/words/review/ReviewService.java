@@ -29,7 +29,7 @@ public class ReviewService {
     public ReviewSession startSession(UserSession userSession) {
         DeckProgress deckProgress = deckProgressRepository.findById(userSession.getDeckProgressId()).get();
         LocalDateTime now = LocalDateTime.now(clock);
-        List<ReviewState> reviewStates = reviewStateRepository.findDueByDeckProgress(deckProgress, now, Pageable.ofSize(100));
+        List<ReviewState> reviewStates = reviewStateRepository.findDueByDeckProgress(deckProgress, now, Pageable.ofSize(15));
 
         ReviewSession session = new ReviewSession();
         session.setTotalCount(reviewStates.size());

@@ -17,6 +17,17 @@
     </button>
 </form>
 
+<div class="learning-progress">
+    <span th:if="${phase.name() == 'INTRODUCTION'}"
+          th:text="(${introIndex} + 1) + ' / ' + ${totalCount}">
+    </span>
+
+    <span th:if="${phase.name() == 'REVIEW'}"
+          th:text="(${totalCount - remainingCount}) + ' / ' + ${totalCount}">
+    </span>
+</div>
+
+
 <!-- ================= INTRODUCTION ================= -->
 
 <th:block th:if="${phase.name() == 'INTRODUCTION'}">

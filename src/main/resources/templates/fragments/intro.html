@@ -3,9 +3,6 @@
 <body>
 
 <div th:fragment="intro(word, wordNoteHtml, introIndex, totalCount, lastIntroWord, prevAction, nextOrReviewAction)">
-    <div class="learning-header">
-        <div class="learning-title" th:text="'New words (' + (${introIndex} + 1) + ' / ' + ${totalCount} + ')'"></div>
-    </div>
 
     <div class="dashboard-card dashboard-card--full">
         <div class="card-content learning-card">

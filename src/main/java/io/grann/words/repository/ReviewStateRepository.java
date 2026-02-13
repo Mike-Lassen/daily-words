@@ -34,6 +34,7 @@ public interface ReviewStateRepository extends JpaRepository<ReviewState, Long> 
         join fetch rs.word w
         where rs.deckProgress = :deckProgress
           and rs.nextReviewAt <= :now
+          and rs.status = 'LEARNING'
         order by rs.nextReviewAt asc, rs.id asc
     """)
     List<ReviewState> findDueByDeckProgress(

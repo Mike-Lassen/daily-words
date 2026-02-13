@@ -2,7 +2,6 @@ package io.grann.words.review;
 
 import io.grann.words.domain.ReviewState;
 import io.grann.words.repository.ReviewStateRepository;
-import io.grann.words.repository.WordRepository;
 import io.grann.words.session.UserSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -30,6 +29,12 @@ public class ReviewController {
 
         model.addAttribute("reviewSession", session);
         return "redirect:/reviews/session";
+    }
+
+    @PostMapping("/exit")
+    public String exit(SessionStatus status) {
+        status.setComplete();
+        return "redirect:/dashboard";
     }
 
     @GetMapping("/session")
