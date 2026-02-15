@@ -48,25 +48,22 @@ public class ReviewService {
         }
 
         ReviewState reviewState = reviewStateRepository.findById(reviewStateId).get();
-
-        SrsLevel currentLevel = reviewState.getLevel();
-        SrsLevel nextLevel =
-                (rating == ReviewRating.GOOD)
-                        ? Srs.onGood(currentLevel)
-                        : Srs.onAgain(currentLevel);
         LocalDateTime now = LocalDateTime.now(clock);
         reviewState.setLastReviewedAt(now);
 
-        if (rating == ReviewRating.GOOD && nextLevel.isLastLevel()) {
+        SrsLevel currentLevel = reviewState.getLevel();
+
+        if (rating == ReviewRating.GOOD && currentLevel.isLastLevel()) {
             reviewState.setStatus(ReviewStateStatus.GRADUATED);
+            reviewState.setNextReviewAt(null);
         } else {
+            SrsLevel nextLevel =
+                    (rating == ReviewRating.GOOD)
+                            ? Srs.onGood(currentLevel)
+                            : Srs.onAgain(currentLevel);
             reviewState.setLevel(nextLevel);
             LocalDateTime nextReviewAt = now.plus(nextLevel.getInterval());
             reviewState.setNextReviewAt(nextReviewAt);
-        }
-
-        if (rating == ReviewRating.AGAIN) {
-            reviewSession.getReviewQueue().addLast(reviewStateId);
         }
 
         reviewSession.setShowAnswer(false);

@@ -62,16 +62,14 @@ public enum SrsLevel {
     }
 
     public static List<SrsLevel> getTraineeLevels() {
-        List<SrsLevel> traineeLevels = Arrays.stream(values())
+        return Arrays.stream(values())
                 .filter(SrsLevel::isTrainee)
                 .toList();
-        return traineeLevels;
     }
     public static List<SrsLevel> getExpertLevels() {
-        List<SrsLevel> expertLevels = Arrays.stream(values())
+        return Arrays.stream(values())
                 .filter(SrsLevel::isExpert)
                 .toList();
-        return expertLevels;
     }
 
 }
