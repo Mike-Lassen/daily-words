@@ -42,6 +42,8 @@ public class ReviewService {
 
     @Transactional
     public void applyRating(ReviewSession reviewSession, ReviewRating rating) {
+        reviewSession.setShowAnswer(false);
+
         Long reviewStateId = reviewSession.getReviewQueue().pollFirst();
         if (reviewStateId == null) {
             return;
@@ -50,13 +52,19 @@ public class ReviewService {
         ReviewState reviewState = reviewStateRepository.findById(reviewStateId).get();
         LocalDateTime now = LocalDateTime.now(clock);
         reviewState.setLastReviewedAt(now);
-
         SrsLevel currentLevel = reviewState.getLevel();
+
+        if (rating == ReviewRating.AGAIN) {
+            reviewSession.getReviewQueue().addLast(reviewStateId);
+        }
 
         if (rating == ReviewRating.GOOD && currentLevel.isLastLevel()) {
             reviewState.setStatus(ReviewStateStatus.GRADUATED);
             reviewState.setNextReviewAt(null);
-        } else {
+            return;
+        }
+
+        if (reviewState.getNextReviewAt() == null || reviewState.getNextReviewAt().isBefore(now)) {
             SrsLevel nextLevel =
                     (rating == ReviewRating.GOOD)
                             ? Srs.onGood(currentLevel)
@@ -65,8 +73,6 @@ public class ReviewService {
             LocalDateTime nextReviewAt = now.plus(nextLevel.getInterval());
             reviewState.setNextReviewAt(nextReviewAt);
         }
-
-        reviewSession.setShowAnswer(false);
     }
 
     @Transactional
