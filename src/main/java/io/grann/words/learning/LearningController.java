@@ -25,8 +25,6 @@ public class LearningController {
 
     @PostMapping("/start")
     public String startLearning(Model model) {
-        log.info("learning user-session: " + userSession);
-
         LearningSession session = learningService.startSession(userSession);
         model.addAttribute("learningSession", session);
         return "redirect:/learning/session";

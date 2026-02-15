@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Clock;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -35,9 +36,8 @@ public class DashboardService {
         long total = wordRepository.countByLevel(level);
         List<ReviewState> reviewStates = reviewStateRepository.findByDeckProgressAndWordLevel(progress, level);
         long notInReview = total - reviewStates.size();
-
-        List<SrsLevel> traineeLevels = List.of(SrsLevel.LEVEL_1, SrsLevel.LEVEL_2, SrsLevel.LEVEL_3);
-        List<SrsLevel> expertLevels = List.of(SrsLevel.LEVEL_4, SrsLevel.LEVEL_5, SrsLevel.LEVEL_6);
+        List<SrsLevel> traineeLevels = SrsLevel.getTraineeLevels();
+        List<SrsLevel> expertLevels = SrsLevel.getExpertLevels();
 
         long trainee = reviewStates.stream().filter(rs -> traineeLevels.contains(rs.getLevel())).count();
         long expert = reviewStates.stream().filter(rs -> expertLevels.contains(rs.getLevel())).count();

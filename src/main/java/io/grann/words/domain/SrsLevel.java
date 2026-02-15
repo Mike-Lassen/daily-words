@@ -1,6 +1,8 @@
 package io.grann.words.domain;
 
 import java.time.Duration;
+import java.util.Arrays;
+import java.util.List;
 
 public enum SrsLevel {
 
@@ -12,11 +14,10 @@ public enum SrsLevel {
     // 4: 12
     // 5: 28
     // 6: 63
-    // 7: 120
     //
     LEVEL_1(1, false),
     LEVEL_2(2, false),
-    LEVEL_3(3, false),
+    LEVEL_3(3, true),
     LEVEL_4(4, true),
     LEVEL_5(5, true),
     LEVEL_6(6, true);
@@ -59,4 +60,18 @@ public enum SrsLevel {
     public Duration getInterval() {
         return Duration.ofDays(intervalDays);
     }
+
+    public static List<SrsLevel> getTraineeLevels() {
+        List<SrsLevel> traineeLevels = Arrays.stream(values())
+                .filter(SrsLevel::isTrainee)
+                .toList();
+        return traineeLevels;
+    }
+    public static List<SrsLevel> getExpertLevels() {
+        List<SrsLevel> expertLevels = Arrays.stream(values())
+                .filter(SrsLevel::isExpert)
+                .toList();
+        return expertLevels;
+    }
+
 }
