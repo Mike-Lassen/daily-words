@@ -3,11 +3,6 @@
 <body>
 
 <div th:fragment="review(word, showAnswer, completedCount, totalCount, showAnswerAction, gradeAction)">
-
-    <div class="learning-header">
-        <div class="learning-title" th:text="'Review (' + ${completedCount} + ' / ' + ${totalCount} + ')'"></div>
-    </div>
-
     <div class="dashboard-card dashboard-card--full">
         <div class="card-content learning-card">
 

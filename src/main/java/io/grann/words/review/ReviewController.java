@@ -2,7 +2,6 @@ package io.grann.words.review;
 
 import io.grann.words.domain.ReviewState;
 import io.grann.words.repository.ReviewStateRepository;
-import io.grann.words.repository.WordRepository;
 import io.grann.words.session.UserSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -32,11 +31,20 @@ public class ReviewController {
         return "redirect:/reviews/session";
     }
 
+    @PostMapping("/exit")
+    public String exit(SessionStatus status) {
+        status.setComplete();
+        return "redirect:/dashboard";
+    }
+
     @GetMapping("/session")
     public String session(
-            @ModelAttribute("reviewSession") ReviewSession session,
+            @SessionAttribute(value = "reviewSession", required = false) ReviewSession session,
             Model model
     ) {
+        if (userSession.getDeckProgressId() == null) {
+            return "redirect:/";
+        }
         if (session == null || session.getTotalCount() == 0 || session.isFinished()) {
             return "redirect:/dashboard";
         }
@@ -67,6 +75,7 @@ public class ReviewController {
         reviewService.applyRating(session, rating);
 
         if (session.isFinished()) {
+            reviewService.complete(userSession, session);
             status.setComplete();
             return "redirect:/dashboard";
         }

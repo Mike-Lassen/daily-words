@@ -7,8 +7,26 @@
     <link rel="stylesheet" th:href="@{/css/learning-session.css}">
     <link rel="stylesheet" th:href="@{/css/components/word-display.css}">
     <script src="/js/jquery-4.0.0.min.js"></script>
+    <script src="https://unpkg.com/lucide@0.476.0/dist/umd/lucide.min.js"></script>
 </head>
 <body class="container mt-5">
+
+<form method="post" th:action="@{/learning/exit}" class="home-button" aria-label="Back to dashboard">
+    <button type="submit" class="home-button__inner" aria-label="Back to dashboard" title="Back to dashboard">
+        <i data-lucide="house"></i>
+    </button>
+</form>
+
+<div class="learning-progress">
+    <span th:if="${phase.name() == 'INTRODUCTION'}"
+          th:text="(${introIndex} + 1) + ' / ' + ${totalCount}">
+    </span>
+
+    <span th:if="${phase.name() == 'REVIEW'}"
+          th:text="(${totalCount - remainingCount}) + ' / ' + ${totalCount}">
+    </span>
+</div>
+
 
 <!-- ================= INTRODUCTION ================= -->
 
@@ -37,8 +55,18 @@
     )}"></div>
 </th:block>
 
-
 <script src="/js/components/word-display-jquery.js"></script>
+<script>
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons({
+            attrs: {
+                width: '24',
+                height: '24',
+                'stroke-width': '2'
+            }
+        });
+    }
+</script>
 
 </body>
 </html>

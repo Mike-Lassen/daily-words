@@ -339,6 +339,51 @@ button:disabled {
     color: #6b7280;
 }
 
+/* Top-left home button */
+.home-button {
+    position: fixed;
+    top: 0.5rem;
+    left: 1rem;
+    z-index: 1000;
+    margin: 0;
+}
+
+.home-button__inner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 26px; /* accessible hit target */
+    height: 26px;
+
+    border-radius: 12px;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+
+    cursor: pointer;
+    padding: 0;
+
+    color: #6b7280; /* muted gray */
+}
+
+.home-button__inner:hover {
+    background: transparent;
+    color: #111827; /* darken on hover */
+}
+
+.home-button__inner:focus {
+    outline: 2px solid #111827;
+    outline-offset: 2px;
+}
+
+.home-button svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2;
+}
+
+
 /* Mobile */
 @media (max-width: 768px) {
     .deck-chooser-grid {

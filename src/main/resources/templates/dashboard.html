@@ -4,8 +4,15 @@
     <title>Daily Words</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+    <script src="https://unpkg.com/lucide@0.476.0/dist/umd/lucide.min.js"></script>
 </head>
 <body class="container mt-5">
+
+<form method="get" th:action="@{/choose-deck}" class="home-button" aria-label="Back to deck chooser">
+    <button type="submit" class="home-button__inner" aria-label="Back to deck chooser" title="Back to deck chooser">
+        <i data-lucide="square-chevron-left"></i>
+    </button>
+</form>
 
 <div class="dashboard-container">
     <div class="dashboard-cards">
@@ -20,7 +27,7 @@
                             type="submit"
                             class="primary-button"
                             th:disabled="${newWordsAvailable < 5}">
-                        Learn 5 Words
+                        Learn
                     </button>
                 </form>
             </div>
@@ -100,6 +107,17 @@
 
 </div>
 
+<script>
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons({
+            attrs: {
+                width: '24',
+                height: '24',
+                'stroke-width': '2'
+            }
+        });
+    }
+</script>
 
 </body>
 </html>

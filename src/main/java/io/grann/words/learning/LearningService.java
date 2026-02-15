@@ -21,9 +21,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class LearningService {
-
     private final WordRepository wordRepository;
-    private final DeckRepository deckRepository;
     private final LevelRepository levelRepository;
     private final DeckProgressRepository deckProgressRepository;
     private final ReviewStateRepository reviewStateRepository;
@@ -78,50 +76,9 @@ public class LearningService {
                     .level(SrsLevel.LEVEL_1)   // adapt name to your enum
                     .nextReviewAt(LocalDateTime.now(clock).plusDays(1))
                     .lastReviewedAt(LocalDateTime.now(clock))
+                    .status(ReviewStateStatus.LEARNING)
                     .build();
             reviewStateRepository.save(rs);
         }
-
-
-
-        // 2) If that exhausted the current level, unlock the next level (per deck)
-//        Deck deck = session.getWords().getFirst().getLevel().getDeck();
-//        DeckProgress progress = deckProgressRepository.findByDeck(deck)
-//                .orElseGet(() -> initializeProgress(deck));
-//
-//        Level currentLevel = levelRepository.findFirstByDeckAndOrderIndexGreaterThanOrderByOrderIndexAsc(
-//                        deck,
-//                        progress.getCurrentOrderIndex() - 1
-//                )
-//                .orElse(null);
-//
-//        // If we can't resolve a current level entity, skip advancing.
-//        if (currentLevel == null) {
-//            return;
-//        }
-//
-////        long remainingLearningInCurrentLevel = wordRepository.countByLevelAndStatus(currentLevel, WordStatus.LEARNING);
-////        if (remainingLearningInCurrentLevel > 0) {
-////            return;
-////        }
-//
-//        levelRepository.findFirstByDeckAndOrderIndexGreaterThanOrderByOrderIndexAsc(deck, progress.getCurrentOrderIndex())
-//                .ifPresent(nextLevel -> {
-//                    progress.setCurrentOrderIndex(nextLevel.getOrderIndex());
-//                    deckProgressRepository.save(progress);
-//                });
-    }
-
-    @Transactional
-    protected DeckProgress initializeProgress(Deck deck) {
-        Level firstLevel = levelRepository.findFirstByDeckOrderByOrderIndexAsc(deck)
-                .orElseThrow(() -> new IllegalStateException("Deck has no levels: " + deck.getName()));
-
-        DeckProgress progress = DeckProgress.builder()
-                .deck(deck)
-                .currentOrderIndex(firstLevel.getOrderIndex())
-                .build();
-
-        return deckProgressRepository.save(progress);
     }
 }
