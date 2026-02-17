@@ -53,6 +53,7 @@ public class ReviewService {
 
         ReviewState reviewState = reviewStateRepository.findById(reviewStateId).get();
         LocalDateTime now = LocalDateTime.now(clock);
+
         reviewState.setLastReviewedAt(now);
         SrsLevel currentLevel = reviewState.getLevel();
 
@@ -72,7 +73,7 @@ public class ReviewService {
                             ? Srs.onGood(currentLevel)
                             : Srs.onAgain(currentLevel);
             reviewState.setLevel(nextLevel);
-            LocalDateTime nextReviewAt = now.plus(nextLevel.getInterval());
+            LocalDateTime nextReviewAt = now.plus(nextLevel.getInterval()).toLocalDate().atTime(3, 0);
             reviewState.setNextReviewAt(nextReviewAt);
         }
     }
