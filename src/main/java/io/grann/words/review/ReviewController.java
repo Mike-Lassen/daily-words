@@ -4,6 +4,7 @@ import io.grann.words.domain.ReviewState;
 import io.grann.words.repository.ReviewStateRepository;
 import io.grann.words.session.UserSession;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.support.SessionStatus;
 @RequestMapping("/reviews")
 @RequiredArgsConstructor
 @SessionAttributes("reviewSession")
+@Slf4j
 public class ReviewController {
     private final UserSession userSession;
     private final ReviewService reviewService;

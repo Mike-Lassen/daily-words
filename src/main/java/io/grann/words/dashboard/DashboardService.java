@@ -44,7 +44,7 @@ public class DashboardService {
 
         LocalDateTime now = LocalDateTime.now(clock);
         long newWordsAvailable = wordRepository.countUnlockedWordsWithoutReviewState(progress);
-        long reviewsDue = reviewStateRepository.findDueByDeckProgress(progress, now, Pageable.ofSize(100)).size();
+        long reviewsDue = reviewStateRepository.findDueByDeckProgress(progress, now, Pageable.ofSize(1000)).size();
 
         return new DashboardSummary(level.getName(), newWordsAvailable, reviewsDue, total, notInReview, trainee, expert);
     }

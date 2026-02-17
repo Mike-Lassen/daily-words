@@ -32,7 +32,7 @@ public class LearningService {
         DeckProgress deckProgress = deckProgressRepository.findById(userSession.getDeckProgressId()).get();
         List<Word> words = wordRepository.findUnlockedWordsWithoutReviewState(deckProgress, Pageable.ofSize(5));
 
-        if (words.size() < 5) {
+        if (words.size() < 1) {
             throw new IllegalStateException("Not enough new words to learn");
         }
 

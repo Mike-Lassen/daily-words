@@ -26,7 +26,7 @@
                     <button
                             type="submit"
                             class="primary-button"
-                            th:disabled="${newWordsAvailable < 5}">
+                            th:disabled="${newWordsAvailable == 0}">
                         Learn
                     </button>
                 </form>
