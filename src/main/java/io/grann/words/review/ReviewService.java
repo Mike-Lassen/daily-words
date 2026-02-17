@@ -8,6 +8,7 @@ import io.grann.words.repository.WordRepository;
 import io.grann.words.session.UserSession;
 import io.grann.words.srs.Srs;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +20,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ReviewService {
     private final WordRepository wordRepository;
     private final ReviewStateRepository reviewStateRepository;
@@ -51,6 +53,7 @@ public class ReviewService {
 
         ReviewState reviewState = reviewStateRepository.findById(reviewStateId).get();
         LocalDateTime now = LocalDateTime.now(clock);
+
         reviewState.setLastReviewedAt(now);
         SrsLevel currentLevel = reviewState.getLevel();
 
@@ -64,13 +67,13 @@ public class ReviewService {
             return;
         }
 
-        if (reviewState.getNextReviewAt() == null || reviewState.getNextReviewAt().isBefore(now)) {
+        if (reviewState.getNextReviewAt() == null || !reviewState.getNextReviewAt().isAfter(now)) {
             SrsLevel nextLevel =
                     (rating == ReviewRating.GOOD)
                             ? Srs.onGood(currentLevel)
                             : Srs.onAgain(currentLevel);
             reviewState.setLevel(nextLevel);
-            LocalDateTime nextReviewAt = now.plus(nextLevel.getInterval());
+            LocalDateTime nextReviewAt = now.plus(nextLevel.getInterval()).toLocalDate().atTime(3, 0);
             reviewState.setNextReviewAt(nextReviewAt);
         }
     }

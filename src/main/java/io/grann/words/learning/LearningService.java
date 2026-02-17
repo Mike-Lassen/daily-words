@@ -32,7 +32,7 @@ public class LearningService {
         DeckProgress deckProgress = deckProgressRepository.findById(userSession.getDeckProgressId()).get();
         List<Word> words = wordRepository.findUnlockedWordsWithoutReviewState(deckProgress, Pageable.ofSize(5));
 
-        if (words.size() < 5) {
+        if (words.size() < 1) {
             throw new IllegalStateException("Not enough new words to learn");
         }
 
@@ -69,13 +69,16 @@ public class LearningService {
                 .map(id -> wordRepository.findById(id).get())
                 .toList();
         // 1) Transition learned words to REVIEWING
+        LocalDateTime now = LocalDateTime.now(clock);
+        LocalDateTime next = now.plusDays(1).toLocalDate().atTime(3,0);
+
         for (Word word : words) {
             ReviewState rs = ReviewState.builder()
                     .deckProgress(deckProgress)
                     .word(word)                // owning side (IMPORTANT)
                     .level(SrsLevel.LEVEL_1)   // adapt name to your enum
-                    .nextReviewAt(LocalDateTime.now(clock).plusDays(1))
-                    .lastReviewedAt(LocalDateTime.now(clock))
+                    .nextReviewAt(next)
+                    .lastReviewedAt(now)
                     .status(ReviewStateStatus.LEARNING)
                     .build();
             reviewStateRepository.save(rs);
