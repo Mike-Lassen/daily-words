@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="table(deckId, q, page, size, totalCount, words)">
+
+    <div id="table-summary" class="deck-words-summary" aria-live="polite" style="margin-top: 1rem;">
+        <span th:text="${totalCount} + ' word(s)'">0 word(s)</span>
+        <span th:if="${q != null and q != ''}" th:text="' · filtered by: \'' + ${q} + '\''"></span>
+    </div>
+
+    <div class="table-responsive" style="margin-top: 0.75rem;">
+        <table class="table table-sm table-striped align-middle">
+            <thead>
+            <tr>
+                <th scope="col">Foreign Text</th>
+                <th scope="col">Native Text</th>
+                <th scope="col">Level</th>
+            </tr>
+            </thead>
+            <tbody id="table-body">
+            <tr th:if="${#lists.isEmpty(words)}">
+                <td colspan="3" style="color: #6b7280;">No results</td>
+            </tr>
+            <tr th:each="word : ${words}">
+                <td th:text="${word.foreignText}">外国語</td>
+                <td th:text="${word.nativeText}">Native</td>
+                <td th:text="${word.level.name}">Level</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="table-pagination" class="deck-words-pagination" style="margin-top: 0.75rem; display: flex; gap: 0.5rem; align-items: center;">
+        <button type="button"
+                class="secondary-button js-table-prev"
+                th:disabled="${page <= 0}">
+            Previous
+        </button>
+
+        <div style="color: #6b7280; font-size: 0.95rem;">
+            <span th:text="'Page ' + (${page} + 1)">Page 1</span>
+            <span th:if="${totalCount > 0}" th:text="' of ' + (${(totalCount - 1) / size} + 1)">of 1</span>
+        </div>
+
+        <button type="button"
+                class="secondary-button js-table-next"
+                th:disabled="${(page + 1) * size >= totalCount}">
+            Next
+        </button>
+    </div>
+
+</div>
+
+</body>
+</html>
+

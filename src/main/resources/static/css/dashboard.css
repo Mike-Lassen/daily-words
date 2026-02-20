@@ -328,6 +328,35 @@ button:disabled {
     gap: 1rem;
 }
 
+.deck-chooser-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.deck-chooser-table-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+
+    border-radius: 10px;
+    text-decoration: none;
+    color: #6b7280;
+}
+
+.deck-chooser-table-link:hover {
+    background: #f3f4f6;
+    color: #111827;
+}
+
+.deck-chooser-table-link:focus {
+    outline: 2px solid #111827;
+    outline-offset: 2px;
+}
+
 .deck-chooser-name {
     font-size: 1.1rem;
     font-weight: 600;
@@ -390,4 +419,3 @@ button:disabled {
         grid-template-columns: 1fr;
     }
 }
-

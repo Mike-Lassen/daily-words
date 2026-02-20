@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="'Deck words · ' + ${deck.name}">Deck words</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+    <script src="/js/jquery-4.0.0.min.js"></script>
+    <script src="https://unpkg.com/lucide@0.476.0/dist/umd/lucide.min.js"></script>
+</head>
+<body class="container mt-5">
+
+<form method="get" th:action="@{/choose-deck}" class="home-button" aria-label="Back to deck chooser">
+    <button type="submit" class="home-button__inner" aria-label="Back to deck chooser" title="Back to deck chooser">
+        <i data-lucide="square-chevron-left"></i>
+    </button>
+</form>
+
+<div class="dashboard-container">
+
+    <div class="dashboard-card dashboard-card--full">
+        <div class="card-content">
+
+            <div class="level-progress-header">
+                <div class="level-progress-title" th:text="'Deck words: ' + ${deck.name}">Deck words</div>
+                <div class="level-progress-subtitle">Browse all words in this deck. Progress is ignored.</div>
+            </div>
+
+            <div class="deck-words-controls" style="margin-top: 1rem;">
+                <label for="deck-words-q" class="form-label" style="margin-bottom: 0.25rem;">Filter</label>
+                <input id="deck-words-q"
+                       class="form-control js-deck-words-q"
+                       type="text"
+                       placeholder="Type to filter foreign or native text…"
+                       th:value="${q}"
+                       autocomplete="off"/>
+            </div>
+
+            <div id="table-area"
+                 class="deck-words-table"
+                 th:attr="data-deck-id=${deckId}, data-page=${page}, data-size=${size}">
+                <div th:replace="~{fragments/deck-words-table :: table(
+                        ${deckId},
+                        ${q},
+                        ${page},
+                        ${size},
+                        ${totalCount},
+                        ${words}
+                )}"></div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script src="/js/components/deck-words-table.js"></script>
+<script>
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons({
+            attrs: {
+                width: '24',
+                height: '24',
+                'stroke-width': '2'
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
+

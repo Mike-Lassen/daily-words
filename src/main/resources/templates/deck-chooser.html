@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Choose deck · Daily Words</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+    <script src="https://unpkg.com/lucide@0.476.0/dist/umd/lucide.min.js"></script>
 </head>
 <body class="container mt-5">
 
@@ -27,7 +28,16 @@
                 <div th:each="deck : ${decks}" class="deck-chooser-item">
 
                     <div class="deck-chooser-card">
-                        <div class="deck-chooser-name" th:text="${deck.name}">Genki</div>
+                        <div class="deck-chooser-header">
+                            <div class="deck-chooser-name" th:text="${deck.name}">Genki</div>
+
+                            <a class="deck-chooser-table-link"
+                               th:href="@{/decks/{deckId}/words(deckId=${deck.id})}"
+                               title="View words in deck"
+                               aria-label="View words in deck">
+                                <i data-lucide="table"></i>
+                            </a>
+                        </div>
 
                         <!-- Optional: if you add deck description later -->
                         <!-- <div class="deck-chooser-meta" th:text="${deck.description}">…</div> -->
@@ -63,6 +73,18 @@
     </div>
 
 </div>
+
+<script>
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons({
+            attrs: {
+                width: '18',
+                height: '18',
+                'stroke-width': '2'
+            }
+        });
+    }
+</script>
 
 </body>
 </html>

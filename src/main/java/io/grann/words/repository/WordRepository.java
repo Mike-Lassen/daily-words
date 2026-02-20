@@ -6,8 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -62,5 +60,43 @@ public interface WordRepository extends JpaRepository<Word, Long> {
             @Param("deckProgress") DeckProgress deckProgress
     );
 
+
+    @Query("""
+        select w
+        from Word w
+        join w.level l
+        join l.deck d
+        where d.id = :deckId
+          and (
+              :q is null
+              or :q = ''
+              or lower(w.foreignText) like lower(concat('%', :q, '%'))
+              or lower(w.nativeText) like lower(concat('%', :q, '%'))
+          )
+        order by l.orderIndex asc, w.id asc
+    """)
+    List<Word> findDeckWords(
+            @Param("deckId") Long deckId,
+            @Param("q") String q,
+            Pageable pageable
+    );
+
+    @Query("""
+        select count(w)
+        from Word w
+        join w.level l
+        join l.deck d
+        where d.id = :deckId
+          and (
+              :q is null
+              or :q = ''
+              or lower(w.foreignText) like lower(concat('%', :q, '%'))
+              or lower(w.nativeText) like lower(concat('%', :q, '%'))
+          )
+    """)
+    long countDeckWords(
+            @Param("deckId") Long deckId,
+            @Param("q") String q
+    );
 
 }
