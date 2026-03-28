@@ -22,6 +22,7 @@ public class DailyWordsApplication {
 			DeckCsvImporter deckCsvImporter = context.getBean(DeckCsvImporter.class);
 			deckCsvImporter.importFromClasspath("genki-deck.csv");
 			deckCsvImporter.importFromClasspath("french-course-deck.csv");
+			deckCsvImporter.importFromClasspath("gogonoakubi.csv");
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
