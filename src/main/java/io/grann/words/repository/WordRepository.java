@@ -17,6 +17,26 @@ public interface WordRepository extends JpaRepository<Word, Long> {
     Optional<Word> findByLevelAndForeignText(Level level, String foreignText);
 
     @Query("""
+                select w
+                from Word w
+                join w.level l
+                where l.deck = :deck
+                  and w.foreignText = :foreignText
+            """)
+    Optional<Word> findByDeckAndForeignText(
+            @Param("deck") Deck deck,
+            @Param("foreignText") String foreignText
+    );
+
+    @Query("""
+                select w
+                from Word w
+                join w.level l
+                where l.deck = :deck
+            """)
+    List<Word> findByDeck(@Param("deck") Deck deck);
+
+    @Query("""
         select w
         from DeckProgress dp
         join dp.deck d

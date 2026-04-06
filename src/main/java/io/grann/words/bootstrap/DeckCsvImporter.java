@@ -4,6 +4,7 @@ import io.grann.words.domain.*;
 import io.grann.words.importer.CsvMapImporter;
 import io.grann.words.repository.*;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,11 +19,13 @@ import java.util.regex.Pattern;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class DeckCsvImporter {
     private final DeckRepository deckRepository;
     private final LevelRepository levelRepository;
     private final DeckProgressRepository deckProgressRepository;
     private final WordRepository wordRepository;
+    private final ReviewStateRepository reviewStateRepository;
 
     /**
      * Imports a deck CSV from the classpath.
@@ -37,6 +40,7 @@ public class DeckCsvImporter {
      */
     @Transactional
     public Deck importFromClasspath(String resourceName) throws Exception {
+        log.info("import: " + resourceName);
         CsvMapImporter csvMapImporter = new CsvMapImporter();
         InputStream resourceStream = getClass().getClassLoader().getResourceAsStream(resourceName);
         if (resourceStream == null) {
@@ -76,25 +80,28 @@ public class DeckCsvImporter {
             validateHeaders(rows);
 
             List<Word> wordsToInsert = new ArrayList<>();
+            Set<String> foreignTexts = new HashSet<>();
 
             for (Map<String, String> row : rows) {
-                String foreignText = get(row, "word");
-                String nativeText = get(row, "translation");
-                String levelName = get(row, "level");
+                String rawForeignText = get(row, "word");
+                String rawNativeText = get(row, "translation");
+                String rawLevelName = get(row, "level");
 
-                if (isBlank(foreignText) || isBlank(nativeText) || isBlank(levelName)) {
+                if (isBlank(rawForeignText) || isBlank(rawNativeText) || isBlank(rawLevelName)) {
                     continue;
                 }
 
-                foreignText = foreignText.trim();
-                nativeText = nativeText.trim();
-                levelName = levelName.trim();
+                String foreignText = rawForeignText.trim();
+                String nativeText = rawNativeText.trim();
+                String levelName = rawLevelName.trim();
+
+                foreignTexts.add(foreignText);
 
                 Level level = getOrCreateLevel(deck, levelsByName, levelName);
 
-                Optional<Word> existing = wordRepository.findByLevelAndForeignText(level, foreignText);
+                Optional<Word> existing = wordRepository.findByDeckAndForeignText(deck, foreignText);
 
-                Word word = existing.orElse(
+                Word word = existing.orElseGet(() ->
                         Word.builder()
                                 .foreignText(foreignText)
                                 .nativeText(nativeText)
@@ -102,21 +109,42 @@ public class DeckCsvImporter {
                                 .build()
                 );
 
-                word.setNativeText(nativeText);
+                if (existing.isPresent()) {
+                    word.setLevel(level);
+                    word.setNativeText(nativeText);
+                } else {
+                    wordsToInsert.add(word);
+                }
 
                 // Optional annotations
                 addOptionalAnnotation(word, row, "kana", WordAnnotationType.KANA);
                 addOptionalAnnotation(word, row, "summary", WordAnnotationType.SUMMARY);
                 addOptionalAnnotation(word, row, "note", WordAnnotationType.NOTE);
 
-                wordsToInsert.add(word);
             }
 
+            List<Word> existingWords = wordRepository.findByDeck(deck);
+            List<Word> wordsToDelete = existingWords.stream()
+                    .filter(word -> !foreignTexts.contains(word.getForeignText()))
+                    .toList();
+
+            log.info("Number of words to delete: " + wordsToDelete.size());
+
+            for (Word word : wordsToDelete) {
+                log.info("delete: " + word);
+                reviewStateRepository.deleteByWord(word);
+                wordRepository.delete(word);
+            }
+
+            log.info("Number of new words: " + wordsToInsert.size());
+
             if (!wordsToInsert.isEmpty()) {
+                for (Word word : wordsToInsert) {
+                    log.info("new word: " + word);
+                }
                 wordRepository.saveAll(wordsToInsert);
             }
             return deck;
-            //ensureDeckProgressInitialized(deck);
         }
     }
 
