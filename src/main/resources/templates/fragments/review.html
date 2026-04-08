@@ -18,8 +18,20 @@
             </div>
 
             <div class="learning-summary"
-                 th:classappend="${!showAnswer} ? 'invisible'"
-                 th:text="${word.summary}">
+                 th:classappend="${!showAnswer} ? 'invisible'">
+
+                <div class="learning-summary-text"
+                     th:text="${word.summary}">
+                </div>
+
+                <div class="learning-summary-actions">
+                    <button type="button"
+                            class="review-icon-button"
+                            aria-label="Graduate word"
+                            title="Graduate word">
+                        <i data-lucide="check-check"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
