@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 
-<div th:fragment="review(word, showAnswer, completedCount, totalCount, showAnswerAction, gradeAction)">
+<div th:fragment="review(word, showAnswer, completedCount, totalCount, showAnswerAction, gradeAction, graduateAction)">
     <div class="dashboard-card dashboard-card--full">
         <div class="card-content learning-card">
 
@@ -25,12 +25,14 @@
                 </div>
 
                 <div class="learning-summary-actions">
-                    <button type="button"
-                            class="review-icon-button"
-                            aria-label="Graduate word"
-                            title="Graduate word">
-                        <i data-lucide="check-check"></i>
-                    </button>
+                    <form method="post" th:action="${graduateAction}" class="review-icon-form">
+                        <button type="submit"
+                                class="review-icon-button"
+                                aria-label="Graduate word"
+                                title="Graduate word">
+                            <i data-lucide="check-check"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -14,7 +14,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ReviewStateRepository extends JpaRepository<ReviewState, Long> {
-    Optional<ReviewState> findByWord(Word word);
+    Optional<ReviewState> findByWordAndDeckProgress(Word word, DeckProgress deckProgress);
+
     @Query("""
         select rs
         from ReviewState rs

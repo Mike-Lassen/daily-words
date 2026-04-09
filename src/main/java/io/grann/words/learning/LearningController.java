@@ -121,4 +121,21 @@ public class LearningController {
         learningService.advance(session);
         return "redirect:/learning/session";
     }
+
+    @PostMapping("/review/graduate")
+    public String graduate(
+            @ModelAttribute LearningSession session,
+            SessionStatus status
+    ) {
+        learningService.graduate(userSession, session);
+
+        if (session.isFinished()) {
+
+            learningService.complete(userSession, session);
+            status.setComplete(); // clears session
+            return "redirect:/dashboard";
+        }
+        learningService.advance(session);
+        return "redirect:/learning/session";
+    }
 }

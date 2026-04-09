@@ -45,51 +45,53 @@ body {
     font-size: 0.95rem;
     color: #6b7280;
     text-align: left;
-
     border-top: 1px solid #e5e7eb;
     padding-top: 0.75rem;
-
     min-height: 3.5rem;
+
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
 }
 
-.learning-summary-text {
-    flex: 1;
-}
-
 .learning-summary-actions {
+    width: 100%;
     display: flex;
     justify-content: flex-end;
 }
 
-.review-icon-button {
+.learning-summary-actions > form.review-icon-form {
+    width: auto;
+    margin: 0;
+    display: inline-flex;
+    flex: 0 0 auto;
+}
+
+.learning-summary-actions > form.review-icon-form > button.review-icon-button {
+    width: 40px;
+    height: 40px;
+    padding: 0;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
-    width: 40px;
-    height: 40px;
     border: 0;
     border-radius: 10px;
     background: transparent;
     color: #6b7280;
     cursor: pointer;
-    padding: 0;
 }
 
-.review-icon-button:hover:not(:disabled) {
+.learning-summary-actions > form.review-icon-form > button.review-icon-button:hover:not(:disabled) {
     background: #f3f4f6;
     color: #111827;
 }
 
-.review-icon-button:focus {
+.learning-summary-actions > form.review-icon-form > button.review-icon-button:focus {
     outline: 2px solid #111827;
     outline-offset: 2px;
 }
 
-.review-icon-button svg {
+.learning-summary-actions > form.review-icon-form > button.review-icon-button svg {
     width: 20px;
     height: 20px;
     stroke-width: 2;

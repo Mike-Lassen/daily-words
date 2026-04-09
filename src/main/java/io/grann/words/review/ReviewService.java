@@ -63,7 +63,7 @@ public class ReviewService {
 
         if (rating == ReviewRating.GOOD && currentLevel.isLastLevel()) {
             reviewState.setStatus(ReviewStateStatus.GRADUATED);
-            reviewState.setNextReviewAt(null);
+            reviewState.setNextReviewAt(now.plusDays(365));
             return;
         }
 
