@@ -63,7 +63,7 @@ public class LearningService {
         ReviewState rs = ReviewState.builder()
                 .deckProgress(deckProgress)
                 .word(word)
-                .level(SrsLevel.LEVEL_6)
+                .level(SrsLevel.LEVEL_1)
                 .nextReviewAt(nextReviewAt)
                 .lastReviewedAt(now)
                 .status(ReviewStateStatus.GRADUATED)

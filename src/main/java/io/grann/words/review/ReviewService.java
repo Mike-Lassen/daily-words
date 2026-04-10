@@ -118,4 +118,18 @@ public class ReviewService {
                 });
     }
 
+    @Transactional
+    public void graduate(ReviewSession reviewSession) {
+        reviewSession.setShowAnswer(false);
+        Long reviewStateId = reviewSession.getReviewQueue().pollFirst();
+        if (reviewStateId == null) {
+            return;
+        }
+        ReviewState reviewState = reviewStateRepository.findById(reviewStateId).get();
+        LocalDateTime now = LocalDateTime.now(clock);
+
+        reviewState.setLastReviewedAt(now);
+        reviewState.setStatus(ReviewStateStatus.GRADUATED);
+        reviewState.setNextReviewAt(now.plusDays(365));
+    }
 }
