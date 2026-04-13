@@ -25,7 +25,10 @@
                 </div>
 
                 <div class="learning-summary-actions">
-                    <form method="post" th:action="${graduateAction}" class="review-icon-form">
+                    <form method="post"
+                          th:action="${graduateAction}"
+                          class="review-icon-form"
+                          onsubmit="return confirm('Graduate this word? It will be removed from future reviews.');">
                         <button type="submit"
                                 class="review-icon-button"
                                 aria-label="Graduate word"
