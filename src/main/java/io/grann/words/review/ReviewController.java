@@ -84,4 +84,20 @@ public class ReviewController {
 
         return "redirect:/reviews/session";
     }
+
+    @PostMapping("/graduate")
+    public String graduate(
+            @ModelAttribute("reviewSession") ReviewSession session,
+            SessionStatus status
+    ) {
+        reviewService.graduate(session);
+
+        if (session.isFinished()) {
+            reviewService.complete(userSession, session);
+            status.setComplete();
+            return "redirect:/dashboard";
+        }
+
+        return "redirect:/reviews/session";
+    }
 }

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 
-<div th:fragment="review(word, showAnswer, completedCount, totalCount, showAnswerAction, gradeAction)">
+<div th:fragment="review(word, showAnswer, completedCount, totalCount, showAnswerAction, gradeAction, graduateAction)">
     <div class="dashboard-card dashboard-card--full">
         <div class="card-content learning-card">
 
@@ -18,8 +18,25 @@
             </div>
 
             <div class="learning-summary"
-                 th:classappend="${!showAnswer} ? 'invisible'"
-                 th:text="${word.summary}">
+                 th:classappend="${!showAnswer} ? 'invisible'">
+
+                <div class="learning-summary-text"
+                     th:text="${word.summary}">
+                </div>
+
+                <div class="learning-summary-actions">
+                    <form method="post"
+                          th:action="${graduateAction}"
+                          class="review-icon-form"
+                          onsubmit="return confirm('Graduate this word? It will be removed from future reviews.');">
+                        <button type="submit"
+                                class="review-icon-button"
+                                aria-label="Graduate word"
+                                title="Graduate word">
+                            <i data-lucide="check-check"></i>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
