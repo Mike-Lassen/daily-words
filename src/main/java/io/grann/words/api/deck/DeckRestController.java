@@ -7,20 +7,23 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/decks")
 public class DeckRestController {
-
+    private DeckService deckService;
+    public DeckRestController(DeckService deckService) {
+        this.deckService = deckService;
+    }
     @GetMapping
     public List<DeckResponse> getDecks() {
-        return null;
+        return deckService.getDecks();
     }
 
     @GetMapping("/{deckId}")
     public DeckResponse getDeck(@PathVariable Long deckId) {
-        return null;
+        return deckService.getDeck(deckId);
     }
 
     @PostMapping
     public DeckResponse createDeck(@RequestBody DeckCreateRequest request) {
-        return null;
+        return deckService.createDeck(request);
     }
 
     @PutMapping("/{deckId}")
@@ -28,11 +31,11 @@ public class DeckRestController {
             @PathVariable Long deckId,
             @RequestBody DeckUpdateRequest request
     ) {
-        return null;
+        return deckService.updateDeck(deckId, request);
     }
 
     @DeleteMapping("/{deckId}")
     public void deleteDeck(@PathVariable Long deckId) {
-
+        deckService.deleteDeck(deckId);
     }
 }
